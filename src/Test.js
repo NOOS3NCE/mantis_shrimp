@@ -7,6 +7,9 @@ function Test() {
                 <div className={'col-6 d-flex justify-content-end align-content-end'}>
                     <p>Hello</p>
                 </div>
+                <div>
+                    <p>dang</p>
+                </div>
                 <div className={'col-6'}>
                     <p>World!</p>
                 </div>
