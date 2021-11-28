@@ -1,20 +1,18 @@
 import './App.css';
 import MantisNavBar from "./MantisNavBar";
-import {Switch, BrowserRouter as Router, Route} from "react-router";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Home from "./Home";
+import Gear from "./Gear";
 
 function App() {
     return (
         <div className="App">
-            <MantisNavBar/>
             <Router>
-                <Switch>
-                    <Route>
-                        <Home/>
-                    </Route>
-                    <Route>
-                        <Gear/>
-                    </Route>
-                </Switch>
+                <MantisNavBar/>
+                <Routes>
+                    <Route path={"/home"} element={<Home/>}/>
+                    <Route path={"/gear"} element={<Gear/>}/>
+                </Routes>
             </Router>
         </div>
     );
