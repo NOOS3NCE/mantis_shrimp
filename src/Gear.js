@@ -5,11 +5,9 @@ const Gear = () => {
     return (
         <>
             <div className={''}>
-                <p>GEAR</p>
+                <p>/GEAR</p>
             </div>
-            <div className={'row d-flex justify-content-between m-5'}>
-                <MantisCard/>
-                <MantisCard/>
+            <div className={'row d-flex justify-content-evenly col-6 offset-3'}>
                 <MantisCard/>
             </div>
         </>

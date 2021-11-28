@@ -2,7 +2,8 @@ import './App.css';
 import MantisNavBar from "./MantisNavBar";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./Home";
-import Gear from "./Gear";
+import Gear from "./Gear"
+import PackDetail from "./PackDetail";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path={"/home"} element={<Home/>}/>
                     <Route path={"/gear"} element={<Gear/>}/>
+                    <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
                 </Routes>
             </Router>
         </div>
