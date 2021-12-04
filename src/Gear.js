@@ -7,7 +7,9 @@ const Gear = () => {
             <div className={''}>
                 <p>/GEAR</p>
             </div>
-            <div className={'row d-flex justify-content-evenly col-6 offset-3'}>
+            <div className={'row d-flex justify-content-evenly col-8 offset-2'}>
+                <MantisCard/>
+                <MantisCard/>
                 <MantisCard/>
             </div>
         </>
