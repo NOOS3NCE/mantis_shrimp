@@ -14,7 +14,8 @@ const PackDetail = () => {
     useEffect(() => {
         axios.get(`http://localhost:3001/kit/${id}`)
             .then(res => {
-                setKit(res.data[0])
+                setKit(res.data)
+                console.log("RES: ", res)
             }, rej => (console.log(rej)))
             .catch(err => console.log(err))
     }, [])
@@ -22,14 +23,13 @@ const PackDetail = () => {
 
     return (
         <>
-            <div className={'d-flex justify-content-evenly col-8 offset-2 shadow'}>
+            <div className={'d-flex justify-content-evenly col-10 offset-1 shadow'}>
                 <div className={'col-5 m-2'}>
                     <HeroCard title={kit.display}/>
-                    <GearListCard title={'Cameras'}/>
-                    <GearListCard title={'Lenses'}/>
+                    <GearListCard title={'Lenses'} items={kit.lenses}/>
                 </div>
                 <div className={'col-5 m-2'}>
-                    <InfoCard/>
+                    <InfoCard kit={kit}/>
                     <StatusCard/>
                 </div>
             </div>

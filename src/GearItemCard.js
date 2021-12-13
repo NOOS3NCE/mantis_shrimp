@@ -2,7 +2,7 @@ import React from "react";
 import image from './images/2470canon.jpeg'
 
 const GearItemCard = (props) => {
-    const {title, brand, model, fStop} = props;
+    const {title, brand, model} = props;
     return (
         <>
             <div className={'row m-2 p-1 d-flex justify-content-start'}>
@@ -14,7 +14,7 @@ const GearItemCard = (props) => {
                         <h5>{title}</h5>
                     </div>
                     <div className={'row'}>
-                        <p>{`${brand} ${model} ${fStop}`}</p>
+                        <p>{`${brand} ${model}`}</p>
                     </div>
                 </div>
             </div>
