@@ -4,27 +4,30 @@ import backpack from './images/backpack.jpg'
 
 const MantisCard = (props) => {
 
-    const {name, location, checkedOut, id} = props;
+    const {name, location, loadedOut, id, shooter} = props;
 
     return (
         <>
-            <div className={'bg-dark col-3 rounded shadow m-1 p-0'} style={{width: '300px', height: '400px'}}>
+            <div className={'bg-dark col-3 rounded shadow m-1 p-0 text-white'}
+                 style={{width: '300px', height: '400px'}}>
                 <Link className={'text-decoration-none'} to={`/gear/pack/${id}`}>
                     <img className={'img-fluid'} style={{width: '300px'}}
                          src={backpack}
                          alt={"SVG of backpack"}/>
-                    <div className={'row d-flex align-content-between p-2'}>
+                    {/*<BackpackOutlined style={{*/}
+                    {/*    color: 'white',*/}
+                    {/*    transform: 'scale(8)'*/}
+                    {/*}}*/}
+                    {/*                  className={'m-4'}/>*/}
+                    <div className={'row d-flex justify-content-evenly p-2 pt-3 text-white'}>
                         <div className={'row'}>
-                            <div className={'col-9 text-white'}>{name}</div>
-                            <div className={'col-3 text-white'}>{location}</div>
+                            <div className={'col-6 text-white'} style={{'font-size': '20px'}}>{name}</div>
+                            <div className={'col-6 text-white'} style={{'font-size': '20px'}}>{location}</div>
                         </div>
-                        <div className={'row'}>
-                            {checkedOut ? <div className={'col-6 text-white'}>Checked Out to:</div> :
-                                <div className={'col-6 text-white'}>In Office</div>}
-
-                            <div className={'col-6 text-white'}>First Name</div>
-                        </div>
-
+                        {loadedOut && <div className={'row pt-2'}>
+                            <div className={'col-6 text-white'}>Loaded Out
+                            </div>
+                        </div>}
                     </div>
                 </Link>
             </div>

@@ -9,7 +9,7 @@ const HeroCard = (props) => {
                 <h2>{title}</h2>
                 <hr/>
                 <div className={'col-8'}>
-                    <img src={image} alt={'kit pack'}/>
+                    <img className={'rounded'} src={image} alt={'kit pack'}/>
                 </div>
             </div>
         </>

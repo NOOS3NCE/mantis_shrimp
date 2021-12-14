@@ -17,6 +17,7 @@ const GearItemCard = (props) => {
                         <p>{`${brand} ${model}`}</p>
                     </div>
                 </div>
+                <hr/>
             </div>
         </>
     )

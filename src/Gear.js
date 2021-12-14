@@ -15,9 +15,9 @@ const Gear = () => {
     }, [])
     return (
         <>
-            <div className={'row d-flex justify-content-evenly col-8 offset-2'}>
-                {kits?.map(kit => <MantisCard name={kit.display.toUpperCase()} location={kit.location}
-                                              checkedOut={kit.checkedout} key={kit.id} id={kit.id}/>)}
+            <div className={'row d-flex justify-content-evenly col-10 offset-1 text-white'}>
+                {kits?.map(kit => <MantisCard name={kit.display.toUpperCase()} location={kit.city}
+                                              loadedOut={kit.loaded_out} key={kit.id} id={kit.id}/>)}
             </div>
         </>
     )

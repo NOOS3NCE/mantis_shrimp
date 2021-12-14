@@ -5,10 +5,13 @@ import HeroCard from "./HeroCard";
 import InfoCard from "./InfoCard";
 import GearListCard from "./GearListCard";
 import StatusCard from "./StatusCard";
+import {MenuItem, Select, TextField} from "@mui/material";
+import {Label} from "@mui/icons-material";
 
 const PackDetail = () => {
     const {id} = useParams()
-    const [kit, setKit] = useState({});
+    const [kit, setKit] = useState({})
+    const [open, setOpen] = useState(false)
     console.log("KIT ID: ", id)
 
     useEffect(() => {
@@ -23,15 +26,38 @@ const PackDetail = () => {
 
     return (
         <>
-            <div className={'d-flex justify-content-evenly col-10 offset-1 shadow'}>
-                <div className={'col-5 m-2'}>
-                    <HeroCard title={kit.display}/>
-                    <GearListCard title={'Lenses'} items={kit.lenses}/>
+            <div className={`row ${open && 'd-flex justify-content-around'}`}>
+                <div
+                    className={`d-flex justify-content-evenly col-${open ? 8 : 10} offset-${open ? 0 : 1} shadow rounded mt-2`}>
+                    <div className={'col-5 m-2'}>
+                        <HeroCard title={kit.display}/>
+                        <GearListCard title={'Lenses'} items={kit.lenses}/>
+                    </div>
+                    <div className={'col-5 m-2'}>
+                        <InfoCard kit={kit} setOpen={setOpen} open={open}/>
+                        <StatusCard/>
+                    </div>
                 </div>
-                <div className={'col-5 m-2'}>
-                    <InfoCard kit={kit}/>
-                    <StatusCard/>
-                </div>
+                {open && <div className={'d-flex justify-items-start col-3 mt-2 rounded '}>
+                    <form>
+                        <div className={'row'}>
+                            <h3> Edit</h3>
+                        </div>
+                        <TextField label={'Kit Name'}
+                                   size={'medium'}
+                                   className={'col-12 mt-2'}
+                                   defaultValue={kit.display}/>
+                        <Select label={'City'}
+                                size={'medium'}
+                                className={'col-12 mt-2'}
+                                defaultValue={kit.city}>
+                            <MenuItem value={0}>TUL</MenuItem>
+                            <MenuItem value={1}>KC</MenuItem>
+                            <MenuItem value={2}>DAL</MenuItem>
+                            <MenuItem value={3}>DEN</MenuItem>
+                        </Select>
+                    </form>
+                </div>}
             </div>
         </>
     )
