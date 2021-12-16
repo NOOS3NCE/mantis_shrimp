@@ -10,14 +10,16 @@ function App() {
 
     return (
         <div className="App">
-            <Router>
-                <MantisNavBar/>
-                <Routes>
-                    <Route path={"/home"} element={<Home/>}/>
-                    <Route path={"/gear"} element={<Gear/>}/>
-                    <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
-                </Routes>
-            </Router>
+            <div className={'text-white'}>
+                <Router>
+                    <MantisNavBar/>
+                    <Routes>
+                        <Route path={"/home"} element={<Home/>}/>
+                        <Route path={"/gear"} element={<Gear/>}/>
+                        <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
+                    </Routes>
+                </Router>
+            </div>
         </div>
     );
 }

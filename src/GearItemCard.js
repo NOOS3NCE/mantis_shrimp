@@ -5,10 +5,9 @@ const GearItemCard = (props) => {
     const {title, brand, model} = props;
     return (
         <>
-            <div className={'row m-2 p-1 d-flex justify-content-start'}>
-                <div className={'col-3 p-2'}>
-                    <img src={image} alt={'item'} style={{width: '50px'}}/>
-                </div>
+            <div className={'row m-1 p-1 d-flex shadow-sm rounded'}>
+                <img className={'col-3 rounded shadow d-flex align-content-center justify-content-center p-2 bg-light'}
+                     src={image} alt={'Gear Item'} style={{width: '25%'}}/>
                 <div className={'col-8'}>
                     <div className={'row'}>
                         <h5>{title}</h5>
@@ -17,7 +16,6 @@ const GearItemCard = (props) => {
                         <p>{`${brand} ${model}`}</p>
                     </div>
                 </div>
-                <hr/>
             </div>
         </>
     )

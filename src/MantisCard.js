@@ -11,7 +11,7 @@ const MantisCard = (props) => {
             <div className={'bg-dark col-3 rounded shadow m-1 p-0 text-white'}
                  style={{width: '300px', height: '400px'}}>
                 <Link className={'text-decoration-none'} to={`/gear/pack/${id}`}>
-                    <img className={'img-fluid'} style={{width: '300px'}}
+                    <img className={'card-img-top'} style={{width: '300px'}}
                          src={backpack}
                          alt={"SVG of backpack"}/>
                     {/*<BackpackOutlined style={{*/}

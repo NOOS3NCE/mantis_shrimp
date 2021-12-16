@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import MantisCard from "./MantisCard";
 import axios from "axios";
+import {Link} from "react-router-dom";
+import Home from "./Home";
 
 
 const Gear = () => {
@@ -15,7 +17,7 @@ const Gear = () => {
     }, [])
     return (
         <>
-            <div className={'row d-flex justify-content-evenly col-10 offset-1 text-white'}>
+            <div className={'row d-flex justify-content-evenly col-10 offset-1 text-white mt-2'}>
                 {kits?.map(kit => <MantisCard name={kit.display.toUpperCase()} location={kit.city}
                                               loadedOut={kit.loaded_out} key={kit.id} id={kit.id}/>)}
             </div>

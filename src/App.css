@@ -3,10 +3,9 @@
 }
 
 /*body {*/
-/*    background-color: black;*/
-/*    height: 100%;*/
+/*    background-color: $ gray-700;*/
 /*}*/
 
-/*html, body, .App {*/
-/*    background-color: rgb(61, 61, 66);*/
-/*}*/
+html, body, .App {
+    background-color: rgb(40, 40, 44);
+}
