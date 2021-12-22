@@ -5,14 +5,15 @@ import HeroCard from "./HeroCard";
 import InfoCard from "./InfoCard";
 import GearListCard from "./GearListCard";
 import StatusCard from "./StatusCard";
-import {InputUnstyled, MenuItem, Select, TextField} from "@mui/material";
-import {Label} from "@mui/icons-material";
-import {Dropdown} from "react-bootstrap";
+import {MenuItem, Select, TextField} from "@mui/material";
+import {useForm} from "react-hook-form";
 
 const PackDetail = () => {
     const {id} = useParams()
     const [kit, setKit] = useState({})
     const [open, setOpen] = useState(false)
+    const [cities, setCities] = useState([])
+    const {control} = useForm()
     console.log("KIT ID: ", id)
 
     useEffect(() => {
@@ -20,18 +21,27 @@ const PackDetail = () => {
             .then(res => {
                 setKit(res.data)
                 console.log("RES: ", res)
-            }, rej => (console.log(rej)))
+            }, rej => console.log(rej))
+            .catch(err => console.log(err))
+    }, [])
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/cities')
+            .then(res => {
+                setCities(res.data)
+                console.log("CITIES: ", res)
+            }, rej => console.log(rej))
             .catch(err => console.log(err))
     }, [])
     console.log("KIT DETAIL: ", kit)
 
     return (
         <>
-            <div className={`row ${open && 'd-flex justify-content-around '}`}>
+            <div className={`row ${open && 'd-flex justify-content-around'}`}>
                 <div
-                    className={`d-flex justify-content-evenly col-${open ? 8 : 10} offset-${open ? 0 : 1} shadow rounded mt-2`}>
+                    className={`d-flex justify-content-evenly col-${open ? 8 : 10} offset-${open ? 0 : 1} shadow rounded mt-2 bg-dark`}>
                     <div className={'col-sm-12 col-md-5  m-2'}>
-                        <HeroCard title={kit.display}/>
+                        <HeroCard title={kit.kit_display} id={kit.kit_id}/>
                         <GearListCard title={'Lenses'} items={kit.lenses}/>
                     </div>
                     <div className={' col-sm-12 col-md-5 m-2'}>
@@ -39,24 +49,21 @@ const PackDetail = () => {
                         <StatusCard/>
                     </div>
                 </div>
-                {open && <div className={'d-flex justify-items-start col-3 mt-2 rounded'}>
+                {open && <div className={'d-flex justify-items-start col-3 m-2 mx-0 rounded'}>
                     <form>
                         <div className={'row'}>
                             <h3> Edit</h3>
                         </div>
                         <label>Kit Name</label>
                         <TextField
-                            className={'col-12 mt-2'}
-                            defaultValue={kit.display}/>
-
+                            className={'col-12 mt-2 bg-white rounded'}
+                            defaultValue={kit.kit_display}/>
                         <Select label={'City'}
+                                controller={control}
                                 size={'large'}
-                                className={'col-12 mt-2'}
-                                defaultValue={kit.city}>
-                            <MenuItem value={0}>TUL</MenuItem>
-                            <MenuItem value={1}>KC</MenuItem>
-                            <MenuItem value={2}>DAL</MenuItem>
-                            <MenuItem value={3}>DEN</MenuItem>
+                                className={'col-12 mt-2 bg-white rounded'}
+                                defaultValue={kit.city_id}>
+                            {cities.map(city => <MenuItem value={city.city_id}>{city.city_code}</MenuItem>)}
                         </Select>
                     </form>
                 </div>}

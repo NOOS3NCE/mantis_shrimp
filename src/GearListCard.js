@@ -8,8 +8,8 @@ const GearListCard = ({title, items}) => {
             <div className={'col-12 p-2 m-2 mt-4'}>
                 <h2>{title}</h2>
                 <hr/>
-                {items?.map(item => <GearItemCard key={item.id} title={item.display} model={item.model}
-                                                  brand={item.brand}/>)}
+                {items?.map(item => <GearItemCard key={item.lens_id} title={item.lens_display} model={item.lens_model}
+                                                  brand={item.lens_brand}/>)}
             </div>
         </>
     )
