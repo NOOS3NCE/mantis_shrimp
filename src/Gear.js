@@ -20,6 +20,9 @@ const Gear = () => {
         setOpen(false)
 
     }, [kitsRerender])
+    useEffect(() => {
+        console.log("KITS: ", kits)
+    }, [open])
 
     return (
         <>
@@ -29,9 +32,8 @@ const Gear = () => {
                                  kitsRerender={kitsRerender}/>
                     : <Button
                         variant={'contained'}
-                        color={'secondary'}
                         size={'large'}
-                        className={'col-3 m-2 mb-0'}
+                        className={'col-3 m-2 mb-0 bg-secondary'}
                         onClick={() => setOpen(!open)}
                     >ADD KIT</Button>}
                 </div>
@@ -39,26 +41,30 @@ const Gear = () => {
             </div>
             <div className={'row d-flex justify-content-center'}>
                 <div className={'row d-flex justify-content-evenly col-10 text-white mt-2'}>
-                    <label>TUL</label>
+                    <h2 className={'mt-4'}>TUL</h2>
                     <hr/>
                     {kits?.filter(kit => kit.city_code === 'TUL').map(kit => <MantisCard
                         name={kit.kit_display.toUpperCase()} location={kit.city_code}
-                        loadedOut={kit.kit_loadedOut} key={kit.kit_id} id={kit.kit_id}/>)}
-                    <label>KC</label>
+                        loadedout={kit.kit_loadedout} key={kit.kit_id} id={kit.kit_id} shooter={kit.user_firstname}
+                        type={kit.kit_type.toUpperCase()}/>)}
+                    <h2 className={'mt-4'}>KC</h2>
                     <hr/>
                     {kits?.filter(kit => kit.city_code === 'KC').map(kit => <MantisCard
                         name={kit.kit_display.toUpperCase()} location={kit.city_code}
-                        loadedOut={kit.kit_loadedOut} key={kit.kit_id} id={kit.kit_id}/>)}
-                    <label>DAL</label>
+                        loadedout={kit.kit_loadedout} key={kit.kit_id} id={kit.kit_id} shooter={kit.user_firstname}
+                        type={kit.kit_type.toUpperCase()}/>)}
+                    <h2 className={'mt-4'}>DAL</h2>
                     <hr/>
                     {kits?.filter(kit => kit.city_code === 'DAL').map(kit => <MantisCard
                         name={kit.kit_display.toUpperCase()} location={kit.city_code}
-                        loadedOut={kit.kit_loadedOut} key={kit.kit_id} id={kit.kit_id}/>)}
-                    <label>DEN</label>
+                        loadedout={kit.kit_loadedout} key={kit.kit_id} id={kit.kit_id} shooter={kit.user_firstname}
+                        type={kit.kit_type.toUpperCase()}/>)}
+                    <h2 className={'mt-4'}>DEN</h2>
                     <hr/>
                     {kits?.filter(kit => kit.city_code === 'DEN').map(kit => <MantisCard
                         name={kit.kit_display.toUpperCase()} location={kit.city_code}
-                        loadedOut={kit.kit_loadedOut} key={kit.kit_id} id={kit.kit_id}/>)}
+                        loadedout={kit.kit_loadedout} key={kit.kit_id} id={kit.kit_id} shooter={kit.user_firstname}
+                        type={kit.kit_type.toUpperCase()}/>)}
 
                 </div>
             </div>

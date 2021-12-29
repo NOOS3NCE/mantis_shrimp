@@ -1,0 +1,25 @@
+$body-bg: #26262a;
+$secondary: #faa307;
+$dark: #303034;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.zoom-card {
+  transition-duration: 300ms;
+  transform: scale(1);
+}
+
+.zoom-card:hover {
+  transition-duration: 300ms;
+  transform: scale(1.02);
+}
+
+.mantis-sidebar {
+  width: 70px;
+  transition-duration: 300ms;
+}
+
+.mantis-sidebar:hover {
+  width: 110px;
+  transition-duration: 300ms;
+}

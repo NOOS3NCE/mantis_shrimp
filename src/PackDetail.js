@@ -42,7 +42,8 @@ const PackDetail = () => {
                     className={`d-flex justify-content-evenly col-${open ? 8 : 10} offset-${open ? 0 : 1} shadow rounded mt-2 bg-dark`}>
                     <div className={'col-sm-12 col-md-5  m-2'}>
                         <HeroCard title={kit.kit_display} id={kit.kit_id}/>
-                        <GearListCard title={'Lenses'} items={kit.lenses}/>
+                        <GearListCard title={'Cameras'} type={'cam'}/>
+                        <GearListCard title={'Lenses'} items={kit.lenses} type={'lens'}/>
                     </div>
                     <div className={' col-sm-12 col-md-5 m-2'}>
                         <InfoCard kit={kit} setOpen={setOpen} open={open}/>

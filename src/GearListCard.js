@@ -1,7 +1,7 @@
 import React from "react";
 import GearItemCard from "./GearItemCard";
 
-const GearListCard = ({title, items}) => {
+const GearListCard = ({title, items, type}) => {
     console.log("ITEMS: ", items)
     return (
         <>
@@ -9,7 +9,7 @@ const GearListCard = ({title, items}) => {
                 <h2>{title}</h2>
                 <hr/>
                 {items?.map(item => <GearItemCard key={item.lens_id} title={item.lens_display} model={item.lens_model}
-                                                  brand={item.lens_brand}/>)}
+                                                  brand={item.lens_brand} type={type}/>)}
             </div>
         </>
     )

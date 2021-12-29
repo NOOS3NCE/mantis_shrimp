@@ -1,13 +1,25 @@
 import React from "react";
-import image from './images/2470canon.jpeg'
+import lens from './images/2470canon.jpeg'
+import cam from './images/5dmkivcanon.jpeg'
 
 const GearItemCard = (props) => {
-    const {title, brand, model} = props;
+    const {title, brand, model, type} = props;
+    let image;
+    if (type === 'cam') {
+        image = cam
+    } else {
+        image = lens
+    }
     return (
         <>
-            <div className={'row m-1 p-1 d-flex shadow-sm rounded align-content-center justify-content-start'}>
-                <img className={'col-3 rounded shadow d-flex  p-2 bg-light'}
-                     src={image} alt={'Gear Item'} style={{width: '15%', height: '15%'}}/>
+            <div
+                className={'zoom-card row m-1 my-2 p-2 d-flex align-items-center shadow rounded'}>
+                <div className={'col-3 rounded shadow p-2 bg-white'}>
+                    <img
+                        style={{height: '50px'}}
+                        src={image} alt={'Gear Item'}
+                    />
+                </div>
                 <div className={'col-8'}>
                     <div className={'row'}>
                         <h5>{title}</h5>

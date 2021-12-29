@@ -24,8 +24,7 @@ const HeroCard = (props) => {
                 <div className={'col-1'}>
                     <Button
                         onClick={() => deleteKit(id)}
-                        className={'col-1'}
-                        color={'secondary'}
+                        className={'col-1 text-secondary'}
                         style={{backgroundColor: 'transparent'}}
                     ><Close/></Button>
                 </div>

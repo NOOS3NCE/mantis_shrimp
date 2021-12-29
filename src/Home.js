@@ -3,8 +3,8 @@ import React from "react";
 const Home = () => {
     return (
         <>
-            <div className={''}>
-                <p>HOME</p>
+            <div className={'offset-3'}>
+                <h1>IMAGINE A HOME PAGE HERE</h1>
             </div>
         </>
     )
