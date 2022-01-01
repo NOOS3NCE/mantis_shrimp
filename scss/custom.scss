@@ -1,15 +1,18 @@
 $body-bg: #26262a;
+$white: #F0F0F0;
+$offWhite: #A0A0A0;
 $secondary: #faa307;
+$secondaryFaded: #faa30744;
 $dark: #303034;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-.zoom-card {
+.zoom {
   transition-duration: 300ms;
   transform: scale(1);
 }
 
-.zoom-card:hover {
+.zoom:hover {
   transition-duration: 300ms;
   transform: scale(1.02);
 }
@@ -22,4 +25,15 @@ $dark: #303034;
 .mantis-sidebar:hover {
   width: 110px;
   transition-duration: 300ms;
+}
+
+.sb-icon {
+  transition-duration: 300ms;
+  color: $offWhite;
+}
+
+.sb-icon:hover {
+  color: $white;
+  transition-duration: 300ms;
+  transform: scale(1.05);
 }

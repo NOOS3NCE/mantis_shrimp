@@ -3,7 +3,6 @@ import MantisCard from "./MantisCard";
 import axios from "axios";
 import {Button} from "@mui/material";
 import NewKitForms from "./NewKitForms";
-import GearListCard from "./GearListCard";
 
 
 const Gear = () => {
@@ -28,12 +27,11 @@ const Gear = () => {
         <>
             <div className={'row'}>
                 <div className={'col 12 d-flex align-content-center justify-content-center'}>{open ?
-                    <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}
-                                 kitsRerender={kitsRerender}/>
+                    <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
                     : <Button
                         variant={'contained'}
                         size={'large'}
-                        className={'col-3 m-2 mb-0 bg-secondary'}
+                        className={'zoom col-3 m-2 mb-0 bg-secondary'}
                         onClick={() => setOpen(!open)}
                     >ADD KIT</Button>}
                 </div>

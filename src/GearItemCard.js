@@ -13,7 +13,7 @@ const GearItemCard = (props) => {
     return (
         <>
             <div
-                className={'zoom-card row m-1 my-2 p-2 d-flex align-items-center shadow rounded'}>
+                className={'zoom row m-1 my-2 p-2 d-flex align-items-center shadow rounded'}>
                 <div className={'col-3 rounded shadow p-2 bg-white'}>
                     <img
                         style={{height: '50px'}}
@@ -25,7 +25,7 @@ const GearItemCard = (props) => {
                         <h5>{title}</h5>
                     </div>
                     <div className={'row'}>
-                        <p>{`${brand} ${model}`}</p>
+                        <p>{`${brand} ${model}mm`}</p>
                     </div>
                 </div>
             </div>

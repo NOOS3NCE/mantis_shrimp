@@ -8,7 +8,7 @@ const MantisCard = (props) => {
     return (
         <>
             <div
-                className={'zoom-card bg-dark row rounded shadow m-1 py-3 p-0 text-white d-flex align-items-center justify-items-center'}>
+                className={'zoom bg-dark row rounded shadow m-1 py-3 p-0 text-white d-flex align-items-center justify-items-center'}>
                 <div className={'row'}>
                     <div className={'col-2 my-2 me-2'}>
                         <Link className={'text-decoration-none'} to={`/gear/pack/${id}`}>

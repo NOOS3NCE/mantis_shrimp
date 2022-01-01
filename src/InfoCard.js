@@ -8,7 +8,7 @@ const InfoCard = (props) => {
             <div className={'col-12 p-2 m-2'}>
                 <div className={'row d-flex justify-content-between'}>
                     <h2 className={'col-6 pt-2 my-0 pb-0'}>Info</h2>
-                    <Button variant={'contained'} size={'large'} className={'bg-secondary col-4 p-1 m-2 mb-0'}
+                    <Button variant={'contained'} size={'large'} className={'zoom bg-secondary col-4 p-1 m-2 mb-0'}
                             onClick={() => setOpen(!open)}>LOAD OUT</Button>
                 </div>
                 <hr/>

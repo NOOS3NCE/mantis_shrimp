@@ -11,11 +11,25 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
 
     const onSubmit = data => {
         console.log(data)
+        let lenses = data.lenses
         data.kit_name = data.kit_display.toLowerCase().split(' ').join('')
+        lenses.forEach(lens => {
+            lens.lens_name = lens.lens_display.toLowerCase().split(' ').join('')
+            lens.kit_name = data.kit_name
+        })
+        data.camera.kit_name = data.kit_name
+
         axios.post('http://localhost:3001/kit', data)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+                lenses.forEach(lens => {
+                    axios.post('http://localhost:3001/lens', lens)
+                        .then(res => console.log(res))
+                        .catch(err => console.log(err))
+                })
+            })
             .catch(err => console.log(err))
-        kitsRefresh(!kitsRerender)
+        kitsRefresh()
         setOpen(!open)
     }
     const addLens = () => {
@@ -40,7 +54,7 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
                     <div className={'col-1 offset-11'}>
                         <Button
                             onClick={() => setOpen(!open)}
-                            className={'text-secondary me-4'}
+                            className={'zoom text-secondary me-4'}
                             style={{backgroundColor: 'transparent'}}
                         ><Close/></Button>
                     </div>
@@ -87,38 +101,38 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
                     {cameras.map((camera, index) => (
                         <div className={'row m-1'}>
                             <TextField
-                                {...register(`camera[${index}].name`)}
+                                {...register(`camera[${index}].camera_display`)}
                                 label={"Camera Name"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-2'}
                                 required/>
                             <TextField
-                                {...register(`camera[${index}].type`)}
+                                {...register(`camera[${index}].camera_type`)}
                                 label={"Camera Type"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-3'}
                                 required/>
                             <TextField
-                                {...register(`camera[${index}].brand`)}
+                                {...register(`camera[${index}].camera_brand`)}
                                 label={"Camera Brand"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-2'}
                                 required/>
                             <TextField
-                                {...register(`camera[${index}].serial`)}
+                                {...register(`camera[${index}].camera_serial`)}
                                 label={"Camera Serial"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-3'}
                                 required/>
                             <Button
                                 onClick={() => deleteCamera(index)}
-                                className={'col-1 text-secondary'}
+                                className={'zoom col-1 text-secondary'}
                                 style={{backgroundColor: 'transparent'}}
                             ><Close/></Button>
                         </div>))}
                     <div className={'row m-1'}>
                         <Button
-                            className={'text-secondary'}
+                            className={' zoom text-secondary'}
                             onClick={addCamera}>
                             <AddCircleOutlined/>
                         </Button>
@@ -129,13 +143,13 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
                     {lenses.map((lens, index) => (
                         <div className={'row m-1'}>
                             <TextField
-                                {...register(`lenses[${index}].name`)}
+                                {...register(`lenses[${index}].lens_display`)}
                                 label={"Lens Name"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-2'}
                                 required/>
                             <TextField
-                                {...register(`lenses[${index}].type`)}
+                                {...register(`lenses[${index}].lens_model`)}
                                 label={"Lens Type"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-2'}
@@ -146,30 +160,30 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
                                 <MenuItem value={'85'}>85mm</MenuItem>
                                 <MenuItem value={'135'}>135mm</MenuItem>
                                 <MenuItem value={'24-70'}>24-70mm</MenuItem>
-                                <MenuItem value={'24-70'}>28-75mm</MenuItem>
+                                <MenuItem value={'28-75'}>28-75mm</MenuItem>
                                 <MenuItem value={'70-200'}>70-200mm</MenuItem>
                             </TextField>
                             <TextField
-                                {...register(`lenses[${index}].brand`)}
+                                {...register(`lenses[${index}].lens_brand`)}
                                 label={"Lens Brand"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-2'}
                                 required/>
                             <TextField
-                                {...register(`lenses[${index}].serial`)}
+                                {...register(`lenses[${index}].lens_serial`)}
                                 label={"Lens Serial"}
                                 size={'small'}
                                 className={'m-1 bg-white rounded col-3'}
                                 required/>
                             <Button
                                 onClick={() => deleteLens(index)}
-                                className={'col-1 text-secondary'}
+                                className={'zoom col-1 text-secondary'}
                                 style={{backgroundColor: 'transparent'}}
                             ><Close/></Button>
                         </div>))}
                     <div className={'row m-1'}>
                         <Button
-                            className={'text-secondary'}
+                            className={'zoom text-secondary'}
                             onClick={addLens}>
                             <AddCircleOutlined/>
                         </Button>
@@ -179,7 +193,7 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
                             variant={'contained'}
                             type={'submit'}
                             size={'small'}
-                            className={'m-1 bg-secondary'}
+                            className={'zoom m-1 bg-secondary'}
                         >ADD</Button>
                     </div>
                 </form>
