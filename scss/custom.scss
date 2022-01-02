@@ -1,4 +1,5 @@
-$body-bg: #26262a;
+$abyss: #26262a;
+$body-bg: $abyss;
 $white: #F0F0F0;
 $offWhite: #A0A0A0;
 $secondary: #faa307;
@@ -18,6 +19,7 @@ $dark: #303034;
 }
 
 .mantis-sidebar {
+  z-index: 9999;
   width: 70px;
   transition-duration: 300ms;
 }
@@ -36,4 +38,31 @@ $dark: #303034;
   color: $white;
   transition-duration: 300ms;
   transform: scale(1.05);
+}
+
+.bg-abyss {
+  background-color: $abyss;
+}
+
+.mantis-modal {
+  z-index: 9998;
+  transition-duration: 300ms;
+}
+
+.side-alert {
+  transition-duration: 200ms;
+  width: 1%;
+  background: red;
+  margin: -20px;
+}
+
+.side-alert:hover {
+  transition-duration: 200ms;
+  width: 10%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.shadow-p {
+  box-shadow: 0px 10px 20px -15px #00000088;
 }

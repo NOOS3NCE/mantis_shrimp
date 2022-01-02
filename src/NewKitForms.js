@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {Button, MenuItem, Select, TextField} from "@mui/material";
+import {Button, MenuItem, TextField} from "@mui/material";
 import {AddCircleOutlined, Close} from "@mui/icons-material";
 
 const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
@@ -50,18 +50,14 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
     return (
         <>
             <div className={'col-10 shadow rounded p-2 bg-dark my-2 position-relative'}>
-                <div className={'row'}>
-                    <div className={'col-1 offset-11'}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className={'ps-1 row d-flex justify-content-between align-items-center'}>
+                        <label className={'col'}>KIT INFO</label>
                         <Button
                             onClick={() => setOpen(!open)}
-                            className={'zoom text-secondary me-4'}
+                            className={'zoom col-1 text-secondary'}
                             style={{backgroundColor: 'transparent'}}
                         ><Close/></Button>
-                    </div>
-                </div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className={'row'}>
-                        <label className={'m-1'}>KIT INFO</label>
                     </div>
                     <TextField
                         {...register('kit_display')}

@@ -12993,41 +12993,74 @@ fieldset:disabled .btn {
   }
 }
 
-/* line 10, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 11, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .zoom {
   transition-duration: 300ms;
   transform: scale(1);
 }
 
-/* line 15, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 16, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .zoom:hover {
   transition-duration: 300ms;
   transform: scale(1.02);
 }
 
-/* line 20, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 21, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .mantis-sidebar {
+  z-index: 9999;
   width: 70px;
   transition-duration: 300ms;
 }
 
-/* line 25, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 27, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .mantis-sidebar:hover {
   width: 110px;
   transition-duration: 300ms;
 }
 
-/* line 30, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 32, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .sb-icon {
   transition-duration: 300ms;
   color: #A0A0A0;
 }
 
-/* line 35, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 37, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .sb-icon:hover {
   color: #F0F0F0;
   transition-duration: 300ms;
   transform: scale(1.05);
+}
+
+/* line 43, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.bg-abyss {
+  background-color: #26262a;
+}
+
+/* line 47, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.mantis-modal {
+  z-index: 9998;
+  transition-duration: 300ms;
+}
+
+/* line 52, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.side-alert {
+  transition-duration: 200ms;
+  width: 1%;
+  background: red;
+  margin: -20px;
+}
+
+/* line 59, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.side-alert:hover {
+  transition-duration: 200ms;
+  width: 10%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* line 66, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.shadow-p {
+  box-shadow: 0px 10px 20px -15px #00000088;
 }
 
 /*# sourceMappingURL=custom.css.map */

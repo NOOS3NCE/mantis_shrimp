@@ -11133,6 +11133,7 @@ textarea.form-control-lg {
 }
 
 .mantis-sidebar {
+  z-index: 9999;
   width: 70px;
   transition-duration: 300ms;
 }
@@ -11151,6 +11152,33 @@ textarea.form-control-lg {
   color: #F0F0F0;
   transition-duration: 300ms;
   transform: scale(1.05);
+}
+
+.bg-abyss {
+  background-color: #26262a;
+}
+
+.mantis-modal {
+  z-index: 9998;
+  transition-duration: 300ms;
+}
+
+.side-alert {
+  transition-duration: 200ms;
+  width: 1%;
+  background: red;
+  margin: -20px;
+}
+
+.side-alert:hover {
+  transition-duration: 200ms;
+  width: 10%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.shadow-p {
+  box-shadow: 0px 10px 20px -15px #00000088;
 }
 
 /*# sourceMappingURL=custom.css.map */
