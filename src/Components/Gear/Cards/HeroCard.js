@@ -1,5 +1,5 @@
 import React from "react";
-import image from './images/backpack.jpg'
+import image from '../../../images/backpack.jpg'
 import {Close} from "@mui/icons-material";
 import {Button} from "@mui/material";
 import axios from "axios";
@@ -17,19 +17,17 @@ const HeroCard = (props) => {
     }
     return (
         <>
-            <div className={'row d-flex m-2'}>
-                <div className={'col-10 m-0 p-0'}>
-                    <h2>{title}</h2>
-                </div>
-                <div className={'col-1'}>
+            <div className={'col-12'}>
+                <div className={'row d-flex justify-content-between align-items-center'}>
+                    <h2 className={'col-6 m-0'}>{title}</h2>
                     <Button
                         onClick={() => deleteKit(id)}
                         className={'col-1 text-secondary'}
                         style={{backgroundColor: 'transparent'}}
                     ><Close/></Button>
                 </div>
-                <hr/>
-                <div className={'col-8'}>
+                <hr className={'my-3'}/>
+                < div className={'col-8'}>
                     <img className={'rounded'} src={image} alt={'kit pack'}/>
                 </div>
             </div>

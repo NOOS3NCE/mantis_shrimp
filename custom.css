@@ -29,7 +29,7 @@
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
   --bs-primary: #0d6efd;
-  --bs-secondary: #faa307;
+  --bs-secondary: #0DCCAA;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -37,7 +37,7 @@
   --bs-light: #f8f9fa;
   --bs-dark: #303034;
   --bs-primary-rgb: 13, 110, 253;
-  --bs-secondary-rgb: 250, 163, 7;
+  --bs-secondary-rgb: 13, 204, 170;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
@@ -47,7 +47,7 @@
   --bs-white-rgb: 240, 240, 240;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 38, 38, 42;
+  --bs-body-bg-rgb: 33, 80, 102;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(240, 240, 240, 0.15), rgba(240, 240, 240, 0));
@@ -56,7 +56,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #26262a;
+  --bs-body-bg: #215066;
 }
 
 /* line 16, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_reboot.scss */
@@ -715,7 +715,7 @@ progress {
 /* line 14, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_images.scss */
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #26262a;
+  background-color: #215066;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -2240,15 +2240,15 @@ progress {
 
 /* line 3, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_table-variants.scss */
 .table-secondary {
-  --bs-table-bg: #feedcd;
-  --bs-table-striped-bg: #f1e1c3;
+  --bs-table-bg: #cff5ee;
+  --bs-table-striped-bg: #c5e9e2;
   --bs-table-striped-color: #000;
-  --bs-table-active-bg: #e5d5b9;
+  --bs-table-active-bg: #baddd6;
   --bs-table-active-color: #000;
-  --bs-table-hover-bg: #ebdbbe;
+  --bs-table-hover-bg: #bfe3dc;
   --bs-table-hover-color: #000;
   color: #000;
-  border-color: #e5d5b9;
+  border-color: #baddd6;
 }
 
 /* line 3, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_table-variants.scss */
@@ -2419,7 +2419,7 @@ progress {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #26262a;
+  background-color: #215066;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   appearance: none;
@@ -2447,7 +2447,7 @@ progress {
 /* line 34, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/forms/_form-control.scss */
 .form-control:focus {
   color: #212529;
-  background-color: #26262a;
+  background-color: #215066;
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -2638,7 +2638,7 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #26262a;
+  background-color: #215066;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -2718,7 +2718,7 @@ textarea.form-control-lg {
   height: 1em;
   margin-top: 0.25em;
   vertical-align: top;
-  background-color: #26262a;
+  background-color: #215066;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -2853,12 +2853,12 @@ textarea.form-control-lg {
 
 /* line 19, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/forms/_form-range.scss */
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #26262a, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #215066, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 /* line 20, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/forms/_form-range.scss */
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #26262a, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #215066, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 /* line 23, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/forms/_form-range.scss */
@@ -3438,23 +3438,23 @@ fieldset:disabled .btn {
 /* line 60, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_buttons.scss */
 .btn-secondary {
   color: #000;
-  background-color: #faa307;
-  border-color: #faa307;
+  background-color: #0DCCAA;
+  border-color: #0DCCAA;
 }
 
 /* line 26, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-secondary:hover {
   color: #000;
-  background-color: #fbb12c;
-  border-color: #fbac20;
+  background-color: #31d4b7;
+  border-color: #25d1b3;
 }
 
 /* line 32, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #000;
-  background-color: #fbb12c;
-  border-color: #fbac20;
-  box-shadow: 0 0 0 0.25rem rgba(213, 139, 6, 0.5);
+  background-color: #31d4b7;
+  border-color: #25d1b3;
+  box-shadow: 0 0 0 0.25rem rgba(11, 173, 145, 0.5);
 }
 
 /* line 45, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
@@ -3462,22 +3462,22 @@ fieldset:disabled .btn {
 .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active,
 .show > .btn-secondary.dropdown-toggle {
   color: #000;
-  background-color: #fbb539;
-  border-color: #fbac20;
+  background-color: #3dd6bb;
+  border-color: #25d1b3;
 }
 
 /* line 56, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-check:checked + .btn-secondary:focus,
 .btn-check:active + .btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus,
 .show > .btn-secondary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(213, 139, 6, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(11, 173, 145, 0.5);
 }
 
 /* line 66, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-secondary:disabled, .btn-secondary.disabled {
   color: #000;
-  background-color: #faa307;
-  border-color: #faa307;
+  background-color: #0DCCAA;
+  border-color: #0DCCAA;
 }
 
 /* line 60, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_buttons.scss */
@@ -3790,39 +3790,39 @@ fieldset:disabled .btn {
 
 /* line 66, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_buttons.scss */
 .btn-outline-secondary {
-  color: #faa307;
-  border-color: #faa307;
+  color: #0DCCAA;
+  border-color: #0DCCAA;
 }
 
 /* line 88, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-outline-secondary:hover {
   color: #000;
-  background-color: #faa307;
-  border-color: #faa307;
+  background-color: #0DCCAA;
+  border-color: #0DCCAA;
 }
 
 /* line 94, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-check:focus + .btn-outline-secondary, .btn-outline-secondary:focus {
-  box-shadow: 0 0 0 0.25rem rgba(250, 163, 7, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(13, 204, 170, 0.5);
 }
 
 /* line 99, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-check:checked + .btn-outline-secondary,
 .btn-check:active + .btn-outline-secondary, .btn-outline-secondary:active, .btn-outline-secondary.active, .btn-outline-secondary.dropdown-toggle.show {
   color: #000;
-  background-color: #faa307;
-  border-color: #faa307;
+  background-color: #0DCCAA;
+  border-color: #0DCCAA;
 }
 
 /* line 108, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-check:checked + .btn-outline-secondary:focus,
 .btn-check:active + .btn-outline-secondary:focus, .btn-outline-secondary:active:focus, .btn-outline-secondary.active:focus, .btn-outline-secondary.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem rgba(250, 163, 7, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(13, 204, 170, 0.5);
 }
 
 /* line 118, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_buttons.scss */
 .btn-outline-secondary:disabled, .btn-outline-secondary.disabled {
-  color: #faa307;
+  color: #0DCCAA;
   background-color: transparent;
 }
 
@@ -4720,8 +4720,8 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #26262a;
-  border-color: #dee2e6 #dee2e6 #26262a;
+  background-color: #215066;
+  border-color: #dee2e6 #dee2e6 #215066;
 }
 
 /* line 71, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_nav.scss */
@@ -5604,7 +5604,7 @@ fieldset:disabled .btn {
   font-size: 1rem;
   color: #212529;
   text-align: left;
-  background-color: #26262a;
+  background-color: #215066;
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
@@ -5671,7 +5671,7 @@ fieldset:disabled .btn {
 
 /* line 60, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_accordion.scss */
 .accordion-item {
-  background-color: #26262a;
+  background-color: #215066;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -5957,14 +5957,14 @@ fieldset:disabled .btn {
 
 /* line 53, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_alert.scss */
 .alert-secondary {
-  color: #966204;
-  background-color: #feedcd;
-  border-color: #fee3b5;
+  color: #087a66;
+  background-color: #cff5ee;
+  border-color: #b6f0e6;
 }
 
 /* line 7, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_alert.scss */
 .alert-secondary .alert-link {
-  color: #784e03;
+  color: #066252;
 }
 
 /* line 53, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/_alert.scss */
@@ -6409,21 +6409,21 @@ fieldset:disabled .btn {
 
 /* line 5, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_list-group.scss */
 .list-group-item-secondary {
-  color: #966204;
-  background-color: #feedcd;
+  color: #087a66;
+  background-color: #cff5ee;
 }
 
 /* line 10, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_list-group.scss */
 .list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus {
-  color: #966204;
-  background-color: #e5d5b9;
+  color: #087a66;
+  background-color: #baddd6;
 }
 
 /* line 16, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_list-group.scss */
 .list-group-item-secondary.list-group-item-action.active {
   color: #F0F0F0;
-  background-color: #966204;
-  border-color: #966204;
+  background-color: #087a66;
+  border-color: #087a66;
 }
 
 /* line 5, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_list-group.scss */
@@ -7783,12 +7783,12 @@ fieldset:disabled .btn {
 
 /* line 2, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/helpers/_colored-links.scss */
 .link-secondary {
-  color: #faa307;
+  color: #0DCCAA;
 }
 
 /* line 6, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/helpers/_colored-links.scss */
 .link-secondary:hover, .link-secondary:focus {
-  color: #fbb539;
+  color: #3dd6bb;
 }
 
 /* line 2, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/helpers/_colored-links.scss */
@@ -8338,7 +8338,7 @@ fieldset:disabled .btn {
 
 /* line 64, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_utilities.scss */
 .border-secondary {
-  border-color: #faa307 !important;
+  border-color: #0DCCAA !important;
 }
 
 /* line 64, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/node_modules/bootstrap/scss/mixins/_utilities.scss */
@@ -12993,56 +12993,155 @@ fieldset:disabled .btn {
   }
 }
 
-/* line 11, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 14, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.bg-pureWhite {
+  background: #FFF;
+}
+
+/* line 18, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.page-header {
+  z-index: 9999;
+  position: sticky;
+  margin: auto;
+}
+
+/* line 23, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.page-header h1, .page-header .h1 {
+  font-size: 36px;
+}
+
+/* line 30, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.header-top {
+  z-index: 8999;
+  height: 60px;
+}
+
+/* line 35, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.header-bottom {
+  z-index: 7999;
+  height: 60px;
+  margin: auto;
+}
+
+/* line 41, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.underline-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #A0A0A0;
+}
+
+/* line 49, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.underline-filter-unselected {
+  color: #A0A0A0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #A0A0A0;
+  transition-duration: 200ms;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* line 61, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.underline-filter-selected {
+  color: #F0F0F0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #0DCCAA;
+  transition-duration: 200ms;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* line 73, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.page-container {
+  background-color: #E3E3E326;
+  margin: auto;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+/* line 80, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.section-header {
+  background-color: #E3E3E326;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+/* line 86, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.section-header h2, .section-header .h2 {
+  color: #F0F0F0;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 95, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.bg-blur {
+  color: #00000001;
+  backdrop-filter: blur(20px);
+}
+
+/* line 100, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .zoom {
   transition-duration: 300ms;
   transform: scale(1);
 }
 
-/* line 16, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 105, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .zoom:hover {
   transition-duration: 300ms;
   transform: scale(1.02);
 }
 
-/* line 21, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 110, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .mantis-sidebar {
   z-index: 9999;
-  width: 70px;
+  width: 150px;
   transition-duration: 300ms;
+  text-decoration: none;
+  display: none;
 }
 
-/* line 27, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
-.mantis-sidebar:hover {
-  width: 110px;
-  transition-duration: 300ms;
-}
-
-/* line 32, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
-.sb-icon {
+/* line 118, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.sb-item {
+  font-size: 18px;
+  text-decoration: none;
   transition-duration: 300ms;
   color: #A0A0A0;
 }
 
-/* line 37, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
-.sb-icon:hover {
+/* line 124, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.sb-item p {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 130, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.sb-item:hover {
   color: #F0F0F0;
   transition-duration: 300ms;
-  transform: scale(1.05);
 }
 
-/* line 43, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 135, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .bg-abyss {
-  background-color: #26262a;
+  background-color: #215066;
 }
 
-/* line 47, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 139, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .mantis-modal {
   z-index: 9998;
   transition-duration: 300ms;
 }
 
-/* line 52, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 144, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .side-alert {
   transition-duration: 200ms;
   width: 1%;
@@ -13050,7 +13149,7 @@ fieldset:disabled .btn {
   margin: -20px;
 }
 
-/* line 59, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 151, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .side-alert:hover {
   transition-duration: 200ms;
   width: 10%;
@@ -13058,9 +13157,63 @@ fieldset:disabled .btn {
   padding-right: 2rem;
 }
 
-/* line 66, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+/* line 158, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
 .shadow-p {
-  box-shadow: 0px 10px 20px -15px #00000088;
+  box-shadow: 0 10px 20px -15px #00000088;
+}
+
+/* line 162, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.list-h {
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+/* line 168, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.bg-glass {
+  background-color: #E3E3E326;
+  backdrop-filter: blur(8px);
+}
+
+/* line 173, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.bg-mint {
+  background-color: #0DCCAA;
+}
+
+/* line 177, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+body {
+  background: linear-gradient(217deg, #215066 0, #141C24 100%) fixed;
+}
+
+/* line 181, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+html {
+  background-color: #215066;
+}
+
+/* line 192, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.type-select {
+  outline: 1px solid #F0F0F0;
+  color: #F0F0F0;
+}
+
+/* line 197, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.main-list {
+  height: 80px;
+  border-bottom: 1px solid #FFFFFF44;
+}
+
+/* line 201, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.main-list p {
+  font-size: 18px;
+  color: #F0F0F0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 209, ../../../../../../../../../../../../../Users/mikehale/WebstormProjects/mantis_shrimp/scss/custom.scss */
+.main-list:hover {
+  border: none;
+  background-color: #E3E3E326;
+  border-radius: 6px;
 }
 
 /*# sourceMappingURL=custom.css.map */
