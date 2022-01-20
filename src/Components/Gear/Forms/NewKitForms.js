@@ -49,7 +49,7 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
 
     return (
         <>
-            <div className={'col-10 shadow rounded p-2 bg-dark my-2 position-relative'}>
+            <div className={'col-12'}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={'ps-1 row d-flex justify-content-between align-items-center'}>
                         <label className={'col'}>KIT INFO</label>

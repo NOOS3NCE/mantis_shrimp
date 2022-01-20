@@ -4,6 +4,7 @@ import axios from "axios";
 import PageHeader from "./Pages/PageHeader";
 import FilterListHeader from "./Lists/FilterListHeader";
 import ListHeader from "./Lists/ListHeader";
+import NewKitForms from "./Forms/NewKitForms";
 
 
 const Gear = () => {
@@ -13,8 +14,6 @@ const Gear = () => {
     const [kitsRerender, kitsRefresh] = useState(true)
     const [lensRerender, lensRefresh] = useState(true)
     const [open, setOpen] = useState(false)
-    const [cityList, setCityList] = useState([])
-    const [cityFilter, setCityFilter] = useState(true)
     const [data, setData] = useState([])
     const [underlineFilter, setUnderlineFilter] = useState('')
     const [headers, setHeaders] = useState(['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'])
@@ -81,14 +80,23 @@ const Gear = () => {
             <div className={'m-auto'}>
                 <PageHeader title={'GEAR'}/>
             </div>
-            <div className={'page-container col-8 rounded'}>
-                <FilterListHeader setUnderlineFilter={setUnderlineFilter} underlineFilter={underlineFilter}
-                                  kits={kits}/>
-                <ListHeader headers={headers}/>
-                <div className={'row d-flex justify-content-evenly col-12 text-white m-auto'}>
-                    {data?.map((kit, index) =>
-                        <MantisCard
-                            data={kit} id={kit?.kit_id} key={index}/>)}
+            <div className={'mantis-modal row d-flex justify-content-center mt-2'}>
+                {open &&
+                <div className={'page-container col-4 rounded mx-0'}>
+                    <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
+                </div>}
+                <div className={`page-container mx-2 col-${open ? '6' : '8'} rounded`}>
+                    <FilterListHeader setUnderlineFilter={setUnderlineFilter}
+                                      underlineFilter={underlineFilter}
+                                      kits={kits}
+                                      setOpen={() => setOpen}
+                                      open={open}/>
+                    <ListHeader headers={headers}/>
+                    <div className={`row d-flex justify-content-evenly col-12 text-white m-auto`}>
+                        {data?.map((kit, index) =>
+                            <MantisCard
+                                data={kit} id={kit?.kit_id} key={index}/>)}
+                    </div>
                 </div>
             </div>
         </>
