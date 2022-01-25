@@ -34,9 +34,9 @@ function App() {
                         </div>
                         <div className={'col-11'}>
                             <Routes>
-                                <Route path={"/home"} element={<Home/>}/>
                                 <Route path={"/gear"} element={<Gear/>}/>
                                 <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
+                                <Route path={"/"} element={<Home/>}/>
                             </Routes>
                         </div>
                     </Router>

@@ -21,8 +21,7 @@
     "react-hook-form": "^7.22.1",
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "^4.0.3",
-    "webpack": "^4.44.2"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -62,6 +61,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NOOS3NCE/mantis_shrimp/issues"
-  },
-  "homepage": "https://localhost:3000/home"
+  }
+  //  "homepage": "https://localhost:3000/"
 }
