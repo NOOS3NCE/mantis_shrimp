@@ -33,7 +33,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
     const onUpdateLens = (data) => {
         data.kit_id = parseInt(kit.kit_id)
         console.log("KIT ID:", data)
-        axios.patch(`https://45.63.64.58:3001/lens/swap`, data)
+        axios.patch(`http://45.63.64.58:3001/lens/swap`, data)
             .then(res => console.log(res), rej => console.log(rej))
             .then(() => {
                 setLensOpen(!lensOpen)

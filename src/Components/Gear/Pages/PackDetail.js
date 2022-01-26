@@ -22,7 +22,7 @@ const PackDetail = () => {
     console.log("KIT ID: ", id)
 
     useEffect(() => {
-        axios.get(`https://45.63.64.58:3001/kit/${id}`)
+        axios.get(`http://45.63.64.58:3001/kit/${id}`)
             .then(res => {
                 setKit(res.data)
                 console.log("RES: ", res)
@@ -31,7 +31,7 @@ const PackDetail = () => {
     }, [kitRerender])
 
     useEffect(() => {
-        axios.get('https://45.63.64.58:3001/cities')
+        axios.get('http://45.63.64.58:3001/cities')
             .then(res => {
                 setCities(res.data)
                 console.log("CITIES: ", res)
