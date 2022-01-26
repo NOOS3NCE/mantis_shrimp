@@ -11,7 +11,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
 
     //Pull all Lenses from DB
     useEffect(() => {
-        axios.get('http://45.63.64.58:3001/lens')
+        axios.get('https://45.63.64.58:3001/lens')
             .then(res => setLenses(res.data.map(lens => ({
                 ...lens
             }))), rej => console.log(rej))
@@ -21,7 +21,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
         data.lensOptions.forEach(lens => lens.kit_name = kit.kit_name)
         console.log("DATA: ", data)
         data.lensOptions.forEach(lens => {
-            axios.post('http://45.63.64.58:3001/lens', lens)
+            axios.post('https://45.63.64.58:3001/lens', lens)
                 .then(res => {
                     setLensOpen(!lensOpen)
                     kitsRefresh(!kitsRerender)
@@ -33,7 +33,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
     const onUpdateLens = (data) => {
         data.kit_id = parseInt(kit.kit_id)
         console.log("KIT ID:", data)
-        axios.patch(`http://45.63.64.58:3001/lens/swap`, data)
+        axios.patch(`https://45.63.64.58:3001/lens/swap`, data)
             .then(res => console.log(res), rej => console.log(rej))
             .then(() => {
                 setLensOpen(!lensOpen)

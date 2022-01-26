@@ -20,7 +20,7 @@ const Gear = () => {
 
     //Pull all kits from DB
     useEffect(() => {
-        axios.get('http://45.63.64.58:3001/kit')
+        axios.get('https://45.63.64.58:3001/kit')
             .then(res => {
                 (setData(res.data))
                 (setKits(res.data))
@@ -31,7 +31,7 @@ const Gear = () => {
 
     // Pull all lenses from DB
     useEffect(() => {
-        axios.get('http://45.63.64.58:3001/lens')
+        axios.get('https://45.63.64.58:3001/lens')
             .then(res => (setLenses(res.data.map(lens => ({
                 ...lens
             })))), rej => console.log(rej))

@@ -10,7 +10,7 @@ const HeroCard = (props) => {
     let navigate = useNavigate();
     const deleteKit = (id) => {
         console.log("ID: ", id)
-        axios.delete(`http://45.63.64.58:3001/kit/${id}`)
+        axios.delete(`https://45.63.64.58:3001/kit/${id}`)
             .then(res => console.log(res))
             .catch(err => console.log(err))
         navigate('/gear')
