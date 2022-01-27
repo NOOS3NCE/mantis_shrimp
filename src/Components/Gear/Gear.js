@@ -20,7 +20,7 @@ const Gear = () => {
 
     //Pull all kits from DB
     useEffect(() => {
-        axios.get('http://45.63.64.58:3001/mantis_api/kit')
+        axios.get('http://wildorchid.one/mantis_api/kit')
             .then(res => {
                 (setData(res.data))
                 (setKits(res.data))
