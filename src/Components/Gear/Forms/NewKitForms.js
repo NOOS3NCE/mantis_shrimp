@@ -19,11 +19,11 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
         })
         data.camera.kit_name = data.kit_name
 
-        axios.post('https://45.63.64.58:3001/mantis_api/kit', data)
+        axios.post('https://wildorchid.one/mantis_api/kit', data)
             .then(res => {
                 console.log(res)
                 lenses.forEach(lens => {
-                    axios.post('https://45.63.64.58:3001/mantis_api/lens', lens)
+                    axios.post('https://wildorchid.one/mantis_api/lens', lens)
                         .then(res => console.log(res))
                         .catch(err => console.log(err))
                 })
