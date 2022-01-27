@@ -31,7 +31,7 @@ const Gear = () => {
 
     // Pull all lenses from DB
     useEffect(() => {
-        axios.get('http://45.63.64.58:3001/mantis_api/lens')
+        axios.get('https://45.63.64.58/mantis_api/lens')
             .then(res => (setLenses(res.data.map(lens => ({
                 ...lens
             })))), rej => console.log(rej))
