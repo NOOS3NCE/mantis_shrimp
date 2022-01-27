@@ -20,7 +20,7 @@ const Gear = () => {
 
     //Pull all kits from DB
     useEffect(() => {
-        axios.get('http://wildorchid.one/mantis_api/kit')
+        axios.get('https://wildorchid.one/mantis_api/kit')
             .then(res => {
                 (setData(res.data))
                 (setKits(res.data))
