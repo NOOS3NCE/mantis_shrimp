@@ -6,6 +6,8 @@ import FilterListHeader from "./Lists/FilterListHeader";
 import ListHeader from "./Lists/ListHeader";
 import NewKitForms from "./Forms/NewKitForms";
 
+require('dotenv').config()
+console.log(process.env.NODE_ENV)
 
 const Gear = () => {
     const [kits, setKits] = useState([])
@@ -17,10 +19,11 @@ const Gear = () => {
     const [data, setData] = useState([])
     const [underlineFilter, setUnderlineFilter] = useState('')
     const [headers, setHeaders] = useState(['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'])
-
+    const env = process.env.NODE_ENV
+    const base_url = env === 'development' ? 'http://localhost:3001/' : 'https://wildorchid.one/'
     //Pull all kits from DB
     useEffect(() => {
-        axios.get('https://wildorchid.one/mantis_api/kit')
+        axios.get(`${base_url}mantis_api/kit`)
             .then(res => {
                 (setData(res.data))
                 (setKits(res.data))
@@ -31,7 +34,7 @@ const Gear = () => {
 
     // Pull all lenses from DB
     useEffect(() => {
-        axios.get('https://wildorchid.one/mantis_api/lens')
+        axios.get(`${base_url}mantis_api/lens`)
             .then(res => (setLenses(res.data.map(lens => ({
                 ...lens
             })))), rej => console.log(rej))
