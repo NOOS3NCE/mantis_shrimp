@@ -11126,6 +11126,10 @@ textarea.form-control-lg {
   background: #FFF;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .page-header {
   z-index: 9999;
   position: sticky;
