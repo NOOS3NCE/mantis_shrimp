@@ -96,9 +96,9 @@ const PackDetail = () => {
             <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={kit.kit_display}/>
             </div>
-            <div className={`row d-flex p-2 m-1 flex-row justify-content-around`}>
+            <div className={`row d-flex flex-row justify-content-around`}>
                 <div
-                    className={`d-flex flex-wrap justify-content-around row rounded bg-glass`}
+                    className={`page-container d-flex flex-wrap justify-content-around row rounded`}
                     style={{maxWidth: '1200px'}}>
                     <div className={'row d-flex justify-content-end p-3 pb-1'}>
                         <Button variant={'contained'} size={'large'} className={'zoom bg-secondary col-4 m-2'}
