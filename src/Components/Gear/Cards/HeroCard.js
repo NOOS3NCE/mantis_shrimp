@@ -4,13 +4,14 @@ import {Close} from "@mui/icons-material";
 import {Button} from "@mui/material";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {base_url} from "../../../env_variables";
 
 const HeroCard = (props) => {
     const {title, id, kitsRefresh} = props;
     let navigate = useNavigate();
     const deleteKit = (id) => {
         console.log("ID: ", id)
-        axios.delete(`https://wildorchid.one/mantis_api/kit/${id}`)
+        axios.delete(`${base_url}mantis_api/kit/${id}`)
             .then(res => console.log(res))
             .catch(err => console.log(err))
         navigate('/gear')

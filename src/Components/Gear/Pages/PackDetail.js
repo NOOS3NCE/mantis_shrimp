@@ -9,6 +9,7 @@ import {useForm} from "react-hook-form";
 import NewLensForm from "../Forms/NewLensForm";
 import {AddCircleOutlined} from "@mui/icons-material";
 import PageHeader from "./PageHeader";
+import {base_url} from "../../../env_variables";
 
 const PackDetail = () => {
     const {id} = useParams()
@@ -22,7 +23,7 @@ const PackDetail = () => {
     console.log("KIT ID: ", id)
 
     useEffect(() => {
-        axios.get(`https://wildorchid.one/mantis_api/kit/${id}`)
+        axios.get(`${base_url}mantis_api/kit/${id}`)
             .then(res => {
                 setKit(res.data)
                 console.log("RES: ", res)
@@ -31,7 +32,7 @@ const PackDetail = () => {
     }, [kitRerender])
 
     useEffect(() => {
-        axios.get('https://wildorchid.one/mantis_api/cities')
+        axios.get(`${base_url}mantis_api/cities`)
             .then(res => {
                 setCities(res.data)
                 console.log("CITIES: ", res)
@@ -92,7 +93,9 @@ const PackDetail = () => {
                 </div>
             </div>
             }
-            <PageHeader title={kit.kit_display}/>
+            <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
+                <PageHeader title={kit.kit_display}/>
+            </div>
             <div className={`row d-flex p-2 m-1 flex-row justify-content-around`}>
                 <div
                     className={`d-flex flex-wrap justify-content-around row rounded bg-glass`}

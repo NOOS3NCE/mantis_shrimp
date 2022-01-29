@@ -3,6 +3,7 @@ import axios from "axios";
 import {Button, MenuItem, TextField} from "@mui/material";
 import {AddCircleOutlined, Close} from "@mui/icons-material";
 import {useForm} from "react-hook-form";
+import {base_url} from "../../../env_variables";
 
 const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) => {
     const [lenses, setLenses] = useState([])
@@ -11,7 +12,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
 
     //Pull all Lenses from DB
     useEffect(() => {
-        axios.get('https://wildorchid.one/mantis_api/lens')
+        axios.get(`${base_url}mantis_api/lens`)
             .then(res => setLenses(res.data.map(lens => ({
                 ...lens
             }))), rej => console.log(rej))
@@ -21,7 +22,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
         data.lensOptions.forEach(lens => lens.kit_name = kit.kit_name)
         console.log("DATA: ", data)
         data.lensOptions.forEach(lens => {
-            axios.post('https://wildorchid.one/mantis_api/lens', lens)
+            axios.post(`${base_url}mantis_api/lens`, lens)
                 .then(res => {
                     setLensOpen(!lensOpen)
                     kitsRefresh(!kitsRerender)
@@ -33,7 +34,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
     const onUpdateLens = (data) => {
         data.kit_id = parseInt(kit.kit_id)
         console.log("KIT ID:", data)
-        axios.patch(`https://wildorchid.one/mantis_api/lens/swap`, data)
+        axios.patch(`${base_url}mantis_api/lens/swap`, data)
             .then(res => console.log(res), rej => console.log(rej))
             .then(() => {
                 setLensOpen(!lensOpen)

@@ -5,9 +5,7 @@ import PageHeader from "./Pages/PageHeader";
 import FilterListHeader from "./Lists/FilterListHeader";
 import ListHeader from "./Lists/ListHeader";
 import NewKitForms from "./Forms/NewKitForms";
-
-require('dotenv').config()
-console.log(process.env.NODE_ENV)
+import {base_url} from "../../env_variables";
 
 const Gear = () => {
     const [kits, setKits] = useState([])
@@ -19,8 +17,7 @@ const Gear = () => {
     const [data, setData] = useState([])
     const [underlineFilter, setUnderlineFilter] = useState('')
     const [headers, setHeaders] = useState(['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'])
-    const env = process.env.NODE_ENV
-    const base_url = env === 'development' ? 'http://localhost:3001/' : 'https://wildorchid.one/'
+
     //Pull all kits from DB
     useEffect(() => {
         axios.get(`${base_url}mantis_api/kit`)
@@ -48,7 +45,7 @@ const Gear = () => {
     console.log("DATA: ", data)
     //Pull all cameras from DB
     // useEffect(()=> {
-    //     axios.get('http://localhost:3001/camera')
+    //     axios.get('${base_url}mantis_api/camera')
     //         .then(res => (setCameras(res.data.map(camera => ({
     //             ...camera
     //         })))), rej => console.log(rej))
@@ -80,10 +77,10 @@ const Gear = () => {
             {/*        <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>*/}
             {/*    </div>}*/}
             {/*</div>*/}
-            <div className={'m-auto'}>
+            <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>
-            <div className={'mantis-modal row d-flex justify-content-center mt-2'}>
+            <div className={'mantis-modal row d-flex justify-content-center'}>
                 {open &&
                 <div className={'page-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>

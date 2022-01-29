@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {Button, MenuItem, TextField} from "@mui/material";
 import {AddCircleOutlined, Close} from "@mui/icons-material";
+import {base_url} from "../../../env_variables";
 
 const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
     const {register, handleSubmit} = useForm();
@@ -19,11 +20,11 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
         })
         data.camera.kit_name = data.kit_name
 
-        axios.post('https://wildorchid.one/mantis_api/kit', data)
+        axios.post(`${base_url}mantis_api/kit`, data)
             .then(res => {
                 console.log(res)
                 lenses.forEach(lens => {
-                    axios.post('https://wildorchid.one/mantis_api/lens', lens)
+                    axios.post(`${base_url}mantis_api/lens`, lens)
                         .then(res => console.log(res))
                         .catch(err => console.log(err))
                 })
