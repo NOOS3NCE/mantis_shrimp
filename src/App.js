@@ -12,13 +12,13 @@ function App() {
             type: 'dark',
             primary: {
                 main: '#0DCCAA',
-                contrastText: '#ffffff',
+                contrastText: '#FFF',
             },
             secondary: {
                 main: '#f50057',
             },
             text: {
-                primary: '#ffffff',
+                primary: '#000',
             },
         }
     })

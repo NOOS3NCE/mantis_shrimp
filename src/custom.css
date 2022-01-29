@@ -11183,10 +11183,8 @@ textarea.form-control-lg {
 
 .page-container {
   background-color: #E3E3E326;
-  margin: auto;
   padding: 25px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 25px 10px;
 }
 
 .section-header {

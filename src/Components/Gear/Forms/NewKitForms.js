@@ -23,11 +23,13 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
         axios.post(`${base_url}mantis_api/kit`, data)
             .then(res => {
                 console.log(res)
-                lenses.forEach(lens => {
-                    axios.post(`${base_url}mantis_api/lens`, lens)
-                        .then(res => console.log(res))
-                        .catch(err => console.log(err))
-                })
+                if (lenses[0].lens_name !== '') {
+                    lenses.forEach(lens => {
+                        axios.post(`${base_url}mantis_api/lens`, lens)
+                            .then(res => console.log(res))
+                            .catch(err => console.log(err))
+                    })
+                }
             })
             .catch(err => console.log(err))
         kitsRefresh()
