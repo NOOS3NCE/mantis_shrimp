@@ -6,8 +6,9 @@ const GearListCard = ({header, items, type, kitID, addButton}) => {
     return (
         <>
             <div className={'col-12'}>
-                {header}
-                {items?.map(item => <GearItemCard key={item.lens_id} title={item.lens_display} model={item.lens_model}
+                <div className={'col-12'}> {header}</div>
+                {items?.map(item => <GearItemCard key={item.lens_id} title={item.lens_display}
+                                                  model={item.lens_model}
                                                   brand={item.lens_brand} type={type} image={item.lens_img}/>)}
             </div>
 

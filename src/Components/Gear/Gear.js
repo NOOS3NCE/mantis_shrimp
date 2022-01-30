@@ -85,7 +85,7 @@ const Gear = () => {
                 <div className={'page-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
                 </div>}
-                <div className={`page-container col-${open ? '6' : '8'} rounded`}>
+                <div className={`page-container col-${open ? '6' : '10'} rounded`}>
                     <FilterListHeader setUnderlineFilter={setUnderlineFilter}
                                       underlineFilter={underlineFilter}
                                       kits={kits}

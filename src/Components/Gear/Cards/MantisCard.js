@@ -1,8 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 const MantisCard = (props) => {
     const {type, id, data} = props;
+    const [width, setWidth] = useState(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
 
     return (
         <>
@@ -35,7 +47,7 @@ const MantisCard = (props) => {
                             {data?.city_code && <div className={'col m-0 p-0'}>
                                 <p>{data?.city_code}</p>
                             </div>}
-                            {data?.kit_type && <div className={'col m-0 p-0'}>
+                            {data?.kit_type && width > 764 && <div className={'col m-0 p-0'}>
                                 <p>{data?.kit_type}</p>
                             </div>}
                             {data?.kit_status && <div className={'col m-0 p-0'}>

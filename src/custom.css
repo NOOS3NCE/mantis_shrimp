@@ -11137,6 +11137,15 @@ textarea.form-control-lg {
 }
 .page-header h1, .page-header .h1 {
   font-size: 36px;
+  font-weight: 300;
+}
+
+body {
+  min-height: 100vh;
+}
+
+h6, .h6 {
+  font-size: 14px;
 }
 
 .header-top {
@@ -11166,7 +11175,7 @@ textarea.form-control-lg {
   border-bottom: 1px solid #A0A0A0;
   transition-duration: 200ms;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .underline-filter-selected {
@@ -11178,13 +11187,14 @@ textarea.form-control-lg {
   border-bottom: 1px solid #0DCCAA;
   transition-duration: 200ms;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .page-container {
   background-color: #E3E3E326;
   padding: 25px;
-  margin: 25px 10px;
+  margin: 15px 10px;
+  max-width: 1200px;
 }
 
 .section-header {
@@ -11195,7 +11205,7 @@ textarea.form-control-lg {
 }
 .section-header h2, .section-header .h2 {
   color: #F0F0F0;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: normal;
   margin: 0;
   padding: 0;
@@ -11225,7 +11235,7 @@ textarea.form-control-lg {
 }
 
 .sb-item {
-  font-size: 18px;
+  font-size: 14px;
   text-decoration: none;
   transition-duration: 300ms;
   color: #A0A0A0;
@@ -11269,7 +11279,7 @@ textarea.form-control-lg {
 
 .list-h {
   font-weight: lighter;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .bg-glass {
@@ -11299,7 +11309,7 @@ html {
   border-bottom: 1px solid #FFFFFF44;
 }
 .main-list p {
-  font-size: 18px;
+  font-size: 14px;
   color: #F0F0F0;
   margin: 0;
   padding: 0;

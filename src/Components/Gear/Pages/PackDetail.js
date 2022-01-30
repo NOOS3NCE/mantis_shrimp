@@ -44,7 +44,7 @@ const PackDetail = () => {
 
     const SectionHeader = ({title}) => {
         return (
-            <div className={'section-header p-2 rounded'}>
+            <div className={'section-header p-2 rounded col-12'}>
                 <h2>{title}</h2>
             </div>
         )
@@ -98,8 +98,7 @@ const PackDetail = () => {
             </div>
             <div className={`row d-flex flex-row justify-content-around`}>
                 <div
-                    className={`page-container d-flex flex-wrap justify-content-around row rounded`}
-                    style={{maxWidth: '1200px'}}>
+                    className={`page-container d-flex flex-wrap justify-content-around row rounded`}>
                     <div className={'row d-flex justify-content-end p-3 pb-1'}>
                         <Button variant={'contained'} size={'large'} className={'zoom bg-secondary col-4 m-2'}
                                 onClick={() => setOpen(!open)}>LOAD OUT</Button>

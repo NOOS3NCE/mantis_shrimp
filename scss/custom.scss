@@ -25,10 +25,18 @@ $mint: #0DCCAA;
   margin: auto;
 
   h1 {
-
     font-size: 36px;
+    font-weight: 300;
   }
+}
 
+body {
+  min-height: 100vh;
+}
+
+
+h6 {
+  font-size: 14px;
 }
 
 .header-top {
@@ -58,7 +66,7 @@ $mint: #0DCCAA;
   border-bottom: 1px solid $offWhite;
   transition-duration: 200ms;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .underline-filter-selected {
@@ -70,13 +78,14 @@ $mint: #0DCCAA;
   border-bottom: 1px solid $mint;
   transition-duration: 200ms;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .page-container {
   background-color: $glass;
   padding: 25px;
-  margin: 25px 10px;
+  margin: 15px 10px;
+  max-width: 1200px;
 }
 
 .section-header {
@@ -87,7 +96,7 @@ $mint: #0DCCAA;
 
   h2 {
     color: $white;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: normal;
     margin: 0;
     padding: 0;
@@ -118,7 +127,7 @@ $mint: #0DCCAA;
 }
 
 .sb-item {
-  font-size: 18px;
+  font-size: 14px;
   text-decoration: none;
   transition-duration: 300ms;
   color: $offWhite;
@@ -163,7 +172,7 @@ $mint: #0DCCAA;
 
 .list-h {
   font-weight: lighter;
-  font-size: 18px;
+  font-size: 14px;
   //font-style: italic;
 }
 
@@ -201,7 +210,7 @@ html {
   border-bottom: 1px solid #FFFFFF44;
 
   p {
-    font-size: 18px;
+    font-size: 14px;
     color: $white;
     margin: 0;
     padding: 0;
