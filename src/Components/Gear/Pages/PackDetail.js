@@ -42,66 +42,43 @@ const PackDetail = () => {
 
     console.log("KIT DETAIL: ", kit)
 
-    const SectionHeader = ({title}) => {
+    const SectionHeader = ({title, buttonOnClick, button}) => {
         return (
-            <div className={'section-header p-2 rounded col-12'}>
+            <div
+                className={'section-header p-2 rounded col-12 d-flex flex-row align-items-center justify-content-between'}>
                 <h2>{title}</h2>
+                {button &&
+                <Button onClick={buttonOnClick} variant={'contained'} size={'small'}
+                        className={'zoom bg-secondary col-4'}>ADD {title}</Button>}
             </div>
         )
     }
 
     return (
         <>
-            {lensOpen &&
-            <div
-                className={'rounded row justify-content-around flex-row p-2 m-1 d-flex position-sticky'}>
-                < NewLensForm setLensOpen={setLensOpen} lensOpen={lensOpen} kitsRefresh={kitRefresh}
-                              kitsRerender={kitRerender}
-                              kit={kit}/>
 
-            </div>}
-            {cameraOpen &&
-            <div
-                className={'rounded row justify-content-around flex-row p-2 m-1 d-flex position-sticky'}>
-                {/*< NewLensForm setCameraOpen={setCameraOpen} cameraOpen={cameraOpen} kitsRefresh={kitRefresh}*/}
-                {/*              kitsRerender={kitRerender}*/}
-                {/*              kit={kit}/>*/}
-                <h6>NEW CAMERA FORM</h6>
-            </div>}
-            {open &&
-            <div className={'row shadow rounded p-2 m-2 bg-glass'}>
-                <div className={'row d-flex justify-content-between p-2'}>
-                    <form>
-                        <div className={'row'}>
-                            <h3>Load out</h3>
-                        </div>
-                        <label>Kit Name</label>
-                        <TextField
-                            className={'col-3 m-2 bg-white rounded'}
-                            defaultValue={kit.kit_display}
-                            size={'small'}/>
-                        <Select label={'City'}
-                                controller={control}
-                                size={'small'}
-                                className={'col-3 m-2 bg-white rounded'}
-                                defaultValue={kit.city_id}>
-                            {cities.map(city => <MenuItem value={city.city_id}>{city.city_code}</MenuItem>)}
-                        </Select>
-                        <Button size={'large'} className={'col-2'} variant={'contained'} type={'submit'}>ADD
-                            LENS</Button>
-                    </form>
-                </div>
-            </div>
-            }
             <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
-                <PageHeader title={kit.kit_display}/>
+                <PageHeader title={kit?.kit_display?.toUpperCase()}/>
             </div>
-            <div className={`row d-flex flex-row justify-content-around`}>
+            <div className={`col d-flex flex-row justify-content-center`}>
+                {lensOpen &&
+                <div className={'page-container col-4 rounded mx-0'}>
+                    < NewLensForm setLensOpen={setLensOpen} lensOpen={lensOpen} kitsRefresh={kitRefresh}
+                                  kitsRerender={kitRerender}
+                                  kit={kit}/>
+                </div>}
+                {cameraOpen &&
+                <div className={'page-container col-4 rounded mx-0'}>
+                    {/*< NewLensForm setCameraOpen={setCameraOpen} cameraOpen={cameraOpen} kitsRefresh={kitRefresh}*/}
+                    {/*              kitsRerender={kitRerender}*/}
+                    {/*              kit={kit}/>*/}
+                    <h6>NEW CAMERA FORM</h6>
+                </div>}
                 <div
-                    className={`page-container d-flex flex-wrap justify-content-around row rounded`}>
+                    className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
                     <div className={'row d-flex justify-content-end p-3 pb-1'}>
-                        <Button variant={'contained'} size={'large'} className={'zoom bg-secondary col-4 m-2'}
-                                onClick={() => setOpen(!open)}>LOAD OUT</Button>
+                        <Button variant={'contained'} size={'large'} className={'zoom bg-secondary col-4 m-2'}>LOAD
+                            OUT</Button>
                     </div>
                     <div className={'row flex-wrap'}>
                         <div className={'col-md-6 col-sm-12  m-0 p-2'}>
@@ -113,7 +90,9 @@ const PackDetail = () => {
                     </div>
                     <div className={'row flex-wrap'}>
                         <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                            <GearListCard header={<SectionHeader title={'CAMERAS'}/>} type={'cam'} addButton={<Button
+                            <GearListCard header={<SectionHeader title={'CAMERAS'} button
+                                                                 buttonOnClick={() => setCameraOpen(!cameraOpen)}/>}
+                                          type={'cam'} addButton={<Button
                                 variant={'text'}
                                 size={'large'}
                                 className={'zoom m-2 p-2 text-secondary'}
@@ -122,7 +101,9 @@ const PackDetail = () => {
                         </div>
                         <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                             <GearListCard header={<SectionHeader
-                                title={'LENSES'}/>} items={kit.lenses} type={'lens'} addButton={<Button
+                                title={'LENSES'} button buttonOnClick={() => setLensOpen(!lensOpen)}/>}
+                                          items={kit.lenses}
+                                          type={'lens'} addButton={<Button
                                 variant={'text'}
                                 size={'large'}
                                 className={'zoom m-2 p-2 text-secondary'}
