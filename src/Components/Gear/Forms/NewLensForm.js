@@ -99,7 +99,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                         label={'NAME'}
                                         size={'small'}
                                         className={'m-1 mx-0 px-0 bg-white rounded'}
-                                        style={{'min-width': '240px'}}
+                                        style={{'min-width': '230px'}}
                                         required/>
                                 </div>
                                 <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
@@ -110,7 +110,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                         size={'small'}
                                         className={'m-1 mx-0 px-0 bg-white rounded col-9'}
                                         required
-                                        style={{'min-width': '240px'}}
+                                        style={{'min-width': '230px'}}
                                         select>
                                         <MenuItem value={'35'}>35mm</MenuItem>
                                         <MenuItem value={'50'}>50mm</MenuItem>
@@ -128,7 +128,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                         label={'BRAND'}
                                         size={'small'}
                                         className={'m-1 mx-0 px-0 bg-white rounded'}
-                                        style={{'min-width': '240px'}}
+                                        style={{'min-width': '230px'}}
                                         required/>
                                 </div>
                                 <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
@@ -138,7 +138,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                         label={'SERIAL'}
                                         size={'small'}
                                         className={'m-1 mx-0 px-0 bg-white rounded'}
-                                        style={{'min-width': '240px'}}
+                                        style={{'min-width': '230px'}}
                                         required/>
                                 </div>
                                 <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
@@ -148,9 +148,8 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                         size={'small'}
                                         type={'date'}
                                         className={'m-1 mx-0 px-0 bg-white rounded'}
-                                        style={{'min-width': '240px'}}/>
+                                        style={{'min-width': '230px'}}/>
                                 </div>
-
                             </div>
                         </>
                     ))}

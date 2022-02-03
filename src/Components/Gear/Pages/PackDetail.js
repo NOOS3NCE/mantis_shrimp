@@ -91,23 +91,35 @@ const PackDetail = () => {
                     <div className={'row flex-wrap'}>
                         <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                             <GearListCard header={<SectionHeader title={'CAMERAS'} button
-                                                                 buttonOnClick={() => setCameraOpen(!cameraOpen)}/>}
+                                                                 buttonOnClick={() => {
+                                                                     setLensOpen(false)
+                                                                     setCameraOpen(!cameraOpen)
+                                                                 }}/>}
                                           type={'cam'} addButton={<Button
                                 variant={'text'}
                                 size={'large'}
                                 className={'zoom m-2 p-2 text-secondary'}
-                                onClick={() => setCameraOpen(!cameraOpen)}
+                                onClick={() => {
+                                    setLensOpen(false)
+                                    setCameraOpen(!cameraOpen)
+                                }}
                             ><AddCircleOutlined/></Button>}/>
                         </div>
                         <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                             <GearListCard header={<SectionHeader
-                                title={'LENSES'} button buttonOnClick={() => setLensOpen(!lensOpen)}/>}
+                                title={'LENSES'} button buttonOnClick={() => {
+                                setCameraOpen(false)
+                                setLensOpen(!lensOpen)
+                            }}/>}
                                           items={kit.lenses}
                                           type={'lens'} addButton={<Button
                                 variant={'text'}
                                 size={'large'}
                                 className={'zoom m-2 p-2 text-secondary'}
-                                onClick={() => setLensOpen(!lensOpen)}
+                                onClick={() => {
+                                    setCameraOpen(false)
+                                    setLensOpen(!lensOpen)
+                                }}
                             ><AddCircleOutlined/></Button>}/>
                         </div>
                     </div>
