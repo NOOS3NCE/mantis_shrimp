@@ -1,80 +1,92 @@
 import React, {useEffect, useState} from "react";
+import {useForm} from "react-hook-form";
 import axios from "axios";
+import {base_url} from "../../../env_variables";
 import {Button, MenuItem, TextField} from "@mui/material";
 import {AddCircleOutlined, Close} from "@mui/icons-material";
-import {useForm} from "react-hook-form";
-import {base_url} from "../../../env_variables";
 
-const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) => {
-    const [lenses, setLenses] = useState([])
-    const [lensOptions, setLensOptions] = useState([{lens: ""}])
-    const {handleSubmit, register} = useForm()
+const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender}) => {
+    const [cameras, setCameras] = useState([])
+    const {handleSubmit, register, watch} = useForm()
+    const [models, setModels] = useState([])
+    const brand = watch("camera_brand")
+
+    //watch brand to set models
+    useEffect(() => {
+        if (brand === 'Canon') {
+            setModels(() => ['5D MkIV', '5D MkIII', '6D MkII', 'EOS R', 'EOS R6'])
+        } else if (brand === 'Sony') {
+            setModels(() => ['A7III', 'A7SII', 'A6500', 'A6400'])
+        }
+    }, [brand])
 
     //Pull all Lenses from DB
     useEffect(() => {
-        axios.get(`${base_url}mantis_api/lens`)
-            .then(res => setLenses(res.data.map(lens => ({
-                ...lens
+        axios.get(`${base_url}mantis_api/camera`)
+            .then(res => setCameras(res.data.map(camera => ({
+                ...camera
             }))), rej => console.log(rej))
     }, [kitsRefresh])
 
-    const onSubmitNewLens = (data) => {
+    const onSubmitNewCamera = (data) => {
         data.kit_name = kit.kit_name
         console.log("DATA: ", data)
-        axios.post(`${base_url}mantis_api/lens`, data)
+        axios.post(`${base_url}mantis_api/camera`, data)
             .then(res => {
-                setLensOpen(!lensOpen)
+                setCameraOpen(!cameraOpen)
                 kitsRefresh(!kitsRerender)
                 console.log(res)
             })
             .catch(err => console.log(err))
     }
-    const onUpdateLens = (data) => {
+
+    const onUpdateCamera = (data) => {
         data.kit_id = parseInt(kit.kit_id)
         console.log("KIT ID:", data)
-        axios.patch(`${base_url}mantis_api/lens/swap`, data)
+        axios.patch(`${base_url}mantis_api/camera/swap`, data)
             .then(res => console.log(res), rej => console.log(rej))
             .then(() => {
-                setLensOpen(!lensOpen)
+                setCameraOpen(!cameraOpen)
                 kitsRefresh(!kitsRerender)
             })
     }
+    console.log("MODELS: ", models)
     return (
         <>
             <div className={'row d-flex justify-content-between m-0 p-0'}>
                 <h4 className={'col m-1 text-center'}>ADD LENS</h4>
                 <Button className={'col-1 p-0 m-0'} size={'small'} style={{'width': '5px'}}
-                        onClick={() => setLensOpen(!lensOpen)}><Close/></Button>
+                        onClick={() => setCameraOpen(!cameraOpen)}><Close/></Button>
             </div>
             <div className={'row p-1 m-1'}>
-                <h5>MOVE EXISTING LENS</h5>
+                <h5>MOVE EXISTING CAMERA</h5>
                 <div className={'br'}/>
-                <form onSubmit={handleSubmit(onUpdateLens)}>
+                <form onSubmit={handleSubmit(onUpdateCamera)}>
                     <div className={'row m-1'}>
                         <TextField
-                            {...register(`lens_id`)}
-                            label={"Lens Name"}
+                            {...register(`camera_id`)}
+                            label={"Camera Name"}
                             size={'small'}
                             className={'m-1 mx-0 px-0 bg-white rounded col-8'}
                             required
                             select>
-                            {lenses.map(lens => <MenuItem autoFocus
-                                                          value={lens.lens_id}>{lens.lens_display} ({lens.lens_model}mm) {lens.kit_display ? ' - ' + lens.kit_display : ''}</MenuItem>)}
+                            {cameras.map(camera => <MenuItem
+                                value={camera.camera_id}>{camera.camera_display} ({camera.camera_model}) {camera.kit_display ? ' - ' + camera.kit_display : ''}</MenuItem>)}
                         </TextField>
-                        <Button size={'small'} className={'col-3 p-0 m-1'} variant={'contained'} type={'submit'}>ADD
-                            LENS</Button>
+                        <Button size={'small'} className={'col-3 m-1'} variant={'contained'} type={'submit'}>ADD
+                            CAMERA</Button>
                     </div>
                 </form>
             </div>
             <div className={'row p-1 m-1 mt-4'}>
-                <h5>ADD NEW LENS</h5>
+                <h5>ADD NEW CAMERA</h5>
                 <div className={'br'}/>
-                <form onSubmit={handleSubmit(onSubmitNewLens)}>
+                <form onSubmit={handleSubmit(onSubmitNewCamera)}>
                     <div className={'row m-1 mt-2 d-flex flex-wrap justify-content-start'}>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>NAME</h4>
                             <TextField
-                                {...register(`lens_display`)}
+                                {...register(`camera_display`)}
                                 label={'NAME'}
                                 size={'small'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
@@ -84,7 +96,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>BRAND</h4>
                             <TextField
-                                {...register(`lens_brand`)}
+                                {...register(`camera_brand`)}
                                 label={'BRAND'}
                                 size={'small'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
@@ -93,34 +105,27 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                 select>
                                 <MenuItem value={'Canon'}>Canon</MenuItem>
                                 <MenuItem value={'Sony'}>Sony</MenuItem>
-                                <MenuItem value={'Tamron'}>Tamron</MenuItem>
-                                <MenuItem value={'Zeiss'}>Zeiss</MenuItem>
-                                <MenuItem value={'Sigma'}>Sigma</MenuItem>
                             </TextField>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>TYPE</h4>
                             <TextField
-                                {...register(`lens_model`)}
+                                {...register(`camera_model`)}
                                 label={'MODEL'}
                                 size={'small'}
                                 className={'m-1 mx-0 px-0 bg-white rounded col-9'}
                                 required
                                 style={{'min-width': '230px'}}
                                 select>
-                                <MenuItem value={'35'}>35mm</MenuItem>
-                                <MenuItem value={'50'}>50mm</MenuItem>
-                                <MenuItem value={'85'}>85mm</MenuItem>
-                                <MenuItem value={'135'}>135mm</MenuItem>
-                                <MenuItem value={'24-70'}>24-70mm</MenuItem>
-                                <MenuItem value={'28-75'}>28-75mm</MenuItem>
-                                <MenuItem value={'70-200'}>70-200mm</MenuItem>
+                                {models?.map(model => (
+                                    <MenuItem value={model}>{model}</MenuItem>
+                                ))}
                             </TextField>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>SERIAL</h4>
                             <TextField
-                                {...register(`lens_serial`)}
+                                {...register(`camera_serial`)}
                                 label={'SERIAL'}
                                 size={'small'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
@@ -130,7 +135,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>PURCHASE DATE</h4>
                             <TextField
-                                {...register(`lens_purchase_date`)}
+                                {...register(`camera_purchase_date`)}
                                 size={'small'}
                                 type={'date'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
@@ -148,4 +153,4 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
             </div>
         </>)
 }
-export default NewLensForm
+export default NewCameraForm

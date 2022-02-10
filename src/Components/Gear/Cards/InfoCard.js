@@ -5,11 +5,13 @@ const InfoCard = (props) => {
     const {kit, setOpen, open, header} = props;
     return (
         <>
-            <div className={'col-12'}>
+            <div className={'col-12'} style={{height: '400px'}}>
                 {header}
                 <div className={'col-12 d-flex flex-row'}>
-                    <div className={'col-4 m-2'}>
-                        <img src={kit?.kit_img} alt={'kit image'} style={{height: '150px'}} className={'rounded'}/>
+                    <div
+                        className={'col-4 m-2 rounded bg-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
+                        style={{height: '150px', width: '150px'}}>
+                        <img src={kit?.kit_img} alt={'kit image'} className={'rounded'} style={{maxHeight: '125px'}}/>
                     </div>
                     <div className={'col-8 m-2'}>
                         <div className={'row d-flex justify-content-between'}>

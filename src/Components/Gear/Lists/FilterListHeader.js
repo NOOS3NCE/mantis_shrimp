@@ -17,20 +17,6 @@ const FilterListHeader = ({setUnderlineFilter, underlineFilter, kits, setOpen, o
                     KIT</Button>
             </div>
             <div className={'row d-flex justify-content-between align-items-center mb-2'}>
-                {/*<SearchBar/>*/}
-                {/*<div className={'col-5'}>*/}
-                {/*    <TextField name={'gearTypeFilter'}*/}
-                {/*               select*/}
-                {/*               variant={'outlined'}*/}
-                {/*               className={'bg-glass rounded'}*/}
-                {/*               InputLabelProps={{shrink: false}}*/}
-                {/*               size={'small'}*/}
-                {/*               value={gearType} onChange={e => setGearType(e.target.value)}*/}
-                {/*               style={{width: '120px', border: '1px solid white'}}>*/}
-                {/*        <MenuItem value={'kits'}>KITS</MenuItem>*/}
-                {/*        <MenuItem value={'lenses'}>LENSES</MenuItem>*/}
-                {/*    </TextField>*/}
-                {/*</div>*/}
             </div>
         </>
     )

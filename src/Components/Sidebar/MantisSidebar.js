@@ -28,6 +28,28 @@ const MantisSidebar = () => {
                     to={"/gear"}>
                     <p>GEAR</p>
                 </NavLink>
+                <NavLink
+                    style={({isActive}) => ({
+                        backgroundColor: isActive && '#E3E3E326',
+                        color: isActive && '#F0F0F0',
+                        textDecoration: 'none',
+                        borderRight: isActive ? '5px solid #0DCCAA' : '5px solid #00000000',
+                    })}
+                    className={`sb-item p-3 d-flex flex-column align-items-center justify-items-center`}
+                    to={"/schedule"}>
+                    <p>SHOOTS</p>
+                </NavLink>
+                <NavLink
+                    style={({isActive}) => ({
+                        backgroundColor: isActive && '#E3E3E326',
+                        color: isActive && '#F0F0F0',
+                        textDecoration: 'none',
+                        borderRight: isActive ? '5px solid #0DCCAA' : '5px solid #00000000',
+                    })}
+                    className={`sb-item p-3 d-flex flex-column align-items-center justify-items-center`}
+                    to={"/sales"}>
+                    <p>SALES</p>
+                </NavLink>
             </div>
         </>
     )

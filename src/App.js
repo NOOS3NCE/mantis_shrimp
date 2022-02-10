@@ -5,6 +5,9 @@ import PackDetail from "./Components/Gear/Pages/PackDetail";
 import React, {useEffect, useState} from "react";
 import MantisSidebar from "./Components/Sidebar/MantisSidebar";
 import {createTheme, ThemeProvider} from "@mui/material";
+import Schedule from "./Components/Schedule/Schedule";
+import Sales from "./Components/Sales/Sales";
+import NewEvent from "./Components/Sales/Event/NewEvent";
 
 function App() {
     const darkTheme = createTheme({
@@ -50,6 +53,9 @@ function App() {
                                 <Route path={"/gear"} element={<Gear/>}/>
                                 <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
                                 <Route path={"/home"} element={<Home/>}/>
+                                <Route path={"/schedule"} element={<Schedule/>}/>
+                                <Route path={"/sales"} element={<Sales/>}/>
+                                <Route path={"/sales/event/new"} element={<NewEvent/>}/>
                             </Routes>
                         </div>
                     </Router>

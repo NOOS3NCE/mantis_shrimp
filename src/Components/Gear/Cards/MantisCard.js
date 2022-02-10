@@ -21,8 +21,8 @@ const MantisCard = (props) => {
             <Link className={'text-decoration-none'} to={`/gear/pack/${id}`}>
                 <div
                     className={'main-list zoom p-0 px-2 my-1 d-flex align-items-center justify-content-between'}>
-                    <div className={'col-12 d-flex flex-row align-items-center justify-content-start'}>
-                        <div className={'col-2'} style={{minWidth: '55px'}}>
+                    <div className={'col-12 d-flex flex-row flex-wrap align-items-center justify-content-start'}>
+                        <div className={'col-2'} style={{minWidth: '55px', maxHeight: '55px'}}>
                             <div
                                 className={'bg-pureWhite rounded img-fluid d-flex align-items-center justify-content-center'}
                                 style={{height: '55px', width: '55px'}}>

@@ -10,6 +10,7 @@ import NewLensForm from "../Forms/NewLensForm";
 import {AddCircleOutlined} from "@mui/icons-material";
 import PageHeader from "./PageHeader";
 import {base_url} from "../../../env_variables";
+import NewCameraForm from "../Forms/NewCameraForm";
 
 const PackDetail = () => {
     const {id} = useParams()
@@ -69,58 +70,62 @@ const PackDetail = () => {
                 </div>}
                 {cameraOpen &&
                 <div className={'page-container col-4 rounded mx-0'}>
-                    {/*< NewLensForm setCameraOpen={setCameraOpen} cameraOpen={cameraOpen} kitsRefresh={kitRefresh}*/}
-                    {/*              kitsRerender={kitRerender}*/}
-                    {/*              kit={kit}/>*/}
-                    <h6>NEW CAMERA FORM</h6>
+                    <NewCameraForm setCameraOpen={setCameraOpen} cameraOpen={cameraOpen} kitsRefresh={kitRefresh}
+                                   kitsRerender={kitRerender} kit={kit}/>
                 </div>}
-                <div
-                    className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
-                    <div className={'row d-flex justify-content-end p-3 pb-1'}>
-                        <Button variant={'contained'} size={'large'} className={'zoom bg-secondary col-4 m-2'}>LOAD
-                            OUT</Button>
-                    </div>
-                    <div className={'row flex-wrap'}>
-                        <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                            <InfoCard header={<SectionHeader title={'INFO'}/>} kit={kit} setOpen={setOpen} open={open}/>
+                <div className={'col-8 d-flex justify-content-center'}>
+                    <div
+                        className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
+                        <div className={'row d-flex justify-content-end p-3 pb-1'}>
+                            <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
+                                    className={'zoom bg-secondary col-4 m-2'}>LOAD
+                                OUT</Button>
                         </div>
-                        <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                            <StatusCard header={<SectionHeader title={'STATUS'}/>}/>
+                        <div className={'row flex-wrap'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                                <InfoCard header={<SectionHeader title={'INFO'}/>}
+                                          kit={kit} setOpen={setOpen}
+                                          open={open}/>
+                            </div>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                                <StatusCard header={<SectionHeader title={'HISTORY'}/>}/>
+                            </div>
                         </div>
-                    </div>
-                    <div className={'row flex-wrap'}>
-                        <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                            <GearListCard header={<SectionHeader title={'CAMERAS'} button
-                                                                 buttonOnClick={() => {
-                                                                     setLensOpen(false)
-                                                                     setCameraOpen(!cameraOpen)
-                                                                 }}/>}
-                                          type={'cam'} addButton={<Button
-                                variant={'text'}
-                                size={'large'}
-                                className={'zoom m-2 p-2 text-secondary'}
-                                onClick={() => {
-                                    setLensOpen(false)
-                                    setCameraOpen(!cameraOpen)
-                                }}
-                            ><AddCircleOutlined/></Button>}/>
-                        </div>
-                        <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                            <GearListCard header={<SectionHeader
-                                title={'LENSES'} button buttonOnClick={() => {
-                                setCameraOpen(false)
-                                setLensOpen(!lensOpen)
-                            }}/>}
-                                          items={kit.lenses}
-                                          type={'lens'} addButton={<Button
-                                variant={'text'}
-                                size={'large'}
-                                className={'zoom m-2 p-2 text-secondary'}
-                                onClick={() => {
+                        <div className={'row flex-wrap'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                                <GearListCard header={<SectionHeader title={'CAMERAS'} button
+                                                                     buttonOnClick={() => {
+                                                                         setLensOpen(false)
+                                                                         setCameraOpen(!cameraOpen)
+                                                                     }}/>}
+                                              items={kit.cameras}
+                                              type={'cam'} addButton={<Button
+                                    variant={'text'}
+                                    size={'large'}
+                                    className={'zoom m-2 p-2 text-secondary'}
+                                    onClick={() => {
+                                        setLensOpen(false)
+                                        setCameraOpen(!cameraOpen)
+                                    }}
+                                ><AddCircleOutlined/></Button>}/>
+                            </div>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                                <GearListCard header={<SectionHeader
+                                    title={'LENSES'} button buttonOnClick={() => {
                                     setCameraOpen(false)
                                     setLensOpen(!lensOpen)
-                                }}
-                            ><AddCircleOutlined/></Button>}/>
+                                }}/>}
+                                              items={kit.lenses}
+                                              type={'lens'} addButton={<Button
+                                    variant={'text'}
+                                    size={'large'}
+                                    className={'zoom m-2 p-2 text-secondary'}
+                                    onClick={() => {
+                                        setCameraOpen(false)
+                                        setLensOpen(!lensOpen)
+                                    }}
+                                ><AddCircleOutlined/></Button>}/>
+                            </div>
                         </div>
                     </div>
                 </div>
