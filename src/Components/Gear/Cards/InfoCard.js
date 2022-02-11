@@ -5,7 +5,7 @@ const InfoCard = (props) => {
     const {kit, setOpen, open, header} = props;
     return (
         <>
-            <div className={'col-12'} style={{height: '400px'}}>
+            <div className={'col-12'} style={{minHeight: '400px'}}>
                 {header}
                 <div className={'col-12 d-flex flex-row'}>
                     <div
