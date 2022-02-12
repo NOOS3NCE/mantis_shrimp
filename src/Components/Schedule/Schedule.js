@@ -18,22 +18,22 @@ const Schedule = () => {
             .catch(err => console.log(err))
     }, [])
 
-    const addClient = () => {
-        let fakeClient = {
-            client_firstname: faker.name.firstName(),
-            client_lastname: faker.name.lastName(),
-            client_phone: faker.phone.phoneNumber(),
-            client_email: faker.internet.email(),
-            client_address1: faker.address.streetAddress(),
-            client_address2: faker.address.secondaryAddress(),
-            client_city: faker.address.city(),
-            client_state: faker.address.stateAbbr(),
-            client_zip: faker.address.zipCodeByState()
-        }
-        console.log("FAKE CLIENT: ", fakeClient)
-        axios.post(`${base_url}mantis_api/client`, fakeClient)
-            .then(res => console.log("RES FROM POST", res))
-    }
+    // const addClient = () => {
+    //     let fakeClient = {
+    //         client_firstname: faker.name.firstName(),
+    //         client_lastname: faker.name.lastName(),
+    //         client_phone: faker.phone.phoneNumber(),
+    //         client_email: faker.internet.email(),
+    //         client_address1: faker.address.streetAddress(),
+    //         client_address2: faker.address.secondaryAddress(),
+    //         client_city: faker.address.city(),
+    //         client_state: faker.address.stateAbbr(),
+    //         client_zip: faker.address.zipCodeByState()
+    //     }
+    //     console.log("FAKE CLIENT: ", fakeClient)
+    //     axios.post(`${base_url}mantis_api/client`, fakeClient)
+    //         .then(res => console.log("RES FROM POST", res))
+    // }
     return (
         <>
             <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
@@ -42,7 +42,7 @@ const Schedule = () => {
             <div className={'d-flex col-12 flex-row justify-content-center'}>
                 <div className={'page-container col-10 rounded'}>
 
-                    <Button variant={'contained'} className={'bg-mint'} onClick={() => addClient()}>ADD CLIENT</Button>
+                    <Button variant={'contained'} className={'bg-mint'}>ADD CLIENT</Button>
                     <div className={`row d-flex justify-content-evenly col-12 text-white m-auto`}>
                         {events?.map((event, index) =>
                             <EventCard/>)}
