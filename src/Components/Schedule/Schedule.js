@@ -7,7 +7,7 @@ import {Button} from "@mui/material";
 import MantisCard from "../Gear/Cards/MantisCard";
 
 const Schedule = () => {
-    let faker = require('faker');
+    // let faker = require('faker');
     const [events, setEvents] = useState([])
 
     useEffect(() => {
