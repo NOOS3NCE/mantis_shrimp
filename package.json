@@ -16,7 +16,6 @@
     "dart-sass": "^1.25.0",
     "dayjs": "^1.10.7",
     "dotenv": "^14.3.2",
-    "faker": "5.5.3",
     "mdb-ui-kit": "^3.10.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
