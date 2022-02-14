@@ -141,11 +141,10 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
                                 style={{'min-width': '230px'}}/>
                         </div>
-                        <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
+                        <div className={'col-12 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>IMAGE</h4>
                             <TextField
                                 {...register(`lens_image`)}
-                                size={'small'}
                                 type={'file'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
                                 style={{'min-width': '230px'}}/>

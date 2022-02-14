@@ -38,7 +38,7 @@ const GearItemCard = (props) => {
 
                                 <img
                                     src={data[keys?.image]}
-                                    alt={"SVG of backpack"} style={{height: '45px'}}/>
+                                    alt={"SVG of backpack"} style={{maxHeight: '45px', maxWidth: '45px'}}/>
                             </div>
                         </div>
                         <div className={'col-10 d-flex align-items-center justify-content-start'}>
