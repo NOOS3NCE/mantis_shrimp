@@ -19,15 +19,27 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
     }, [kitsRefresh])
 
     const onSubmitNewLens = (data) => {
+        let config = {
+            method: 'post',
+            url: 'https://api.imgur.com/3/image',
+            headers: {
+                'Authorization': 'Client-ID {f6dcfaa003fd756}',
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+            },
+            data: data.lens_img[0]
+        };
         data.kit_id = kit.kit_id
-        console.log("DATA: ", data)
-        axios.post(`${base_url}mantis_api/lens`, data)
-            .then(res => {
-                setLensOpen(!lensOpen)
-                kitsRefresh(!kitsRerender)
-                console.log(res)
-            })
-            .catch(err => console.log(err))
+        console.log("LENS DATA: ", data.lens_img)
+        axios(config)
+            .then(res => console.log("IMAGE POST RES: ", res))
+        // axios.post(`${base_url}mantis_api/lens`, data)
+        //     .then(res => {
+        //         setLensOpen(!lensOpen)
+        //         kitsRefresh(!kitsRerender)
+        //         console.log(res)
+        //     })
+        //     .catch(err => console.log(err))
     }
     const onUpdateLens = (data) => {
         data.kit_id = parseInt(kit.kit_id)
@@ -123,6 +135,15 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                                 {...register(`lens_purchase_date`)}
                                 size={'small'}
                                 type={'date'}
+                                className={'m-1 mx-0 px-0 bg-white rounded'}
+                                style={{'min-width': '230px'}}/>
+                        </div>
+                        <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
+                            <h4 className={'list-title'}>IMAGE</h4>
+                            <TextField
+                                {...register(`lens_img`)}
+                                size={'small'}
+                                type={'file'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
                                 style={{'min-width': '230px'}}/>
                         </div>
