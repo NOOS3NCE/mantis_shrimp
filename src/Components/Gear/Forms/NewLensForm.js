@@ -23,7 +23,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
             method: 'post',
             url: 'https://api.imgur.com/3/image',
             headers: {
-                'Authorization': 'Client-ID {f6dcfaa003fd756}',
+                'Authorization': 'Client-ID f6dcfaa003fd756',
                 'Accept': 'application/json',
                 'Content-Type': 'multipart/form-data'
             },
