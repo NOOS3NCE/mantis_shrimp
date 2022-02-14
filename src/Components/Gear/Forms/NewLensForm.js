@@ -27,14 +27,14 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                 'Accept': 'application/json',
                 'Content-Type': 'multipart/form-data'
             },
-            data: data.lens_img[0]
+            data: data.lens_image[0]
         };
         data.kit_id = kit.kit_id
-        console.log("LENS DATA: ", data.lens_img)
         axios(config)
             .then(res => {
                 data.lens_img = res.data?.data?.link
                 console.log("IMAGE POST RES: ", res)
+                console.log("LENS DATA: ", data)
                 axios.post(`${base_url}mantis_api/lens`, data)
                     .then(res => {
                         setLensOpen(!lensOpen)
@@ -144,7 +144,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>IMAGE</h4>
                             <TextField
-                                {...register(`lens_img`)}
+                                {...register(`lens_image`)}
                                 size={'small'}
                                 type={'file'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
