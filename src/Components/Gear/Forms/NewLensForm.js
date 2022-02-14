@@ -32,14 +32,19 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
         data.kit_id = kit.kit_id
         console.log("LENS DATA: ", data.lens_img)
         axios(config)
-            .then(res => console.log("IMAGE POST RES: ", res))
-        // axios.post(`${base_url}mantis_api/lens`, data)
-        //     .then(res => {
-        //         setLensOpen(!lensOpen)
-        //         kitsRefresh(!kitsRerender)
-        //         console.log(res)
-        //     })
-        //     .catch(err => console.log(err))
+            .then(res => {
+                data.lens_img = res.data?.data?.link
+                console.log("IMAGE POST RES: ", res)
+            }).then(
+            axios.post(`${base_url}mantis_api/lens`, data)
+                .then(res => {
+                    setLensOpen(!lensOpen)
+                    kitsRefresh(!kitsRerender)
+                    console.log(res)
+                })
+                .catch(err => console.log(err))
+        )
+
     }
     const onUpdateLens = (data) => {
         data.kit_id = parseInt(kit.kit_id)
