@@ -29,15 +29,31 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
     }, [kitsRefresh])
 
     const onSubmitNewCamera = (data) => {
-        data.kit_name = kit.kit_name
-        console.log("DATA: ", data)
-        axios.post(`${base_url}mantis_api/camera`, data)
+        let config = {
+            method: 'post',
+            url: 'https://api.imgur.com/3/image',
+            headers: {
+                'Authorization': 'Client-ID f6dcfaa003fd756',
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+            },
+            data: data.camera_image[0]
+        };
+        axios(config)
             .then(res => {
-                setCameraOpen(!cameraOpen)
-                kitsRefresh(!kitsRerender)
-                console.log(res)
+                data.lens_img = res.data?.data?.link
+                console.log("IMAGE POST RES: ", res)
+                console.log("LENS DATA: ", data)
+                data.kit_name = kit.kit_name
+                console.log("DATA: ", data)
+                axios.post(`${base_url}mantis_api/camera`, data)
+                    .then(res => {
+                        setCameraOpen(!cameraOpen)
+                        kitsRefresh(!kitsRerender)
+                        console.log(res)
+                    })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
     }
 
     const onUpdateCamera = (data) => {
@@ -138,6 +154,14 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                                 {...register(`camera_purchase_date`)}
                                 size={'small'}
                                 type={'date'}
+                                className={'m-1 mx-0 px-0 bg-white rounded'}
+                                style={{'min-width': '230px'}}/>
+                        </div>
+                        <div className={'col-12 my-2 d-flex align-items-start flex-column'}>
+                            <h4 className={'list-title'}>IMAGE</h4>
+                            <TextField
+                                {...register(`camera_image`)}
+                                type={'file'}
                                 className={'m-1 mx-0 px-0 bg-white rounded'}
                                 style={{'min-width': '230px'}}/>
                         </div>
