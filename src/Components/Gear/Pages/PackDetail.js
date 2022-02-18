@@ -20,13 +20,17 @@ const PackDetail = () => {
     const [cameraOpen, setCameraOpen] = useState(false)
     const [cities, setCities] = useState([])
     const [kitRerender, kitRefresh] = useState(true)
+    const [history, setHistory] = useState([])
     const {control} = useForm()
-    console.log("KIT ID: ", id)
 
     useEffect(() => {
-        axios.get(`${base_url}mantis_api/kit/${id}`)
+        Promise.all([
+            axios.get(`${base_url}mantis_api/kit/${id}`),
+            axios.get(`${base_url}mantis_api/history/kit`, {params: id})
+        ])
             .then(res => {
-                setKit(res.data)
+                setHistory(res[1].data)
+                setKit(res[0].data)
                 console.log("RES: ", res)
             }, rej => console.log(rej))
             .catch(err => console.log(err))
@@ -88,7 +92,7 @@ const PackDetail = () => {
                                           open={open}/>
                             </div>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                                <StatusCard header={<SectionHeader title={'HISTORY'}/>}/>
+                                <StatusCard header={<SectionHeader title={'HISTORY'}/>} data={history}/>
                             </div>
                         </div>
                         <div className={'row flex-wrap'}>
