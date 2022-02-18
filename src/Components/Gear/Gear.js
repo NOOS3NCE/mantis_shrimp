@@ -47,41 +47,8 @@ const Gear = () => {
         setData([...kits.filter(kit => kit.kit_status.includes(underlineFilter))])
     }, [underlineFilter])
 
-    console.log("DATA: ", data)
-    //Pull all cameras from DB
-    // useEffect(()=> {
-    //     axios.get('${base_url}mantis_api/camera')
-    //         .then(res => (setCameras(res.data.map(camera => ({
-    //             ...camera
-    //         })))), rej => console.log(rej))
-    //             .catch(err => console.log(err))
-    // }, [camerasRerender)
-
     return (
         <>
-            {/*<div*/}
-            {/*    className={'row sticky-top bg-abyss d-flex shadow-p justify-content-around align-items-center p-2'}>*/}
-            {/*    <h2 className={'col-2 m-0'}>GEAR</h2>*/}
-            {/*    <Button onClick={() => setData([...kits])} variant={'text'} className={'zoom col-1 text-white'}>*/}
-            {/*        <div className={'col'}><BackpackOutlined style={{'font-size': '40px'}}/></div>*/}
-            {/*    </Button>*/}
-            {/*    <Button onClick={() => setData([...cameras])} variant={'text'} className={'zoom col-1 text-white'}>*/}
-            {/*        <div className={'col'}><CameraAltOutlined style={{'font-size': '40px'}}/></div>*/}
-            {/*    </Button>*/}
-            {/*    <Button onClick={() => setData([...lenses])} variant={'text'} className={'zoom col-1 text-white'}>*/}
-            {/*        <div className={'col'}><CameraOutlined style={{'font-size': '40px'}}/></div>*/}
-            {/*    </Button>*/}
-            {/*    <Button*/}
-            {/*        variant={'contained'}*/}
-            {/*        size={'large'}*/}
-            {/*        className={'zoom col-2 m-0 bg-secondary'}*/}
-            {/*        onClick={() => setOpen(!open)}*/}
-            {/*    >ADD KIT</Button>*/}
-            {/*    {open &&*/}
-            {/*    <div className={'mantis-modal row d-flex justify-content-center mt-2'}>*/}
-            {/*        <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>*/}
-            {/*    </div>}*/}
-            {/*</div>*/}
             <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>

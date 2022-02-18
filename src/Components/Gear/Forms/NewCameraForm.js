@@ -44,7 +44,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                 data.lens_img = res.data?.data?.link
                 console.log("IMAGE POST RES: ", res)
                 console.log("LENS DATA: ", data)
-                data.kit_name = kit.kit_name
+                data.kit_id = kit.kit_id
                 console.log("DATA: ", data)
                 axios.post(`${base_url}mantis_api/camera`, data)
                     .then(res => {
@@ -99,16 +99,6 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                 <div className={'br'}/>
                 <form onSubmit={handleSubmit(onSubmitNewCamera)}>
                     <div className={'row m-1 mt-2 d-flex flex-wrap justify-content-start'}>
-                        <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
-                            <h4 className={'list-title'}>NAME</h4>
-                            <TextField
-                                {...register(`camera_display`)}
-                                label={'NAME'}
-                                size={'small'}
-                                className={'m-1 mx-0 px-0 bg-white rounded'}
-                                style={{'min-width': '230px'}}
-                                required/>
-                        </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>BRAND</h4>
                             <TextField
