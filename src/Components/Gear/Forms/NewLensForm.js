@@ -40,6 +40,16 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         setLensOpen(!lensOpen)
                         kitsRefresh(!kitsRerender)
                         console.log(res)
+                        const history = {
+                            kit_id: data.kit_id,
+                            history_message: "New lens added to kit",
+                            history_target: kit.kit_name,
+                            history_sender: "Mike C.",
+                            history_title: "LENS ADDED TO"
+                        }
+                        axios.post(`${base_url}mantis_api/history`, history)
+                            .then(res => console.log(res))
+                            .catch(err => console.log(err))
                     })
                     .catch(err => console.log(err))
             })
