@@ -41,7 +41,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
         };
         axios(config)
             .then(res => {
-                data.lens_img = res.data?.data?.link
+                data.camera_img = res.data?.data?.link
                 console.log("IMAGE POST RES: ", res)
                 console.log("LENS DATA: ", data)
                 data.kit_id = kit.kit_id
