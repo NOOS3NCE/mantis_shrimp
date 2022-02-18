@@ -70,7 +70,18 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
         data.kit_id = parseInt(kit.kit_id)
         console.log("KIT ID:", data)
         axios.patch(`${base_url}mantis_api/camera/swap`, data)
-            .then(res => console.log(res), rej => console.log(rej))
+            .then(res => {
+                const history = {
+                    kit_id: data.kit_id,
+                    history_message: "New camera swapped to kit",
+                    history_target: data.kit_name,
+                    history_sender: "Mike C.",
+                    history_title: "CAMERA SWAPPED TO"
+                }
+                axios.post(`${base_url}mantis_api/history`, history)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err))
+            })
             .then(() => {
                 setCameraOpen(!cameraOpen)
                 kitsRefresh(!kitsRerender)
