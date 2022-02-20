@@ -10,7 +10,7 @@ const StatusCard = ({header, data}) => {
                                                           message={history.history_message}
                                                           sender={history.history_sender}
                                                           target={history.history_target}
-                                                          date={"DATE GOES HERE"}/>)
+                                                          date={history.history_updated_at}/>)
                 }
             </div>
         </>

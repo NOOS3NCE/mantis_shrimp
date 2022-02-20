@@ -25,13 +25,20 @@ const PackDetail = () => {
 
     useEffect(() => {
         Promise.all([
-            axios.get(`${base_url}mantis_api/kit/${id}`),
-            axios.get(`${base_url}mantis_api/history/kit`, {params: id})
+            axios.get(`${base_url}mantis_api/kit/${id}`)
         ])
             .then(res => {
-                setHistory(res[1].data)
+
                 setKit(res[0].data)
                 console.log("RES: ", res)
+            }, rej => console.log(rej))
+            .catch(err => console.log(err))
+    }, [kitRerender])
+
+    useEffect(() => {
+        axios.get(`${base_url}mantis_api/history/kit/${id}`)
+            .then(res => {
+                setHistory(res?.data)
             }, rej => console.log(rej))
             .catch(err => console.log(err))
     }, [kitRerender])

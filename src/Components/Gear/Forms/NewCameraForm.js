@@ -54,7 +54,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                         const history = {
                             kit_id: data.kit_id,
                             history_message: "New camera added to kit",
-                            history_target: kit.kit_name,
+                            history_target: kit.kit_display,
                             history_sender: "Mike C.",
                             history_title: "CAMERA ADDED TO"
                         }
@@ -74,7 +74,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                 const history = {
                     kit_id: data.kit_id,
                     history_message: "New camera swapped to kit",
-                    history_target: data.kit_name,
+                    history_target: data.kit_display,
                     history_sender: "Mike C.",
                     history_title: "CAMERA SWAPPED TO"
                 }

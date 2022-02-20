@@ -43,7 +43,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         const history = {
                             kit_id: data.kit_id,
                             history_message: "New lens added to kit",
-                            history_target: kit.kit_name,
+                            history_target: kit.kit_display,
                             history_sender: "Mike C.",
                             history_title: "LENS ADDED TO"
                         }
@@ -58,7 +58,19 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
         data.kit_id = parseInt(kit.kit_id)
         console.log("KIT ID:", data)
         axios.patch(`${base_url}mantis_api/lens/swap`, data)
-            .then(res => console.log(res), rej => console.log(rej))
+            .then(res => {
+                const history = {
+                    kit_id: data.kit_id,
+                    lens_id: data.lens_id,
+                    history_message: "Lens swapped to kit",
+                    history_sender: lenses.filter(lens => lens.lens_id === data.lens_id)[0].kit_display,
+                    history_target: data.kit_display,
+                    history_title: "LENS SWAPPED TO"
+                }
+                axios.post(`${base_url}mantis_api/history`, history)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err))
+            })
             .then(() => {
                 setLensOpen(!lensOpen)
                 kitsRefresh(!kitsRerender)
