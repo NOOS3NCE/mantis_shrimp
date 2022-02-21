@@ -5,6 +5,7 @@ const UnderlineFilter = ({setUnderlineFilter, underlineFilter, kits}) => {
     const filterSwitch = (text) => {
         setUnderlineFilter(text)
     }
+    console.log("UNDERLINE DATA:", kits)
     return (
         <>
             <div className={'underline-filter col-12'}>
@@ -13,7 +14,7 @@ const UnderlineFilter = ({setUnderlineFilter, underlineFilter, kits}) => {
                     onClick={() => filterSwitch('')}>
                     <div className={'text-align-left m-0'}>ALL KITS</div>
                     <div className={'rounded bg-glass col-2 d-flex align-items-center justify-content-center'}>
-                        <div className={'p-0 m-0'}>{kits.length}</div>
+                        <div className={'p-0 m-0'}>{kits?.length}</div>
                     </div>
                 </div>
                 <div
@@ -21,7 +22,8 @@ const UnderlineFilter = ({setUnderlineFilter, underlineFilter, kits}) => {
                     onClick={() => filterSwitch('Loaded Out')}>
                     <div className={'text-align-left m-0'}>LOADED OUT</div>
                     <div className={'rounded bg-glass col-2 d-flex align-items-center justify-content-center'}>
-                        <div className={'p-0 m-0'}>{kits.filter(kit => kit.kit_status === 'Loaded Out').length}</div>
+                        <div
+                            className={'p-0 m-0'}>{kits?.filter(kit => kit.kit_status === 'Loaded Out' || kit.lens_status === 'Loaded Out' || kit.camera_status === 'Loaded Out').length}</div>
                     </div>
                 </div>
                 <div
@@ -29,7 +31,8 @@ const UnderlineFilter = ({setUnderlineFilter, underlineFilter, kits}) => {
                     onClick={() => filterSwitch('In Shop')}>
                     <div className={'text-align-left m-0'}>IN SHOP</div>
                     <div className={'rounded bg-glass col-2 d-flex align-items-center justify-content-center'}>
-                        <div className={'p-0 m-0'}>{kits.filter(kit => kit.kit_status === 'In Shop').length}</div>
+                        <div
+                            className={'p-0 m-0'}>{kits?.filter(kit => kit.kit_status === 'In Shop' || kit.lens_status === 'In Shop' || kit.camera_status === 'In Shop').length}</div>
                     </div>
                 </div>
             </div>

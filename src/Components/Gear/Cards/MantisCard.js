@@ -28,7 +28,7 @@ const MantisCard = (props) => {
                                 style={{height: '55px', width: '55px'}}>
                                 <img
                                     src={data?.hasOwnProperty('kit_status') ? data.kit_img : data.lens_img}
-                                    alt={"SVG of backpack"} style={{height: '45px'}}/>
+                                    alt={"SVG of backpack"} style={{height: '45px', maxWidth: '45px'}}/>
                             </div>
                         </div>
                         <div className={'col-10 d-flex align-items-center justify-content-start'}>

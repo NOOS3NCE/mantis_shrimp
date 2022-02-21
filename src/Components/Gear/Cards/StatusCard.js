@@ -4,14 +4,16 @@ import HistoryCard from "./HistoryCard";
 const StatusCard = ({header, data}) => {
     return (
         <>
-            <div className={'col-12'} style={{minHeight: '400px'}}>
+            <div className={'col-12'}>
                 {header}
-                {data && data.map(history => <HistoryCard title={history.history_title}
-                                                          message={history.history_message}
-                                                          sender={history.history_sender}
-                                                          target={history.history_target}
-                                                          date={history.history_updated_at}/>)
-                }
+                <div className={'col-12 overflow-auto'} style={{height: '380px'}}>
+                    {data && data.map(history => <HistoryCard title={history.history_title}
+                                                              message={history.history_message}
+                                                              sender={history.history_sender}
+                                                              target={history.history_target}
+                                                              date={history.history_updated_at}/>)
+                    }
+                </div>
             </div>
         </>
     )

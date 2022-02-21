@@ -13,39 +13,34 @@ import {base_url} from "../../env_variables";
 //TODO add create accessory form(s)
 
 const Gear = () => {
-    const [kits, setKits] = useState([])
-    const [lenses, setLenses] = useState([])
-    const [cameras, setCameras] = useState([])
+    const [data, setData] = useState({})
     const [kitsRerender, kitsRefresh] = useState(true)
-    const [lensRerender, lensRefresh] = useState(true)
     const [open, setOpen] = useState(false)
-    const [data, setData] = useState([])
     const [underlineFilter, setUnderlineFilter] = useState('')
-    const [headers, setHeaders] = useState(['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'])
+    const [headers, setHeaders] = useState({
+        kit: ['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'],
+        lens: ['LENS', 'KIT', 'BRAND', 'MODEL'],
+        camera: []
+    })
+    const [listType, setListType] = useState('kit')
 
     //Pull all kits from DB
     useEffect(() => {
-        axios.get(`${base_url}mantis_api/kit`)
+        Promise.all([
+            axios.get(`${base_url}mantis_api/kit`),
+            axios.get(`${base_url}mantis_api/lens`),
+            axios.get(`${base_url}mantis_api/camera`)
+        ])
             .then(res => {
-                (setData(res.data))
-                (setKits(res.data))
+                setData({
+                    kit: res[0].data,
+                    lens: res[1].data,
+                    camera: res[2].data
+                })
             }, rej => console.log(rej))
             .catch(err => console.log(err))
         setOpen(false)
     }, [kitsRerender])
-
-    // Pull all lenses from DB
-    useEffect(() => {
-        axios.get(`${base_url}mantis_api/lens`)
-            .then(res => (setLenses(res.data.map(lens => ({
-                ...lens
-            })))), rej => console.log(rej))
-            .catch(err => console.log(err))
-    }, [lensRerender])
-
-    useEffect(() => {
-        setData([...kits.filter(kit => kit.kit_status.includes(underlineFilter))])
-    }, [underlineFilter])
 
     return (
         <>
@@ -60,14 +55,17 @@ const Gear = () => {
                 <div className={`page-container col-${open ? '6' : '10'} rounded`}>
                     <FilterListHeader setUnderlineFilter={setUnderlineFilter}
                                       underlineFilter={underlineFilter}
-                                      kits={kits}
+                                      data={data[listType]}
                                       setOpen={() => setOpen}
-                                      open={open}/>
-                    <ListHeader headers={headers}/>
-                    <div className={`row d-flex justify-content-evenly col-12 text-white m-auto`}>
-                        {data?.map((kit, index) =>
+                                      open={open}
+                                      setListType={setListType}
+                                      listType={listType}/>
+                    <ListHeader headers={headers[listType]}/>
+                    <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
+                         style={{maxHeight: '73vh'}}>
+                        {data[listType]?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).map((kit, index) =>
                             <MantisCard
-                                data={kit} id={kit?.kit_id} key={index}/>)}
+                                data={kit} id={kit[`${listType}_id`]} key={index}/>)}
                     </div>
                 </div>
             </div>
