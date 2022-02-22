@@ -52,7 +52,9 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                         kitsRefresh(!kitsRerender)
                         console.log(res)
                         const history = {
+                            // user_id: userContext?.user_id,
                             kit_id: data.kit_id,
+                            camera_id: data.camera_id,
                             history_message: "New camera added to kit",
                             history_target: kit.kit_display,
                             history_sender: "Mike C.",
@@ -68,18 +70,21 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
 
     const onUpdateCamera = (data) => {
         data.kit_id = parseInt(kit.kit_id)
+        data.kit_display = cameras.filter(camera => camera.camera_id === data.camera_id)[0].kit_display
         console.log("KIT ID:", data)
         axios.patch(`${base_url}mantis_api/camera/swap`, data)
             .then(res => {
                 const history = {
+                    // user_id: userContext?.user_id,
                     kit_id: data.kit_id,
+                    camera_id: data.camera_id,
                     history_message: "New camera swapped to kit",
-                    history_target: data.kit_display,
-                    history_sender: "Mike C.",
+                    history_target: kit.kit_display,
+                    history_sender: data.kit_display,
                     history_title: "CAMERA SWAPPED TO"
                 }
                 axios.post(`${base_url}mantis_api/history`, history)
-                    .then(res => console.log(res))
+                    .then(res => console.log("SWAP RES", res))
                     .catch(err => console.log(err))
             })
             .then(() => {

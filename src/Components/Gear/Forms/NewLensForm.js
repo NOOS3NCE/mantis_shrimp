@@ -32,17 +32,17 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
         axios(config)
             .then(res => {
                 data.lens_img = res.data?.data?.link
-                console.log("IMAGE POST RES: ", res)
-                console.log("LENS DATA: ", data)
                 axios.post(`${base_url}mantis_api/lens`, data)
                     .then(res => {
                         setLensOpen(!lensOpen)
                         kitsRefresh(!kitsRerender)
                         console.log(res)
                         const history = {
-                            kit_id: data.kit_id,
+                            // user_id: userContext?.user_id,
+                            kit_id: data?.kit_id,
+                            lens_id: data?.lens_id,
                             history_message: "New lens added to kit",
-                            history_target: kit.kit_display,
+                            history_target: kit?.kit_display,
                             history_sender: "Mike C.",
                             history_title: "LENS ADDED TO"
                         }
@@ -55,15 +55,18 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
     }
     const onUpdateLens = (data) => {
         data.kit_id = parseInt(kit.kit_id)
+        data.kit_display = lenses.filter(lens => lens.lens_id === data.lens_id)[0].kit_display
         console.log("KIT ID:", data)
         axios.patch(`${base_url}mantis_api/lens/swap`, data)
             .then(res => {
+                console.log("KIT IN SWAP", data)
                 const history = {
+                    // user_id: userContext?.user_id,
                     kit_id: data.kit_id,
                     lens_id: data.lens_id,
                     history_message: "Lens swapped to kit",
-                    history_sender: lenses.filter(lens => lens.lens_id === data.lens_id)[0].kit_display,
-                    history_target: data.kit_display,
+                    history_sender: data.kit_display,
+                    history_target: kit.kit_display,
                     history_title: "LENS SWAPPED TO"
                 }
                 axios.post(`${base_url}mantis_api/history`, history)

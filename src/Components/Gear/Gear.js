@@ -8,8 +8,6 @@ import NewKitForms from "./Forms/NewKitForms";
 import {base_url} from "../../env_variables";
 
 //TODO update add kit form
-//TODO add create lens form
-//TODO add create camera form
 //TODO add create accessory form(s)
 
 const Gear = () => {

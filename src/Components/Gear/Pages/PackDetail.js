@@ -26,7 +26,6 @@ const PackDetail = () => {
             axios.get(`${base_url}mantis_api/kit/${id}`)
         ])
             .then(res => {
-
                 setKit(res[0].data)
                 console.log("RES: ", res)
             }, rej => console.log(rej))

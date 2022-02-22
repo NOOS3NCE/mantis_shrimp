@@ -17,7 +17,6 @@ const FilterListHeader = ({setUnderlineFilter, underlineFilter, data, setOpen, o
         }
     }, [type])
 
-
     return (
         <>
             <div className={'col-12 d-flex flex-row justify-content-between align-items-center mb-3'}>
