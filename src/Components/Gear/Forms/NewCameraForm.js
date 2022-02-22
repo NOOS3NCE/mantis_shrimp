@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {base_url} from "../../../env_variables";
 import {Button, MenuItem, TextField} from "@mui/material";
-import {AddCircleOutlined, Close} from "@mui/icons-material";
+import {Close} from "@mui/icons-material";
 
 const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender}) => {
     const [cameras, setCameras] = useState([])

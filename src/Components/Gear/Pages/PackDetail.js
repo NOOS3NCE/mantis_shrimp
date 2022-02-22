@@ -4,8 +4,7 @@ import axios from "axios";
 import InfoCard from "../Cards/InfoCard";
 import GearListCard from "../Cards/GearListCard";
 import StatusCard from "../Cards/StatusCard";
-import {Button, MenuItem, Select, TextField} from "@mui/material";
-import {useForm} from "react-hook-form";
+import {Button} from "@mui/material";
 import NewLensForm from "../Forms/NewLensForm";
 import {AddCircleOutlined} from "@mui/icons-material";
 import PageHeader from "./PageHeader";
@@ -21,7 +20,6 @@ const PackDetail = () => {
     const [cities, setCities] = useState([])
     const [kitRerender, kitRefresh] = useState(true)
     const [history, setHistory] = useState([])
-    const {control} = useForm()
 
     useEffect(() => {
         Promise.all([

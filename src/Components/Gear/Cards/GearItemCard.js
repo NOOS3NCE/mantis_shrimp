@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 const GearItemCard = (props) => {
-    const {title, brand, model, type, image, data} = props;
+    const {data} = props;
     const [keys, setKeys] = useState({})
     useEffect(() => {
         if (Object.keys(data)[0].includes("lens")) {

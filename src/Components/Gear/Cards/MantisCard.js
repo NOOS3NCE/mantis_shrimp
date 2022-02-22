@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 const MantisCard = (props) => {
-    const {type, id, data} = props;
+    const {id, data} = props;
     const [width, setWidth] = useState(window.innerWidth);
 
     function handleWindowSizeChange() {

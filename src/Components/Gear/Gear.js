@@ -17,11 +17,11 @@ const Gear = () => {
     const [kitsRerender, kitsRefresh] = useState(true)
     const [open, setOpen] = useState(false)
     const [underlineFilter, setUnderlineFilter] = useState('')
-    const [headers, setHeaders] = useState({
+    const headers = {
         kit: ['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'],
         lens: ['LENS', 'KIT', 'BRAND', 'MODEL'],
         camera: []
-    })
+    }
     const [listType, setListType] = useState('kit')
 
     //Pull all kits from DB
@@ -41,7 +41,7 @@ const Gear = () => {
             .catch(err => console.log(err))
         setOpen(false)
     }, [kitsRerender])
-
+    console.log("CAMERAS:", data.camera)
     return (
         <>
             <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>

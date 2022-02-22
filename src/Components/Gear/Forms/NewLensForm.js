@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Button, MenuItem, TextField} from "@mui/material";
-import {AddCircleOutlined, Close} from "@mui/icons-material";
+import {Close} from "@mui/icons-material";
 import {useForm} from "react-hook-form";
 import {base_url} from "../../../env_variables";
 
 const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) => {
     const [lenses, setLenses] = useState([])
-    const [lensOptions, setLensOptions] = useState([{lens: ""}])
     const {handleSubmit, register} = useForm()
 
     //Pull all Lenses from DB

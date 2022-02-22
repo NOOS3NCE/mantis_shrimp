@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Button, MenuItem, Select, TextField} from "@mui/material";
+import React, {useEffect} from "react";
+import {Button, MenuItem, TextField} from "@mui/material";
 import UnderlineFilter from "../Filters/UnderlineFilter";
 import {useForm} from "react-hook-form";
 
@@ -37,11 +37,11 @@ const FilterListHeader = ({setUnderlineFilter, underlineFilter, data, setOpen, o
                     defaultValue={'kits'}
                     className={'m-1 mx-0 px-0 bg-white rounded col-3'}
                     required
-                    style={{'min-width': '230px'}}
+                    style={{'minWidth': '230px'}}
                     select>
-                    <MenuItem value={'kits'}>KITS</MenuItem>
-                    <MenuItem value={'lenses'}>LENSES</MenuItem>
-                    <MenuItem value={'cameras'}>CAMERAS</MenuItem>
+                    <MenuItem key={0} value={'kits'}>KITS</MenuItem>
+                    <MenuItem key={1} value={'lenses'}>LENSES</MenuItem>
+                    <MenuItem key={2} value={'cameras'}>CAMERAS</MenuItem>
                 </TextField>
             </div>
         </>
