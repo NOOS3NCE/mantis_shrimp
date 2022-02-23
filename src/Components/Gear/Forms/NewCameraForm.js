@@ -60,6 +60,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                             history_sender: "Mike C.",
                             history_title: "CAMERA ADDED TO"
                         }
+                        console.log("HISTORY: ", history)
                         axios.post(`${base_url}mantis_api/history`, history)
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
