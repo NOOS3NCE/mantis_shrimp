@@ -50,7 +50,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                     .then(res => {
                         setCameraOpen(!cameraOpen)
                         kitsRefresh(!kitsRerender)
-                        console.log(res)
+                        console.log("CAMERA ADD ID: ", data.camera_id)
                         const history = {
                             // user_id: userContext?.user_id,
                             kit_id: data.kit_id,

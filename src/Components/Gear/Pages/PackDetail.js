@@ -21,6 +21,7 @@ const PackDetail = () => {
     const [kitRerender, kitRefresh] = useState(true)
     const [history, setHistory] = useState([])
 
+
     useEffect(() => {
         Promise.all([
             axios.get(`${base_url}mantis_api/kit/${id}`)
