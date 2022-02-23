@@ -31,7 +31,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
     const onSubmitNewCamera = (data) => {
         let config = {
             method: 'post',
-            url: 'https://api.imgur.com/3/image',
+            url: process.env.NODE_ENV === 'development' ? `${base_url}mantis_api/imgurfake` : 'https://api.imgur.com/3/image',
             headers: {
                 'Authorization': 'Client-ID f6dcfaa003fd756',
                 'Accept': 'application/json',
@@ -48,13 +48,11 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                 console.log("DATA: ", data)
                 axios.post(`${base_url}mantis_api/camera`, data)
                     .then(res => {
-                        setCameraOpen(!cameraOpen)
-                        kitsRefresh(!kitsRerender)
-                        console.log("CAMERA ADD ID: ", data.camera_id)
+                        console.log("CAMERA ADD ID: ", res)
                         const history = {
                             // user_id: userContext?.user_id,
                             kit_id: data.kit_id,
-                            camera_id: data.camera_id,
+                            camera_id: res?.data?.rows[0]?.camera_id,
                             history_message: "New camera added to kit",
                             history_target: kit.kit_display,
                             history_sender: "Mike C.",
@@ -64,6 +62,8 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                         axios.post(`${base_url}mantis_api/history`, history)
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
+                        setCameraOpen(!cameraOpen)
+                        kitsRefresh(!kitsRerender)
                     })
                     .catch(err => console.log(err))
             })

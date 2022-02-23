@@ -20,7 +20,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
     const onSubmitNewLens = (data) => {
         let config = {
             method: 'post',
-            url: 'https://api.imgur.com/3/image',
+            url: process.env.NODE_ENV === 'development' ? `${base_url}mantis_api/imgurfake` : 'https://api.imgur.com/3/image',
             headers: {
                 'Authorization': 'Client-ID f6dcfaa003fd756',
                 'Accept': 'application/json',
@@ -34,13 +34,11 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                 data.lens_img = res.data?.data?.link
                 axios.post(`${base_url}mantis_api/lens`, data)
                     .then(res => {
-                        setLensOpen(!lensOpen)
-                        kitsRefresh(!kitsRerender)
                         console.log(res)
                         const history = {
                             // user_id: userContext?.user_id,
                             kit_id: data?.kit_id,
-                            lens_id: data?.lens_id,
+                            lens_id: res?.data?.rows[0]?.lens_id,
                             history_message: "New lens added to kit",
                             history_target: kit?.kit_display,
                             history_sender: "Mike C.",
@@ -50,6 +48,8 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         axios.post(`${base_url}mantis_api/history`, history)
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
+                        setLensOpen(!lensOpen)
+                        kitsRefresh(!kitsRerender)
                     })
                     .catch(err => console.log(err))
             })
