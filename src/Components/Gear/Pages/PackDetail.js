@@ -34,9 +34,12 @@ const PackDetail = () => {
                 setKit(res[0]?.data)
                 setHistory(res[1]?.data)
                 setCities(res[2]?.data)
-                api.getTasks({label_id: res[0]?.data?.todoist_label_id})
-                    .then(res => setTodos(res))
-                    .catch(err => console.log("TODOIST ERROR: ", err))
+                if (res[0]?.data?.todoist_label_id !== null) {
+
+                    api.getTasks({label_id: res[0]?.data?.todoist_label_id})
+                        .then(res => setTodos(res))
+                        .catch(err => console.log("TODOIST ERROR: ", err))
+                }
             }, rej => console.log(rej))
             .catch(err => console.log(err))
     }, [kitRerender])
