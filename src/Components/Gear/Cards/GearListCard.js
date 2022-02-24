@@ -6,8 +6,10 @@ const GearListCard = ({header, items, type, kitID, addButton}) => {
     return (
         <>
             <div className={'col-12'} style={{minHeight: '400px'}}>
-                <div className={'col-12'}> {header}</div>
-                {items?.map((item, index) => <GearItemCard key={index} data={item}/>)}
+                {header}
+                <div className={'col-12 d-flex flex-column align-items-center'}>
+                    {items?.map((item, index) => <GearItemCard key={index} data={item}/>)}
+                </div>
             </div>
 
         </>

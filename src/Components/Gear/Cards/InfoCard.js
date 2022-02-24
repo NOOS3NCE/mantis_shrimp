@@ -1,8 +1,10 @@
 import React from "react";
 import {ButtonBase} from "@mui/material";
+import dayjs from "dayjs";
 
 const InfoCard = (props) => {
-    const {kit, setOpen, open, header} = props;
+    const {kit, setOpen, open, header, todos} = props;
+    console.log("TODOS IN INFO CARD:", todos)
     return (
         <>
             <div className={'col-12'} style={{minHeight: '400px'}}>
@@ -49,6 +51,16 @@ const InfoCard = (props) => {
                             </div>
                         </div>}
                     </div>
+                </div>
+                <div className={'col-12 d-flex flex-column overflow-auto justify-content-center align-items-center'}>
+                    {todos && todos.map(todo => (
+                        <div
+                            className={`col-12 p-1 px-2 my-1 rounded shadow-sm zoom d-flex flex-row justify-content-between align-items-center priority-${todo.priority}`}
+                            style={{maxHeight: '40px', maxWidth: '510px', color: 'white'}}>
+                            <p className={'m-0'}>{todo.content}</p>
+                            <p className={'m-0'}>{dayjs(todo.due?.datetime).format("MM/DD/YYYY")}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>

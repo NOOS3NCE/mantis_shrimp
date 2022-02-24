@@ -6,9 +6,11 @@ import FilterListHeader from "./Lists/FilterListHeader";
 import ListHeader from "./Lists/ListHeader";
 import NewKitForms from "./Forms/NewKitForms";
 import {base_url} from "../../env_variables";
+import {api, todoistProjectId} from "../../Todoist";
 
 //TODO update add kit form
 //TODO add create accessory form(s)
+
 
 const Gear = () => {
     const [data, setData] = useState({})
@@ -21,6 +23,17 @@ const Gear = () => {
         camera: []
     }
     const [listType, setListType] = useState('kit')
+    // useEffect(() => {
+    //     api.addTask({
+    //         content: 'Transfer to Tulsa',
+    //         dueString: 'next Tuesday at 12:00',
+    //         project_id: todoistProjectId,
+    //         label_ids: [2159907740],
+    //         section_id: 80977393,
+    //     })
+    //         .then((task) => console.log(task))
+    //         .catch((error) => console.log(error))
+    // }, [])
 
     //Pull all kits from DB
     useEffect(() => {
@@ -45,7 +58,7 @@ const Gear = () => {
             <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>
-            <div className={'mantis-modal row d-flex justify-content-center'}>
+            <div className={'mantis-modal row d-flex justify-content-center overflow-hidden'}>
                 {open &&
                 <div className={'page-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>

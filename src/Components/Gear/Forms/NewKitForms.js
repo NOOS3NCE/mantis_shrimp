@@ -13,12 +13,11 @@ const NewKitForms = ({kitsRefresh, kitsRerender, setOpen, open}) => {
     const onSubmit = data => {
         console.log(data)
         let lenses = data.lenses
-        data.kit_name = data.kit_display.toLowerCase().split(' ').join('')
         lenses.forEach(lens => {
             lens.lens_name = lens.lens_display.toLowerCase().split(' ').join('')
-            lens.kit_name = data.kit_name
+            lens.kit_display = data.kit_display
         })
-        data.camera.kit_name = data.kit_name
+        data.camera.kit_display = data.kit_display
 
         axios.post(`${base_url}mantis_api/kit`, data)
             .then(res => {

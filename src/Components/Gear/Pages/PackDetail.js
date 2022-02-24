@@ -10,6 +10,7 @@ import {AddCircleOutlined} from "@mui/icons-material";
 import PageHeader from "./PageHeader";
 import {base_url} from "../../../env_variables";
 import NewCameraForm from "../Forms/NewCameraForm";
+import {api} from "../../../Todoist";
 
 const PackDetail = () => {
     const {id} = useParams()
@@ -20,37 +21,25 @@ const PackDetail = () => {
     const [cities, setCities] = useState([])
     const [kitRerender, kitRefresh] = useState(true)
     const [history, setHistory] = useState([])
+    const [todos, setTodos] = useState([])
 
 
     useEffect(() => {
         Promise.all([
-            axios.get(`${base_url}mantis_api/kit/${id}`)
+            axios.get(`${base_url}mantis_api/kit/${id}`),
+            axios.get(`${base_url}mantis_api/history/kit/${id}`),
+            axios.get(`${base_url}mantis_api/cities`),
         ])
             .then(res => {
-                setKit(res[0].data)
-                console.log("RES: ", res)
+                setKit(res[0]?.data)
+                setHistory(res[1]?.data)
+                setCities(res[2]?.data)
+                api.getTasks({label_id: res[0]?.data?.todoist_label_id})
+                    .then(res => setTodos(res))
+                    .catch(err => console.log("TODOIST ERROR: ", err))
             }, rej => console.log(rej))
             .catch(err => console.log(err))
     }, [kitRerender])
-
-    useEffect(() => {
-        axios.get(`${base_url}mantis_api/history/kit/${id}`)
-            .then(res => {
-                setHistory(res?.data)
-            }, rej => console.log(rej))
-            .catch(err => console.log(err))
-    }, [kitRerender])
-
-    useEffect(() => {
-        axios.get(`${base_url}mantis_api/cities`)
-            .then(res => {
-                setCities(res.data)
-                console.log("CITIES: ", res)
-            }, rej => console.log(rej))
-            .catch(err => console.log(err))
-    }, [])
-
-    console.log("KIT DETAIL: ", kit)
 
     const SectionHeader = ({title, buttonOnClick, button}) => {
         return (
@@ -63,7 +52,7 @@ const PackDetail = () => {
             </div>
         )
     }
-
+    console.log("TODOS", todos)
     return (
         <>
 
@@ -94,7 +83,7 @@ const PackDetail = () => {
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                                 <InfoCard header={<SectionHeader title={'INFO'}/>}
                                           kit={kit} setOpen={setOpen}
-                                          open={open}/>
+                                          open={open} todos={todos}/>
                             </div>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                                 <StatusCard header={<SectionHeader title={'HISTORY'}/>} data={history}/>
