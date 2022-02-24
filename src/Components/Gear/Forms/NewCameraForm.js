@@ -32,12 +32,12 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
         let config = {
             method: 'post',
             url: process.env.NODE_ENV === 'development' ? `${base_url}mantis_api/imgurfake` : 'https://api.imgur.com/3/image',
-            // headers: {
-            //     'Authorization': 'Client-ID f6dcfaa003fd756',
-            //     'Accept': 'application/json',
-            //     'Content-Type': 'multipart/form-data'
-            // },
-            // data: data.camera_image[0]
+            headers: {
+                'Authorization': 'Client-ID f6dcfaa003fd756',
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+            },
+            data: data.camera_image[0]
         };
         axios(config)
             .then(res => {
