@@ -4,7 +4,7 @@ const PageHeader = ({title}) => {
     return (
         <>
             <div
-                className={'page-header col-10 d-flex flex-row justify-content-center align-items-center mt-2 position-fixed'}>
+                className={'page-header col-10 d-flex flex-row justify-content-center align-items-center position-fixed'}>
                 <h1>{title}</h1>
             </div>
             <div className={'header-top p-2 col-12 bg-blur fixed-top'}/>
