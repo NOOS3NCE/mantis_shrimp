@@ -1,7 +1,7 @@
 import React from "react";
 import GearItemCard from "./GearItemCard";
 
-const GearListCard = ({header, items, type, kitID, addButton}) => {
+const GearListCard = ({header, items}) => {
     console.log("ITEMS: ", items)
     return (
         <>

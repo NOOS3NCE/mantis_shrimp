@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from "axios";
 import InfoCard from "../Cards/InfoCard";
 import GearListCard from "../Cards/GearListCard";
@@ -11,8 +11,12 @@ import PageHeader from "./PageHeader";
 import {base_url} from "../../../env_variables";
 import NewCameraForm from "../Forms/NewCameraForm";
 import {api} from "../../../Todoist";
+import {adminPage} from "../../Login/Login";
+import SectionHeader from "../Cards/SectionHeader";
 
 const PackDetail = () => {
+    let navigate = useNavigate()
+    adminPage(navigate)
     const {id} = useParams()
     const [kit, setKit] = useState({})
     const [open, setOpen] = useState(false)
@@ -44,17 +48,7 @@ const PackDetail = () => {
             .catch(err => console.log(err))
     }, [kitRerender])
 
-    const SectionHeader = ({title, buttonOnClick, button}) => {
-        return (
-            <div
-                className={'section-header p-2 rounded col-12 d-flex flex-row align-items-center justify-content-between'}>
-                <h2>{title}</h2>
-                {button &&
-                <Button onClick={buttonOnClick} variant={'contained'} size={'small'}
-                        className={'zoom bg-secondary col-4'}>ADD {title}</Button>}
-            </div>
-        )
-    }
+
     console.log("TODOS", todos)
     return (
         <>
@@ -94,38 +88,28 @@ const PackDetail = () => {
                         </div>
                         <div className={'row flex-wrap'}>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                                <GearListCard header={<SectionHeader title={'CAMERAS'} button
-                                                                     buttonOnClick={() => {
-                                                                         setLensOpen(false)
-                                                                         setCameraOpen(!cameraOpen)
-                                                                     }}/>}
-                                              items={kit.cameras}
-                                              type={'cam'} addButton={<Button
-                                    variant={'text'}
-                                    size={'large'}
-                                    className={'zoom m-2 p-2 text-secondary'}
-                                    onClick={() => {
-                                        setLensOpen(false)
-                                        setCameraOpen(!cameraOpen)
-                                    }}
-                                ><AddCircleOutlined/></Button>}/>
+                                <GearListCard
+                                    items={kit.cameras}
+                                    header={<SectionHeader
+                                        title={'CAMERAS'}
+                                        button buttonText={'ADD CAMERA'}
+                                        buttonOnClick={() => {
+                                            setLensOpen(false)
+                                            setCameraOpen(!cameraOpen)
+                                        }}/>}
+                                />
                             </div>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                                <GearListCard header={<SectionHeader
-                                    title={'LENSES'} button buttonOnClick={() => {
-                                    setCameraOpen(false)
-                                    setLensOpen(!lensOpen)
-                                }}/>}
-                                              items={kit.lenses}
-                                              type={'lens'} addButton={<Button
-                                    variant={'text'}
-                                    size={'large'}
-                                    className={'zoom m-2 p-2 text-secondary'}
-                                    onClick={() => {
-                                        setCameraOpen(false)
-                                        setLensOpen(!lensOpen)
-                                    }}
-                                ><AddCircleOutlined/></Button>}/>
+                                <GearListCard
+                                    items={kit.lenses}
+                                    header={<SectionHeader
+                                        title={'LENSES'}
+                                        button buttonText={'ADD LENS'}
+                                        buttonOnClick={() => {
+                                            setCameraOpen(false)
+                                            setLensOpen(!lensOpen)
+                                        }}/>}
+                                />
                             </div>
                         </div>
                     </div>

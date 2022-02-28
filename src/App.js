@@ -8,6 +8,8 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import Schedule from "./Components/Schedule/Schedule";
 import Sales from "./Components/Sales/Sales";
 import NewEvent from "./Components/Sales/Event/NewEvent";
+import Login from "./Components/Login/Login";
+import UserProfile from "./Components/Login/UserProfile";
 
 function App() {
     const darkTheme = createTheme({
@@ -50,12 +52,14 @@ function App() {
                         </div>}
                         <div className={`col-${width > 764 ? '11' : '12'}`}>
                             <Routes>
+                                <Route path={"/"} element={<Home/>}/>
                                 <Route path={"/gear"} element={<Gear/>}/>
                                 <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
-                                <Route path={"/home"} element={<Home/>}/>
                                 <Route path={"/schedule"} element={<Schedule/>}/>
                                 <Route path={"/sales"} element={<Sales/>}/>
                                 <Route path={"/sales/event/new"} element={<NewEvent/>}/>
+                                <Route path={"/login"} element={<Login/>}/>
+                                <Route path={"/user/:id"} element={<UserProfile/>}/>
                             </Routes>
                         </div>
                     </Router>

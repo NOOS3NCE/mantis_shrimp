@@ -9,7 +9,7 @@ const NewEvent = () => {
     }
     return (
         <>
-            <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
+            <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={"NEW EVENT"}/>
             </div>
             <div className={'d-flex col-12 flex-row justify-content-center'}>

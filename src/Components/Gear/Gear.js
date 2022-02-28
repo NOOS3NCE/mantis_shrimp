@@ -7,6 +7,8 @@ import ListHeader from "./Lists/ListHeader";
 import NewKitForms from "./Forms/NewKitForms";
 import {base_url} from "../../env_variables";
 import {api, todoistProjectId} from "../../Todoist";
+import {adminPage, currentlyLoggedIn} from "../Login/Login";
+import {useNavigate} from 'react-router-dom'
 
 //TODO update add kit form
 //TODO add create accessory form(s)
@@ -23,6 +25,8 @@ const Gear = () => {
         camera: []
     }
     const [listType, setListType] = useState('kit')
+    let navigate = useNavigate()
+    adminPage(navigate)
     // useEffect(() => {
     //     api.addTask({
     //         content: 'Transfer to Tulsa',
@@ -55,7 +59,7 @@ const Gear = () => {
     console.log("CAMERAS:", data.camera)
     return (
         <>
-            <div style={{height: '60px'}} className={'d-flex flex-row justify-content-center'}>
+            <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>
             <div className={'mantis-modal row d-flex justify-content-center overflow-hidden'}>
