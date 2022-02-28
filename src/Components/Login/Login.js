@@ -62,7 +62,7 @@ const Login = () => {
                 <div
                     className={'page-container rounded col-md-4 col-sm-12 shadow d-flex flex-column justify-content-around align-items-center'}
                     style={{height: '400px'}}>
-                    <h1>LOGIN YOU DUMB BITCH</h1>
+                    <h1>LOGIN</h1>
                     <GoogleLogin
                         clientId={process.env.NODE_ENV === 'production' ? "799204705697-g9apm6caa8g9k4097sdtdho0nlcroquk.apps.googleusercontent.com" : "799204705697-sgs81tdg4oh6lshbsckpst74qqrd6f42.apps.googleusercontent.com"}
                         buttonText="Login"
