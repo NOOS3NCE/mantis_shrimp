@@ -9,11 +9,11 @@ const MantisSidebar = () => {
             <div
                 className={'shadow mantis-sidebar main-sidebar bg-glass sticky-top d-flex flex-column align-content-center min-vh-100 justify-content-between'}>
                 <div>
-                    {!currentlyLoggedIn()[0]?.user_id &&
+                    {!currentlyLoggedIn()[0]?.user_firstname &&
                     <NavLink to={'/login'}
                              className={`sb-item p-3 d-flex flex-column align-items-center justify-items-center`}>
                         <p>LOGIN</p></NavLink>}
-                    {currentlyLoggedIn()[0]?.user_id &&
+                    {currentlyLoggedIn()[0]?.user_firstname &&
                     <NavLink to={`/user/${currentlyLoggedIn()[0]?.user_id}`}
                              className={`sb-item p-3 d-flex flex-column align-items-center justify-items-center`}>
                         <div className={'col-12 d-flex flex-row justify-content-around align-items-center'}>
