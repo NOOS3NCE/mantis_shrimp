@@ -5,7 +5,7 @@ import {Close} from "@mui/icons-material";
 import {useForm} from "react-hook-form";
 import {base_url} from "../../../env_variables";
 
-const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) => {
+const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [lenses, setLenses] = useState([])
     const {handleSubmit, register} = useForm()
 
@@ -48,7 +48,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender}) =>
                         axios.post(`${base_url}mantis_api/history`, history)
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
-                        setLensOpen(!lensOpen)
+                        setLensOpen(defaultOpen)
                         kitsRefresh(!kitsRerender)
                     })
                     .catch(err => console.log(err))

@@ -6,22 +6,25 @@ import GearListCard from "../Cards/GearListCard";
 import StatusCard from "../Cards/StatusCard";
 import {Button} from "@mui/material";
 import NewLensForm from "../Forms/NewLensForm";
-import {AddCircleOutlined} from "@mui/icons-material";
 import PageHeader from "./PageHeader";
 import {base_url} from "../../../env_variables";
 import NewCameraForm from "../Forms/NewCameraForm";
 import {api} from "../../../Todoist";
 import {adminPage} from "../../Login/Login";
 import SectionHeader from "../Cards/SectionHeader";
+import LoadOutForm from "../Forms/LoadOutForm";
 
 const PackDetail = () => {
     let navigate = useNavigate()
     adminPage(navigate)
     const {id} = useParams()
+    const defaultOpen = {
+        lens: false,
+        camera: false,
+        loadOut: false,
+    }
     const [kit, setKit] = useState({})
-    const [open, setOpen] = useState(false)
-    const [lensOpen, setLensOpen] = useState(false)
-    const [cameraOpen, setCameraOpen] = useState(false)
+    const [open, setOpen] = useState(defaultOpen)
     const [cities, setCities] = useState([])
     const [kitRerender, kitRefresh] = useState(true)
     const [history, setHistory] = useState([])
@@ -48,8 +51,13 @@ const PackDetail = () => {
             .catch(err => console.log(err))
     }, [kitRerender])
 
-
-    console.log("TODOS", todos)
+    const loadInKit = () => {
+        axios.patch(`${base_url}mantis_api/kit/loadin`, {params: {kit_id: parseInt(id)}})
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+        console.log("KIT LOADED IN")
+        window.location.reload(false);
+    }
     return (
         <>
 
@@ -57,30 +65,43 @@ const PackDetail = () => {
                 <PageHeader title={kit?.kit_display?.toUpperCase()}/>
             </div>
             <div className={`col d-flex flex-row justify-content-center`}>
-                {lensOpen &&
+                {open.lens &&
                 <div className={'page-container col-4 rounded mx-0'}>
-                    < NewLensForm setLensOpen={setLensOpen} lensOpen={lensOpen} kitsRefresh={kitRefresh}
+                    < NewLensForm setLensOpen={setOpen} defaultOpen={defaultOpen}
+                                  kitsRefresh={kitRefresh}
                                   kitsRerender={kitRerender}
                                   kit={kit}/>
                 </div>}
-                {cameraOpen &&
+                {open.camera &&
                 <div className={'page-container col-4 rounded mx-0'}>
-                    <NewCameraForm setCameraOpen={setCameraOpen} cameraOpen={cameraOpen} kitsRefresh={kitRefresh}
+                    <NewCameraForm setCameraOpen={setOpen} defaultOpen={defaultOpen}
+                                   kitsRefresh={kitRefresh}
                                    kitsRerender={kitRerender} kit={kit}/>
+                </div>}
+                {open.loadOut &&
+                <div className={'page-container col-4 rounded mx-0'}>
+                    <LoadOutForm setUserOpen={setOpen} defaultOpen={defaultOpen}
+                                 kitRefresh={kitRefresh}
+                                 kitRerender={kitRerender} kit={kit}/>
                 </div>}
                 <div className={'col-8 d-flex justify-content-center'}>
                     <div
                         className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
                         <div className={'row d-flex justify-content-end p-3 pb-1'}>
-                            <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
-                                    className={'zoom bg-secondary col-4 m-2'}>LOAD
-                                OUT</Button>
+                            {kit?.user_id && <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
+                                                     className={'zoom bg-secondary col-4 m-2'}
+                                                     onClick={loadInKit}>LOAD
+                                IN</Button>
+                            }
+                            {!kit?.user_id && <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
+                                                      className={'zoom bg-secondary col-4 m-2'}
+                                                      onClick={() => setOpen({...defaultOpen, loadOut: true})}>LOAD
+                                OUT</Button>}
                         </div>
                         <div className={'row flex-wrap'}>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                                 <InfoCard header={<SectionHeader title={'INFO'}/>}
-                                          kit={kit} setOpen={setOpen}
-                                          open={open} todos={todos}/>
+                                          kit={kit} todos={todos}/>
                             </div>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
                                 <StatusCard header={<SectionHeader title={'HISTORY'}/>} data={history}/>
@@ -94,8 +115,7 @@ const PackDetail = () => {
                                         title={'CAMERAS'}
                                         button buttonText={'ADD CAMERA'}
                                         buttonOnClick={() => {
-                                            setLensOpen(false)
-                                            setCameraOpen(!cameraOpen)
+                                            setOpen({...defaultOpen, camera: true})
                                         }}/>}
                                 />
                             </div>
@@ -106,8 +126,7 @@ const PackDetail = () => {
                                         title={'LENSES'}
                                         button buttonText={'ADD LENS'}
                                         buttonOnClick={() => {
-                                            setCameraOpen(false)
-                                            setLensOpen(!lensOpen)
+                                            setOpen({...defaultOpen, lens: true})
                                         }}/>}
                                 />
                             </div>

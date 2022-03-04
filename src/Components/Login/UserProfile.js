@@ -12,6 +12,7 @@ const UserProfile = () => {
     const userLogout = () => {
         sessionStorage.setItem('user', JSON.stringify(blankUser))
         navigate('/login')
+        window.location.reload(false);
     }
     return (
         <>

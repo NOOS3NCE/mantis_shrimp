@@ -5,7 +5,7 @@ import {base_url} from "../../../env_variables";
 import {Button, MenuItem, TextField} from "@mui/material";
 import {Close} from "@mui/icons-material";
 
-const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender}) => {
+const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [cameras, setCameras] = useState([])
     const {handleSubmit, register, watch} = useForm()
     const [models, setModels] = useState([])
@@ -62,7 +62,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                         axios.post(`${base_url}mantis_api/history`, history)
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
-                        setCameraOpen(!cameraOpen)
+                        setCameraOpen(defaultOpen)
                         kitsRefresh(!kitsRerender)
                     })
                     .catch(err => console.log(err))
@@ -97,7 +97,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
     return (
         <>
             <div className={'row d-flex justify-content-between m-0 p-0'}>
-                <h4 className={'col m-1 text-center'}>ADD LENS</h4>
+                <h4 className={'col m-1 text-center'}>ADD CAMERA</h4>
                 <Button className={'col-1 p-0 m-0'} size={'small'} style={{'width': '5px'}}
                         onClick={() => setCameraOpen(!cameraOpen)}><Close/></Button>
             </div>

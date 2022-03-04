@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 export const blankUser = {
     user_admin_level: ''
 }
+console.log("ENV :", process.env.NODE_ENV)
 export const adminLevels = ['dev', 'manager']
 export const adminPage = (navigate) => {
     if (!adminLevels.includes(currentlyLoggedIn()[0]?.user_auth_level)) {
@@ -16,6 +17,7 @@ export const adminPage = (navigate) => {
 }
 
 export const currentlyLoggedIn = () => {
+    !sessionStorage.getItem('user') && sessionStorage.setItem('user', JSON.stringify({}))
     return JSON.parse(sessionStorage.getItem('user'))
 }
 
@@ -42,7 +44,7 @@ const Login = () => {
 
         let currentUser = users.filter(user => user.user_google_id === profileObj.googleId)
         console.log("CURRENT USER:", currentUser)
-        currentUser?.length > 0 ? sessionStorage.setItem('user', JSON.stringify(currentUser))
+        currentUser?.length ? sessionStorage.setItem('user', JSON.stringify(currentUser))
             : axios.post(`${base_url}mantis_api/user`, newUserObj)
                 .then(res => {
                     console.log("NEW USER OBJ:", newUserObj)
@@ -50,6 +52,7 @@ const Login = () => {
                     console.log("SUCCESSFUL NEW USER: ", res)
                 })
         navigate('/')
+        window.location.reload(false);
     }
 
     return (
