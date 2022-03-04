@@ -88,12 +88,12 @@ const PackDetail = () => {
                     <div
                         className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
                         <div className={'row d-flex justify-content-end p-3 pb-1'}>
-                            {kit?.user_id && <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
+                            {kit?.user_id ?? <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
                                                      className={'zoom bg-secondary col-4 m-2'}
                                                      onClick={loadInKit}>LOAD
                                 IN</Button>
                             }
-                            {!kit?.user_id && <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
+                            {!kit?.user_id ?? <Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
                                                       className={'zoom bg-secondary col-4 m-2'}
                                                       onClick={() => setOpen({...defaultOpen, loadOut: true})}>LOAD
                                 OUT</Button>}
