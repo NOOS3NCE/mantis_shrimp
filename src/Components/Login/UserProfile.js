@@ -4,6 +4,7 @@ import SectionHeader from "../Gear/Cards/SectionHeader";
 import UserInfoCard from "./UserInfoCard";
 import {useNavigate} from "react-router-dom";
 import {blankUser} from "./Login";
+import GearListCard from "../Gear/Cards/GearListCard";
 
 const UserProfile = () => {
     const user = JSON.parse(sessionStorage.getItem('user'))[0]
@@ -27,6 +28,22 @@ const UserProfile = () => {
                                                              buttonText={'LOG OUT'}
                                                              buttonOnClick={() => userLogout()}/>}
                                       user={user}/>
+                    </div>
+                    <div className={'row flex-wrap'}>
+                        <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <GearListCard
+                                header={<SectionHeader
+                                    title={'GEAR'}
+                                />}
+                            />
+                        </div>
+                        <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <GearListCard
+                                header={<SectionHeader
+                                    title={'SHOOTS'}
+                                />}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

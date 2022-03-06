@@ -10,6 +10,7 @@ import Sales from "./Components/Sales/Sales";
 import NewEvent from "./Components/Sales/Event/NewEvent";
 import Login from "./Components/Login/Login";
 import UserProfile from "./Components/Login/UserProfile";
+import MantisChat from "./Components/MantisChat";
 
 function App() {
     const darkTheme = createTheme({
@@ -51,6 +52,7 @@ function App() {
                             <MantisSidebar/>
                         </div>}
                         <div className={`col-${width > 764 ? '11' : '12'}`}>
+                            <MantisChat/>
                             <Routes>
                                 <Route path={"/"} element={<Home/>}/>
                                 <Route path={"/gear"} element={<Gear/>}/>

@@ -13,6 +13,7 @@ import {api} from "../../../Todoist";
 import {adminPage} from "../../Login/Login";
 import SectionHeader from "../Cards/SectionHeader";
 import LoadOutForm from "../Forms/LoadOutForm";
+import LoadInForm from "../Forms/LoadInForm";
 
 const PackDetail = () => {
     let navigate = useNavigate()
@@ -22,6 +23,7 @@ const PackDetail = () => {
         lens: false,
         camera: false,
         loadOut: false,
+        loadIn: false,
     }
     const [kit, setKit] = useState({})
     const [open, setOpen] = useState(defaultOpen)
@@ -60,29 +62,34 @@ const PackDetail = () => {
     }
     return (
         <>
-
             <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={kit?.kit_display?.toUpperCase()}/>
             </div>
-            <div className={`col d-flex flex-row justify-content-center`}>
+            <div className={`col d-flex flex-row justify-content-center align-items-start`}>
                 {open.lens &&
-                <div className={'page-container col-4 rounded mx-0'}>
+                <div className={'form-container col-4 rounded mx-0 '}>
                     < NewLensForm setLensOpen={setOpen} defaultOpen={defaultOpen}
                                   kitsRefresh={kitRefresh}
                                   kitsRerender={kitRerender}
                                   kit={kit}/>
                 </div>}
                 {open.camera &&
-                <div className={'page-container col-4 rounded mx-0'}>
+                <div className={'form-container col-4 rounded mx-0 '}>
                     <NewCameraForm setCameraOpen={setOpen} defaultOpen={defaultOpen}
                                    kitsRefresh={kitRefresh}
                                    kitsRerender={kitRerender} kit={kit}/>
                 </div>}
                 {open.loadOut &&
-                <div className={'page-container col-4 rounded mx-0'}>
+                <div className={'form-container col-4 rounded mx-0 '}>
                     <LoadOutForm setUserOpen={setOpen} defaultOpen={defaultOpen}
                                  kitRefresh={kitRefresh}
                                  kitRerender={kitRerender} kit={kit}/>
+                </div>}
+                {open.loadIn &&
+                <div className={'form-container col-4 rounded mx-0 '}>
+                    <LoadInForm setLoadInOpen={setOpen} defaultOpen={defaultOpen}
+                                kitRefresh={kitRefresh}
+                                kitRerender={kitRerender} kit={kit}/>
                 </div>}
                 <div className={'col-8 d-flex justify-content-center'}>
                     <div
@@ -91,7 +98,7 @@ const PackDetail = () => {
                             {kit?.user_id !== null &&
                             < Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
                                      className={'zoom bg-secondary col-4 m-2'}
-                                     onClick={loadInKit}>LOAD
+                                     onClick={() => setOpen({...defaultOpen, loadIn: true})}>LOAD
                                 IN</Button>
                             }
                             {kit?.user_id === null &&
@@ -118,6 +125,28 @@ const PackDetail = () => {
                                         button buttonText={'ADD CAMERA'}
                                         buttonOnClick={() => {
                                             setOpen({...defaultOpen, camera: true})
+                                        }}/>}
+                                />
+                            </div>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                                <GearListCard
+                                    items={kit.lenses}
+                                    header={<SectionHeader
+                                        title={'LENSES'}
+                                        button buttonText={'ADD LENS'}
+                                        buttonOnClick={() => {
+                                            setOpen({...defaultOpen, lens: true})
+                                        }}/>}
+                                />
+                            </div>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                                <GearListCard
+                                    items={kit.lenses}
+                                    header={<SectionHeader
+                                        title={'LENSES'}
+                                        button buttonText={'ADD LENS'}
+                                        buttonOnClick={() => {
+                                            setOpen({...defaultOpen, lens: true})
                                         }}/>}
                                 />
                             </div>
