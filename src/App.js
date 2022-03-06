@@ -52,7 +52,6 @@ function App() {
                             <MantisSidebar/>
                         </div>}
                         <div className={`col-${width > 764 ? '11' : '12'}`}>
-                            <MantisChat/>
                             <Routes>
                                 <Route path={"/"} element={<Home/>}/>
                                 <Route path={"/gear"} element={<Gear/>}/>
