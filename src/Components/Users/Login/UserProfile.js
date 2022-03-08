@@ -1,10 +1,10 @@
 import React from "react";
-import PageHeader from "../Gear/Pages/PageHeader";
-import SectionHeader from "../Gear/Cards/SectionHeader";
-import UserInfoCard from "./UserInfoCard";
+import PageHeader from "../../Gear/Pages/PageHeader";
+import SectionHeader from "../../Gear/Cards/SectionHeader";
+import UserInfoCard from "../UserInfoCard";
 import {useNavigate} from "react-router-dom";
 import {blankUser} from "./Login";
-import GearListCard from "../Gear/Cards/GearListCard";
+import GearListCard from "../../Gear/Cards/GearListCard";
 
 const UserProfile = () => {
     const user = JSON.parse(sessionStorage.getItem('user'))[0]

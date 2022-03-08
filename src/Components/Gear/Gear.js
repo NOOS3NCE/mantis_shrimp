@@ -7,7 +7,7 @@ import ListHeader from "./Lists/ListHeader";
 import NewKitForms from "./Forms/NewKitForms";
 import {base_url} from "../../env_variables";
 import {api, todoistProjectId} from "../../Todoist";
-import {adminPage, currentlyLoggedIn} from "../Login/Login";
+import {adminPage, currentlyLoggedIn} from "../Users/Login/Login";
 import {useNavigate} from 'react-router-dom'
 
 //TODO update add kit form
@@ -22,11 +22,19 @@ const Gear = () => {
     const headers = {
         kit: ['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'],
         lens: ['LENS', 'KIT', 'BRAND', 'MODEL'],
-        camera: []
+        camera: ['CAMERA', 'KIT', 'BRAND', 'MODEL']
+    }
+    const columns = {
+        kit: ['kit_display', 'city_code', 'kit_type', 'kit_status', 'user_firstname'],
+        lens: ['lens_display', 'kit_display', 'lens_brand', 'lens_model'],
+        camera: ['camera_display', 'kit_display', 'camera_brand', 'camera_model'],
     }
     const [listType, setListType] = useState('kit')
+    const [listStateType, setListStateType] = useState('')
+    const [cities, setCities] = useState([])
     let navigate = useNavigate()
     adminPage(navigate)
+
     // useEffect(() => {
     //     api.addTask({
     //         content: 'Transfer to Tulsa',
@@ -44,7 +52,8 @@ const Gear = () => {
         Promise.all([
             axios.get(`${base_url}mantis_api/kit`),
             axios.get(`${base_url}mantis_api/lens`),
-            axios.get(`${base_url}mantis_api/camera`)
+            axios.get(`${base_url}mantis_api/camera`),
+            axios.get(`${base_url}mantis_api/cities`)
         ])
             .then(res => {
                 setData({
@@ -52,6 +61,7 @@ const Gear = () => {
                     lens: res[1].data,
                     camera: res[2].data
                 })
+                setCities(res[3].data)
             }, rej => console.log(rej))
             .catch(err => console.log(err))
         setOpen(false)
@@ -70,17 +80,19 @@ const Gear = () => {
                 <div className={`page-container col-${open ? '6' : '10'} rounded`}>
                     <FilterListHeader setUnderlineFilter={setUnderlineFilter}
                                       underlineFilter={underlineFilter}
-                                      data={data[listType]}
+                                      data={data[listType]?.filter(item => listStateType !== '' ? item?.city_code === listStateType : true)}
                                       setOpen={() => setOpen}
                                       open={open}
                                       setListType={setListType}
-                                      listType={listType}/>
+                                      setCity={setListStateType}
+                                      cities={cities}/>
                     <ListHeader headers={headers[listType]}/>
                     <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
                          style={{maxHeight: '73vh'}}>
-                        {data[listType]?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).map((kit, index) =>
+                        {data[listType]?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).filter(item => listStateType !== '' ? item?.city_code === listStateType : true).map((kit, index) =>
                             <MantisCard
-                                data={kit} id={kit[`${listType}_id`]} key={index}/>)}
+                                data={kit} id={kit[`${listType}_id`]} key={index} image={kit[`${listType}_img`]}
+                                columns={columns[listType]}/>)}
                     </div>
                 </div>
             </div>

@@ -15,16 +15,24 @@ const LoadOutForm = (props) => {
             .then(res => setUsers(res.data))
             .catch(err => console.log(err))
     }, [])
-
+    console.log("USER DATA: ", users)
     const loadOutKit = (data) => {
         let loadOutData = {
             ...data, kit_id: kit?.kit_id
         }
+        let userData = {
+            user_id: users.filter(user => user.user_id === data.user_id)[0].user_id,
+            kit_id: kit.kit_id
+        }
+        console.log("USER LOAD OUT: ", {params: userData})
         setUserOpen(defaultOpen)
-        console.log("KIT LOADED OUT", loadOutData)
+
         axios.patch(`${base_url}mantis_api/kit/loadout`, {params: loadOutData})
             .then(res => console.log(res))
-            .catch(res => console.log(res))
+            .catch(err => console.log(err))
+        axios.patch(`${base_url}mantis_api/user/kit`, {params: userData})
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
         kitRefresh(!kitRerender)
     }
 

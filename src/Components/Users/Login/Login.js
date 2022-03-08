@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {GoogleLogin} from 'react-google-login';
-import PageHeader from "../Gear/Pages/PageHeader";
+import PageHeader from "../../Gear/Pages/PageHeader";
 import axios from "axios";
-import {base_url} from "../../env_variables";
+import {base_url} from "../../../env_variables";
 import {useNavigate} from "react-router-dom";
 
 export const blankUser = {

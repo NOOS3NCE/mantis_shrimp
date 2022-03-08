@@ -4,10 +4,12 @@ import {Button, MenuItem, TextField} from "@mui/material";
 import {Close} from "@mui/icons-material";
 import {useForm} from "react-hook-form";
 import {base_url} from "../../../env_variables";
+import {currentlyLoggedIn} from "../../Users/Login/Login";
 
 const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [lenses, setLenses] = useState([])
     const {handleSubmit, register} = useForm()
+    const currentUser = currentlyLoggedIn()[0]
 
     //Pull all Lenses from DB
     useEffect(() => {
@@ -18,14 +20,15 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, def
     }, [kitsRefresh])
 
     const onSubmitNewLens = (data) => {
+        let headers = process.env.NODE_ENV !== 'development' ? {
+            'Authorization': 'Client-ID f6dcfaa003fd756',
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
+        } : {}
         let config = {
             method: 'post',
             url: process.env.NODE_ENV === 'development' ? `${base_url}mantis_api/imgurfake` : 'https://api.imgur.com/3/image',
-            headers: {
-                'Authorization': 'Client-ID f6dcfaa003fd756',
-                'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data'
-            },
+            headers: headers,
             data: data.lens_image[0]
         };
         data.kit_id = kit.kit_id
@@ -41,7 +44,7 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, def
                             lens_id: res?.data?.rows[0]?.lens_id,
                             history_message: "New lens added to kit",
                             history_target: kit?.kit_display,
-                            history_sender: "Mike C.",
+                            history_sender: `${currentUser?.user_firstname} ${currentUser?.user_lastname.slice(0, 1)}.`,
                             history_title: "LENS ADDED TO"
                         }
                         console.log("HISTORY: ", history)

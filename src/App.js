@@ -8,9 +8,11 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import Schedule from "./Components/Schedule/Schedule";
 import Sales from "./Components/Sales/Sales";
 import NewEvent from "./Components/Sales/Event/NewEvent";
-import Login from "./Components/Login/Login";
-import UserProfile from "./Components/Login/UserProfile";
+import Login from "./Components/Users/Login/Login";
+import UserProfile from "./Components/Users/Login/UserProfile";
 import MantisChat from "./Components/MantisChat";
+import UserDetails from "./Components/Users/UserDetails";
+import UserList from "./Components/Users/UserList";
 
 function App() {
     const darkTheme = createTheme({
@@ -60,7 +62,9 @@ function App() {
                                 <Route path={"/sales"} element={<Sales/>}/>
                                 <Route path={"/sales/event/new"} element={<NewEvent/>}/>
                                 <Route path={"/login"} element={<Login/>}/>
-                                <Route path={"/user/:id"} element={<UserProfile/>}/>
+                                <Route path={"/user"} element={<UserList/>}/>
+                                <Route path={"/user/me"} element={<UserProfile/>}/>
+                                <Route path={"/user/:id"} element={<UserDetails/>}/>
                             </Routes>
                         </div>
                     </Router>

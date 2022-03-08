@@ -4,12 +4,14 @@ import axios from "axios";
 import {base_url} from "../../../env_variables";
 import {Button, MenuItem, TextField} from "@mui/material";
 import {Close} from "@mui/icons-material";
+import {currentlyLoggedIn} from "../../Users/Login/Login";
 
 const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [cameras, setCameras] = useState([])
     const {handleSubmit, register, watch} = useForm()
     const [models, setModels] = useState([])
     const brand = watch("camera_brand")
+    const currentUser = currentlyLoggedIn()[0]
 
     //watch brand to set models
     useEffect(() => {
@@ -29,14 +31,15 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
     }, [kitsRefresh])
 
     const onSubmitNewCamera = (data) => {
+        let headers = process.env.NODE_ENV !== 'development' ? {
+            'Authorization': 'Client-ID f6dcfaa003fd756',
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
+        } : {}
         let config = {
             method: 'post',
             url: process.env.NODE_ENV === 'development' ? `${base_url}mantis_api/imgurfake` : 'https://api.imgur.com/3/image',
-            headers: {
-                'Authorization': 'Client-ID f6dcfaa003fd756',
-                'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data'
-            },
+            headers: headers,
             data: data.camera_image[0]
         };
         axios(config)
@@ -55,12 +58,12 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                             camera_id: res?.data?.rows[0]?.camera_id,
                             history_message: "New camera added to kit",
                             history_target: kit.kit_display,
-                            history_sender: "Mike C.",
+                            history_sender: `${currentUser?.user_firstname} ${currentUser?.user_lastname.slice(0, 1)}.`,
                             history_title: "CAMERA ADDED TO"
                         }
                         console.log("HISTORY: ", history)
                         axios.post(`${base_url}mantis_api/history`, history)
-                            .then(res => console.log(res))
+                            .then(res => console.log("HISTORY FOR ADD CAMERA", res))
                             .catch(err => console.log(err))
                         setCameraOpen(defaultOpen)
                         kitsRefresh(!kitsRerender)

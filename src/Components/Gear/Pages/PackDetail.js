@@ -10,7 +10,7 @@ import PageHeader from "./PageHeader";
 import {base_url} from "../../../env_variables";
 import NewCameraForm from "../Forms/NewCameraForm";
 import {api} from "../../../Todoist";
-import {adminPage} from "../../Login/Login";
+import {adminPage} from "../../Users/Login/Login";
 import SectionHeader from "../Cards/SectionHeader";
 import LoadOutForm from "../Forms/LoadOutForm";
 import LoadInForm from "../Forms/LoadInForm";
@@ -74,7 +74,7 @@ const PackDetail = () => {
                                   kit={kit}/>
                 </div>}
                 {open.camera &&
-                <div className={'form-container col-4 rounded mx-0 '}>
+                <div className={'form-container col-4 rounded mx-0'}>
                     <NewCameraForm setCameraOpen={setOpen} defaultOpen={defaultOpen}
                                    kitsRefresh={kitRefresh}
                                    kitsRerender={kitRerender} kit={kit}/>
