@@ -41,9 +41,9 @@ const Schedule = () => {
             </div>
             <div className={'d-flex col-12 flex-row justify-content-center'}>
                 <div className={'page-container col-10 rounded'}>
-
                     <Button variant={'contained'} className={'bg-mint'}>ADD CLIENT</Button>
-                    <div className={`row d-flex justify-content-evenly col-12 text-white m-auto`}>
+                    <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
+                         style={{maxHeight: '84vh'}}>
                         {events?.map((event, index) =>
                             <EventCard/>)}
                     </div>
