@@ -47,7 +47,7 @@ const UserList = () => {
                             <MantisCard
                                 data={user} id={user?.user_id} key={index}
                                 image={user?.user_img !== null ? user?.user_img : 'https://i.imgur.com/9LDfN2H.png'}
-                                columns={columns}/>)}
+                                columns={columns} link={'/user/'}/>)}
                     </div>
                 </div>
             </div>
