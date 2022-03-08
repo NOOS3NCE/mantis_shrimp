@@ -17,17 +17,18 @@ const Schedule = () => {
 
     useEffect(() => {
         Promise.all([
+            axios.get(`${base_url}mantis_api/client`),
             axios.get(`${base_url}mantis_api/event`),
-            axios.get(`${base_url}mantis_api/client`)
+
         ])
             .then(res => {
-                setEvents(res[0].data.map(event => ({
+                setEvents(res[1].data.map(event => ({
                     ...event,
-                    primary_client_firstname: res[1]?.data?.filter(data => data.event_id === event.event_id)[0]?.client_firstname,
-                    secondary_client_firstname: res[1]?.data?.filter(data => data.event_id === event.event_id)[1]?.client_firstname,
+                    primary_client_firstname: res[0].data.filter(data => data.event_id === event.event_id)[0].client_firstname,
+                    secondary_client_firstname: res[0].data.filter(data => data.event_id === event.event_id)[1].client_firstname,
                     event_date: dayjs(event.event_date).format('MM/DD/YY')
                 })))
-                setClients(res[1].data)
+                setClients(res[0].data)
             }, rej => console.log(rej))
             .catch(err => console.log(err))
     }, [])
