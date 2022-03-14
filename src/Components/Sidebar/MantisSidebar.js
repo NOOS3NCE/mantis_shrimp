@@ -7,7 +7,7 @@ const MantisSidebar = () => {
     return (
         <>
             <div
-                className={'shadow mantis-sidebar main-sidebar bg-glass sticky-top d-flex flex-column align-content-center min-vh-100 justify-content-between'}>
+                className={'shadow mantis-sidebar main-sidebar bg-midnight sticky-top d-flex flex-column align-content-center min-vh-100 justify-content-between'}>
                 <div>
                     {!currentlyLoggedIn()[0]?.user_firstname &&
                     <NavLink to={'/login'}

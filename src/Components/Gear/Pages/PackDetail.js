@@ -91,7 +91,7 @@ const PackDetail = () => {
                                 kitRefresh={kitRefresh}
                                 kitRerender={kitRerender} kit={kit}/>
                 </div>}
-                <div className={'col-8 d-flex justify-content-center'}>
+                <div className={'d-flex justify-content-center'}>
                     <div
                         className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
                         <div className={'row d-flex justify-content-end p-3 pb-1'}>
@@ -113,7 +113,8 @@ const PackDetail = () => {
                                           kit={kit} todos={todos}/>
                             </div>
                             <div className={'col-md-6 col-sm-12  m-0 p-2'}>
-                                <StatusCard header={<SectionHeader title={'HISTORY'}/>} data={history}/>
+                                <StatusCard header={<SectionHeader className={'m-1'} title={'HISTORY'}/>}
+                                            data={history}/>
                             </div>
                         </div>
                         <div className={'row flex-wrap'}>

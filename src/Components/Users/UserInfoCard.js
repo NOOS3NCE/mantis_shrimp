@@ -9,6 +9,7 @@ const UserInfoCard = (props) => {
     const [users, setUsers] = useState()
 
     useEffect(() => {
+        if (user === undefined) return
         Promise.all([
             axios.get(`${base_url}mantis_api/cities`),
             axios.get(`${base_url}mantis_api/user/${user?.user_id}`)
@@ -24,7 +25,7 @@ const UserInfoCard = (props) => {
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [user])
 
     console.log("USER:", user)
     return (

@@ -46,14 +46,14 @@ function App() {
     return (
         <ThemeProvider theme={darkTheme}>
             <div className="App">
-                <div className={'row text-white'}>
+                <div className={'col d-flex flex-row text-white'}>
                     <Router>
                         {width > 764 &&
                         <div
-                            className={'col-1'}>
+                            className={'col-1 m-0 p-0'}>
                             <MantisSidebar/>
                         </div>}
-                        <div className={`col-${width > 764 ? '11' : '12'}`}>
+                        <div className={`col p-0 m-0`}>
                             <Routes>
                                 <Route path={"/"} element={<Home/>}/>
                                 <Route path={"/gear"} element={<Gear/>}/>

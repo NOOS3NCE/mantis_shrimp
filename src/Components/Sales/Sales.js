@@ -13,7 +13,7 @@ const Schedule = () => {
     // let faker = require('faker');
     const [events, setEvents] = useState([])
     const [clients, setClients] = useState([])
-    const columns = ["event_date", "primary_client_firstname", "secondary_client_firstname", "venue_name", "venue_city", "venue_state"]
+    const columns = ["event_date", "primary_client_firstname", "venue_name", "venue_city", "venue_state"]
 
     useEffect(() => {
         Promise.all([
@@ -23,8 +23,7 @@ const Schedule = () => {
             .then(res => {
                 setEvents(res[0].data.map(event => ({
                     ...event,
-                    primary_client_firstname: res[1].data?.filter(data => data.event_id === event.event_id)[0]?.client_firstname,
-                    secondary_client_firstname: res[1].data?.filter(data => data.event_id === event.event_id)[1]?.client_firstname,
+                    primary_client_firstname: `${res[1].data?.filter(data => data.event_id === event.event_id)[0]?.client_firstname} & ${res[1].data?.filter(data => data.event_id === event.event_id)[1]?.client_firstname}`,
                     event_date: dayjs(event.event_date).format('MM/DD/YY')
                 })))
                 setClients(res[1].data)
@@ -60,7 +59,7 @@ const Schedule = () => {
                         <Button variant={'contained'} className={'bg-mint text-decoration-none'}>ADD EVENT</Button>
                     </Link>
                     <div>
-                        <ListHeader headers={["Event Date", "Bride", "Groom", "Venue", "City", "State"]} offset={0}
+                        <ListHeader headers={["Event Date", "Couple", "Venue", "City", "State"]} offset={0}
                                     justify={'start'}/>
                         <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
                              style={{maxHeight: '73vh'}}>

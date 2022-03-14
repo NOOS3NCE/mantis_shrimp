@@ -19,6 +19,8 @@ const Gear = () => {
     const [kitsRerender, kitsRefresh] = useState(true)
     const [open, setOpen] = useState(false)
     const [underlineFilter, setUnderlineFilter] = useState('')
+    const [searchQuery, setSearchQuery] = useState()
+
     const headers = {
         kit: ['KIT', 'CITY', 'TYPE', 'STATUS', 'SHOOTER'],
         lens: ['LENS', 'KIT', 'BRAND', 'MODEL'],
@@ -32,6 +34,8 @@ const Gear = () => {
     const [listType, setListType] = useState('kit')
     const [listStateType, setListStateType] = useState('')
     const [cities, setCities] = useState([])
+    const [loading, setLoading] = useState(true)
+    let searchedData = []
     let navigate = useNavigate()
     adminPage(navigate)
 
@@ -46,7 +50,10 @@ const Gear = () => {
     //         .then((task) => console.log(task))
     //         .catch((error) => console.log(error))
     // }, [])
-
+    if (data) {
+        let newData = data[listType]
+        searchedData = newData?.filter(pack => JSON.stringify(Object.values(pack)?.filter(item => item !== null)).toLowerCase().includes(searchQuery?.target?.value.toLowerCase() || ''))
+    }
     //Pull all kits from DB
     useEffect(() => {
         Promise.all([
@@ -56,15 +63,17 @@ const Gear = () => {
             axios.get(`${base_url}mantis_api/cities`)
         ])
             .then(res => {
+                setLoading(false)
                 setData({
                     kit: res[0].data,
                     lens: res[1].data,
-                    camera: res[2].data
+                    camera: res[2].data,
                 })
                 setCities(res[3].data)
             }, rej => console.log(rej))
             .catch(err => console.log(err))
         setOpen(false)
+        searchedData = [data[listType]]
     }, [kitsRerender])
     console.log("CAMERAS:", data.camera)
     return (
@@ -72,24 +81,26 @@ const Gear = () => {
             <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>
-            <div className={'mantis-modal row d-flex justify-content-center overflow-hidden'}>
+            <div className={'col flex-row d-flex justify-content-center overflow-hidden'}>
                 {open &&
                 <div className={'page-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
                 </div>}
-                <div className={`page-container col-${open ? '6' : '10'} rounded`}>
+                <div className={`page-container rounded`}>
                     <FilterListHeader setUnderlineFilter={setUnderlineFilter}
                                       underlineFilter={underlineFilter}
-                                      data={data[listType]?.filter(item => listStateType !== '' ? item?.city_code === listStateType : true)}
+                                      data={searchedData?.filter(item => listStateType !== '' ? item?.city_code === listStateType : true)}
                                       setOpen={() => setOpen}
                                       open={open}
                                       setListType={setListType}
                                       setCity={setListStateType}
-                                      cities={cities}/>
+                                      cities={cities}
+                                      searchQuery={setSearchQuery}
+                                      callback={() => setLoading(true)}/>
                     <ListHeader headers={headers[listType]}/>
                     <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
                          style={{maxHeight: '73vh'}}>
-                        {data[listType]?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).filter(item => listStateType !== '' ? item?.city_code === listStateType : true).map((kit, index) =>
+                        {searchedData?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).filter(item => listStateType !== '' ? item?.city_code === listStateType : true).map((kit, index) =>
                             <MantisCard
                                 data={kit} id={kit[`${listType}_id`]} key={index} image={kit[`${listType}_img`]}
                                 columns={columns[listType]}/>)}

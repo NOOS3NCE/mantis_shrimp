@@ -5,10 +5,11 @@ import {base_url} from "../../../env_variables";
 import {Button, MenuItem, TextField} from "@mui/material";
 import {Close} from "@mui/icons-material";
 import {currentlyLoggedIn} from "../../Users/Login/Login";
+import {MantisDateField, MantisSelect, MantisTextField, MantisUploadField} from "../../Form Components/FormComponents";
 
 const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [cameras, setCameras] = useState([])
-    const {handleSubmit, register, watch} = useForm()
+    const {handleSubmit, register, watch, control} = useForm()
     const [models, setModels] = useState([])
     const brand = watch("camera_brand")
     const currentUser = currentlyLoggedIn()[0]
@@ -107,92 +108,97 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
             <div className={'row p-1 m-1'}>
                 <h5>MOVE EXISTING CAMERA</h5>
                 <div className={'br'}/>
-                <form onSubmit={handleSubmit(onUpdateCamera)}>
-                    <div className={'row m-1'}>
-                        <TextField
-                            {...register(`camera_id`)}
-                            label={"Camera Name"}
-                            size={'small'}
-                            className={'m-1 mx-0 px-0 bg-white rounded col-8'}
-                            required
-                            select>
-                            {cameras.map(camera => <MenuItem
-                                value={camera.camera_id}>{camera.camera_display} ({camera.camera_model}) {camera.kit_display ? ' - ' + camera.kit_display : ''}</MenuItem>)}
-                        </TextField>
-                        <Button size={'small'} className={'col-3 m-1'} variant={'contained'} type={'submit'}>ADD
-                            CAMERA</Button>
+                <form onSubmit={handleSubmit(onUpdateCamera)} className={'p-0 m-0'}>
+                    <div className={'row m-1 mt-2 d-flex flex-wrap justify-content-start'}>
+                        <div className={'col-12 my-2 d-flex align-items-start flex-row'}>
+                            <MantisSelect
+                                name={`camera_id`}
+                                placeHolder={"SELECT CAMERA"}
+                                size={'small'}
+                                required
+                                col={8}
+                                control={control}>
+                                <option key={0} value={''}>SELECT CAMERA</option>
+                                {cameras.map(camera => <option
+                                    value={camera.camera_id}>{camera.camera_display} ({camera.camera_model}) {camera.kit_display ? ' - ' + camera.kit_display : ''}</option>)}
+                            </MantisSelect>
+                            <Button size={'large'} className={'col m-1'} variant={'contained'}
+                                    type={'submit'}>ADD</Button>
+                        </div>
                     </div>
                 </form>
             </div>
             <div className={'row p-1 m-1 mt-4'}>
                 <h5>ADD NEW CAMERA</h5>
                 <div className={'br'}/>
-                <form onSubmit={handleSubmit(onSubmitNewCamera)}>
+                <form onSubmit={handleSubmit(onSubmitNewCamera)} className={'p-0 m-0'}>
                     <div className={'row m-1 mt-2 d-flex flex-wrap justify-content-start'}>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>BRAND</h4>
-                            <TextField
-                                {...register(`camera_brand`)}
-                                label={'BRAND'}
+                            <MantisSelect
+                                name={'camera_brand'}
                                 size={'small'}
-                                className={'m-1 mx-0 px-0 bg-white rounded'}
-                                style={{'min-width': '230px'}}
-                                required
-                                select>
-                                <MenuItem value={'Canon'}>Canon</MenuItem>
-                                <MenuItem value={'Sony'}>Sony</MenuItem>
-                            </TextField>
+                                control={control}
+                                defaultValue={''}
+                                col={12}
+                                required>
+                                <option key={0} value={''}>BRAND</option>
+                                <option key={1} value={'Canon'}>Canon</option>
+                                <option key={2} value={'Sony'}>Sony</option>
+                            </MantisSelect>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>TYPE</h4>
-                            <TextField
-                                {...register(`camera_model`)}
-                                label={'MODEL'}
+                            <MantisSelect
+                                name={`camera_model`}
+                                control={control}
                                 size={'small'}
-                                className={'m-1 mx-0 px-0 bg-white rounded col-9'}
-                                required
-                                style={{'min-width': '230px'}}
-                                select>
-                                {models?.map(model => (
-                                    <MenuItem value={model}>{model}</MenuItem>
+                                defaultValue={''}
+                                col={12}
+                                required>
+                                <option key={0} value={''}>MODEL</option>
+                                {models?.map((model, index) => (
+                                    <option key={index + 1} value={model}>{model}</option>
                                 ))}
-                            </TextField>
+                            </MantisSelect>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>SERIAL</h4>
-                            <TextField
-                                {...register(`camera_serial`)}
-                                label={'SERIAL'}
+                            <MantisTextField
+                                name={`camera_serial`}
                                 size={'small'}
-                                className={'m-1 mx-0 px-0 bg-white rounded'}
-                                style={{'min-width': '230px'}}
+                                control={control}
+                                placeholder={'SERIAL*'}
+                                col={12}
                                 required/>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>PURCHASE DATE</h4>
-                            <TextField
-                                {...register(`camera_purchase_date`)}
+                            <MantisDateField
+                                name={'camera_purchase_date'}
                                 size={'small'}
-                                type={'date'}
-                                className={'m-1 mx-0 px-0 bg-white rounded'}
-                                style={{'min-width': '230px'}}/>
+                                control={control}
+                                col={12}/>
                         </div>
                         <div className={'col-12 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>IMAGE</h4>
-                            <TextField
-                                {...register(`camera_image`)}
+                            <MantisUploadField
+                                name={`camera_image`}
                                 type={'file'}
-                                className={'m-1 mx-0 px-0 bg-white rounded'}
-                                style={{'min-width': '230px'}}/>
+                                col={12}
+                                control={control}
+                                accept={"image/*"}
+                                onChange={(e) => console.log("on change image:", e.target.files[0].name)}/>
+                        </div>
+                        <div className={'col-12 my-2 d-flex align-items-start flex-column'}>
+                            <Button
+                                variant={'contained'}
+                                type={'submit'}
+                                className={'zoom m-1 bg-secondary col-12 my-2'}
+                            >ADD</Button>
                         </div>
                     </div>
-                    <div className={'row d-flex align-content-center justify-content-center m-1'}>
-                        <Button
-                            variant={'contained'}
-                            type={'submit'}
-                            className={'zoom m-1 bg-secondary'}
-                        >ADD</Button>
-                    </div>
+
                 </form>
             </div>
         </>)

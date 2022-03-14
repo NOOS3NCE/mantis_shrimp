@@ -6,7 +6,7 @@ const StatusCard = ({header, data}) => {
         <>
             <div className={'col-12'}>
                 {header}
-                <div className={'col-12 d-flex flex-column align-items-center overflow-auto'}
+                <div className={'col-12 d-flex flex-column align-items-center scroll-y'}
                      style={{height: '380px'}}>
                     {data && data.map(history => <HistoryCard title={history.history_title}
                                                               message={history.history_message}

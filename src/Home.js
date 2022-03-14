@@ -1,10 +1,14 @@
 import React from "react";
+import PageHeader from "./Components/Gear/Pages/PageHeader";
+import dayjs from "dayjs";
+import {weekdays} from "./Numbers";
 
 const Home = () => {
+    console.log("DAY:", weekdays[dayjs().day()])
     return (
         <>
-            <div className={'offset-3'}>
-                <h1>IMAGINE A HOME PAGE HERE</h1>
+            <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
+                <PageHeader title={'DASHBOARD'}/>
             </div>
         </>
     )
