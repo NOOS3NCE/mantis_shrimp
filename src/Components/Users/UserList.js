@@ -31,7 +31,7 @@ const UserList = () => {
             <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'USERS'}/>
             </div>
-            <div className={'mantis-modal row d-flex justify-content-center overflow-hidden'}>
+            <div className={'mantis-modal col-12 d-flex flex-row justify-content-center overflow-hidden'}>
                 {open &&
                 <div className={'page-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
