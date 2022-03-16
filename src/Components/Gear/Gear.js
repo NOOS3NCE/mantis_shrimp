@@ -81,12 +81,12 @@ const Gear = () => {
             <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>
-            <div className={'col flex-row d-flex justify-content-center overflow-hidden'}>
+            <div className={'col-12 flex-row d-flex justify-content-center overflow-hidden'}>
                 {open &&
                 <div className={'page-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
                 </div>}
-                <div className={`page-container rounded`}>
+                <div className={`page-container col rounded`}>
                     <FilterListHeader setUnderlineFilter={setUnderlineFilter}
                                       underlineFilter={underlineFilter}
                                       data={searchedData?.filter(item => listStateType !== '' ? item?.city_code === listStateType : true)}
