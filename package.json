@@ -58,7 +58,8 @@
   "devDependencies": {
     "html-webpack-plugin": "^4.5.2",
     "msw": "^0.35.0",
-    "react-error-overlay": "6.0.9"
+    "react-error-overlay": "6.0.9",
+    "tailwindcss": "^3.0.23"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",

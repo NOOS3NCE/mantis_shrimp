@@ -81,9 +81,9 @@ const Gear = () => {
             <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
                 <PageHeader title={'GEAR'}/>
             </div>
-            <div className={'col-12 flex-row d-flex justify-content-center overflow-hidden'}>
+            <div className={`col d-flex flex-row justify-content-center align-items-start`}>
                 {open &&
-                <div className={'page-container col-4 rounded mx-0'}>
+                <div className={'form-container col-4 rounded mx-0'}>
                     <NewKitForms setOpen={setOpen} open={open} kitsRefresh={kitsRefresh}/>
                 </div>}
                 <div className={`page-container col rounded`}>
