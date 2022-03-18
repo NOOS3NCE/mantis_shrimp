@@ -4,13 +4,12 @@ import Gear from "./Components/Gear/Gear"
 import PackDetail from "./Components/Gear/Pages/PackDetail";
 import React, {useEffect, useState} from "react";
 import MantisSidebar from "./Components/Sidebar/MantisSidebar";
-import {createTheme, ThemeProvider} from "@mui/material";
+import {createStyles, createTheme, ThemeProvider} from "@mui/material";
 import Schedule from "./Components/Schedule/Schedule";
 import Sales from "./Components/Sales/Sales";
 import NewEvent from "./Components/Sales/Event/NewEvent";
 import Login from "./Components/Users/Login/Login";
 import UserProfile from "./Components/Users/Login/UserProfile";
-import MantisChat from "./Components/MantisChat";
 import UserDetails from "./Components/Users/UserDetails";
 import UserList from "./Components/Users/UserList";
 
@@ -26,7 +25,7 @@ function App() {
                 main: '#f50057',
             },
             text: {
-                primary: '#000',
+                primary: '#fff',
             },
         }
     })

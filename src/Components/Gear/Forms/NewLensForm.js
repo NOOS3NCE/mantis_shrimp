@@ -5,7 +5,13 @@ import {Close} from "@mui/icons-material";
 import {useForm} from "react-hook-form";
 import {base_url} from "../../../env_variables";
 import {currentlyLoggedIn} from "../../Users/Login/Login";
-import {MantisDateField, MantisSelect, MantisTextField, MantisUploadField} from "../../Form Components/FormComponents";
+import {
+    MantisDateField,
+    MantisMenuItem,
+    MantisSelect,
+    MantisTextField,
+    MantisUploadField
+} from "../../Form Components/FormComponents";
 
 const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [lenses, setLenses] = useState([])
@@ -103,9 +109,8 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, def
                                 required
                                 col={8}
                                 control={control}>
-                                <option key={0} value={''}>SELECT LENS</option>
-                                {lenses.map(lens => <option
-                                    value={lens.lens_id}>{lens.lens_display} ({lens.lens_model}) {lens.kit_display ? ' - ' + lens.kit_display : ''}</option>)}
+                                {lenses.map(lens => <MantisMenuItem
+                                    value={lens.lens_id}>{lens.lens_display} ({lens.lens_model}) {lens.kit_display ? ' - ' + lens.kit_display : ''}</MantisMenuItem>)}
                             </MantisSelect>
                             <Button size={'large'} className={'col m-1'} variant={'contained'}
                                     type={'submit'}>ADD</Button>
@@ -127,12 +132,11 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, def
                                 defaultValue={''}
                                 col={12}
                                 required>
-                                <option key={0} value={''}>BRAND</option>
-                                <option value={'Canon'}>Canon</option>
-                                <option value={'Sony'}>Sony</option>
-                                <option value={'Tamron'}>Tamron</option>
-                                <option value={'Zeiss'}>Zeiss</option>
-                                <option value={'Sigma'}>Sigma</option>
+                                <MantisMenuItem value={'Canon'}>Canon</MantisMenuItem>
+                                <MantisMenuItem value={'Sony'}>Sony</MantisMenuItem>
+                                <MantisMenuItem value={'Tamron'}>Tamron</MantisMenuItem>
+                                <MantisMenuItem value={'Zeiss'}>Zeiss</MantisMenuItem>
+                                <MantisMenuItem value={'Sigma'}>Sigma</MantisMenuItem>
                             </MantisSelect>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
@@ -144,14 +148,13 @@ const NewLensForm = ({lensOpen, setLensOpen, kit, kitsRefresh, kitsRerender, def
                                 defaultValue={''}
                                 col={12}
                                 required>
-                                <option key={0} value={''}>MODEL</option>
-                                <option value={'35'}>35mm</option>
-                                <option value={'50'}>50mm</option>
-                                <option value={'85'}>85mm</option>
-                                <option value={'135'}>135mm</option>
-                                <option value={'24-70'}>24-70mm</option>
-                                <option value={'28-75'}>28-75mm</option>
-                                <option value={'70-200'}>70-200mm</option>
+                                <MantisMenuItem value={'35'}>35mm</MantisMenuItem>
+                                <MantisMenuItem value={'50'}>50mm</MantisMenuItem>
+                                <MantisMenuItem value={'85'}>85mm</MantisMenuItem>
+                                <MantisMenuItem value={'135'}>135mm</MantisMenuItem>
+                                <MantisMenuItem value={'24-70'}>24-70mm</MantisMenuItem>
+                                <MantisMenuItem value={'28-75'}>28-75mm</MantisMenuItem>
+                                <MantisMenuItem value={'70-200'}>70-200mm</MantisMenuItem>
                             </MantisSelect>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>

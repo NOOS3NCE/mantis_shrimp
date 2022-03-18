@@ -2,10 +2,15 @@ import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {base_url} from "../../../env_variables";
-import {Button, MenuItem, TextField} from "@mui/material";
+import {Button, MenuItem} from "@mui/material";
 import {Close} from "@mui/icons-material";
 import {currentlyLoggedIn} from "../../Users/Login/Login";
-import {MantisDateField, MantisSelect, MantisTextField, MantisUploadField} from "../../Form Components/FormComponents";
+import {
+    MantisDateField, MantisDateField2, MantisMenuItem,
+    MantisSelect,
+    MantisTextField,
+    MantisUploadField
+} from "../../Form Components/FormComponents";
 
 const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerender, defaultOpen}) => {
     const [cameras, setCameras] = useState([])
@@ -41,7 +46,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
             method: 'post',
             url: process.env.NODE_ENV === 'development' ? `${base_url}mantis_api/imgurfake` : 'https://api.imgur.com/3/image',
             headers: headers,
-            data: data.camera_image[0]
+            data: data?.camera_image
         };
         axios(config)
             .then(res => {
@@ -118,9 +123,8 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                                 required
                                 col={8}
                                 control={control}>
-                                <option key={0} value={''}>SELECT CAMERA</option>
-                                {cameras.map(camera => <option
-                                    value={camera.camera_id}>{camera.camera_display} ({camera.camera_model}) {camera.kit_display ? ' - ' + camera.kit_display : ''}</option>)}
+                                {cameras.map(camera => <MantisMenuItem
+                                    value={camera.camera_id}>{camera.camera_display} ({camera.camera_model}) {camera.kit_display ? ' - ' + camera.kit_display : ''}</MantisMenuItem>)}
                             </MantisSelect>
                             <Button size={'large'} className={'col m-1'} variant={'contained'}
                                     type={'submit'}>ADD</Button>
@@ -139,12 +143,14 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                                 name={'camera_brand'}
                                 size={'small'}
                                 control={control}
+                                placeholder={"BRAND"}
                                 defaultValue={''}
                                 col={12}
                                 required>
-                                <option key={0} value={''}>BRAND</option>
-                                <option key={1} value={'Canon'}>Canon</option>
-                                <option key={2} value={'Sony'}>Sony</option>
+                                <MantisMenuItem key={1}
+                                                value={'Canon'}>Canon</MantisMenuItem>
+                                <MantisMenuItem key={2}
+                                                value={'Sony'}>Sony</MantisMenuItem>
                             </MantisSelect>
                         </div>
                         <div className={'col-sm-12 col-md-6 my-2 d-flex align-items-start flex-column'}>
@@ -154,11 +160,11 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                                 control={control}
                                 size={'small'}
                                 defaultValue={''}
+                                placeholder={'MODEL'}
                                 col={12}
                                 required>
-                                <option key={0} value={''}>MODEL</option>
                                 {models?.map((model, index) => (
-                                    <option key={index + 1} value={model}>{model}</option>
+                                    <MantisMenuItem key={index + 1} value={model}>{model}</MantisMenuItem>
                                 ))}
                             </MantisSelect>
                         </div>
@@ -168,7 +174,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                                 name={`camera_serial`}
                                 size={'small'}
                                 control={control}
-                                placeholder={'SERIAL*'}
+                                placeholder={'SERIAL'}
                                 col={12}
                                 required/>
                         </div>
@@ -178,6 +184,7 @@ const NewCameraForm = ({cameraOpen, setCameraOpen, kit, kitsRefresh, kitsRerende
                                 name={'camera_purchase_date'}
                                 size={'small'}
                                 control={control}
+                                required
                                 col={12}/>
                         </div>
                         <div className={'col-12 my-2 d-flex align-items-start flex-column'}>

@@ -1,8 +1,38 @@
 import React, {useState} from "react";
 import {Controller} from "react-hook-form";
-import {FileUploadOutlined, InsertDriveFileOutlined} from "@mui/icons-material";
 import {ReactComponent as MantisUploadIcon} from '../../Upload.svg'
 import {ReactComponent as MantisUploadImageSuccessIcon} from '../../Image-File.svg'
+import {createStyles, MenuItem, TextField, withStyles} from "@mui/material";
+import {makeStyles} from '@mui/styles';
+import LocalizationProvider from "@mui/lab/LocalizationProvider/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker/DatePicker";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+
+const useStyles = makeStyles(theme =>
+    createStyles({
+        root: {},
+        dropdownStyle: {
+            backgroundColor: "#47667701",
+            padding: '4px',
+            // border: '1px solid #FFFFFF55',
+            'backdrop-filter': "blur(8px) brightness(90%)",
+        },
+        icon: {
+            color: 'white',
+        },
+        list: {
+            padding: '7px',
+            backgroundColor: "#47667701",
+            'backdrop-filter': "blur(8px)",
+            "&:hover": {
+                backgroundColor: "#c0e0f033"
+            },
+            "&:focus": {
+                backgroundColor: "#c0e0f033"
+            },
+        },
+    }))
+
 
 export const MantisSearchField = (props) => {
     const {
@@ -15,18 +45,22 @@ export const MantisSearchField = (props) => {
         endAdornment,
         placeholder,
         required,
-        type
+        ...rest
     } = props
     return (
         <>
             <Controller
                 render={({field}) => <div
-                    className={`p-0 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
+                    className={`p-1 px-2 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
                     {startAdornment && <div className={'m-0 me-1 p-1'}>
                         {startAdornment}
                     </div>}
-                    <input
+                    <TextField
                         {...field}
+                        {...rest}
+                        variant={'standard'}
+                        InputProps={{disableUnderline: true}}
+                        sx={{input: {color: 'white'}}}
                         className={'col-9 text-field mx-0 p-0 ps-2'}
                         onChange={onChange}
                         placeholder={placeholder}
@@ -54,18 +88,22 @@ export const MantisTextField = (props) => {
         endAdornment,
         placeholder,
         required,
-        type
+        ...rest
     } = props
     return (
         <>
             <Controller
                 render={({field}) => <div
-                    className={`p-0 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
+                    className={`p-1 px-2 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
                     {startAdornment && <div className={'m-0 me-1 p-1'}>
                         {startAdornment}
                     </div>}
-                    <input
+                    <TextField
                         {...field}
+                        {...rest}
+                        variant={'standard'}
+                        InputProps={{disableUnderline: true}}
+                        sx={{input: {color: 'white'}}}
                         className={'col text-field mx-0 p-0 ps-2'}
                         placeholder={placeholder}
                         required={required}
@@ -94,20 +132,24 @@ export const MantisDateField = (props) => {
         endAdornment,
         placeholder,
         required,
+        ...rest
     } = props
     return (
         <>
             <Controller
                 render={({field}) => <div
-                    className={`p-0 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
+                    className={`p-1 px-2 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
                     {startAdornment && <div className={'m-0 me-1 p-1'}>
                         {startAdornment}
                     </div>}
-                    <input
+                    <TextField
                         {...field}
+                        {...rest}
                         className={'col text-field mx-0 p-0 ps-2'}
                         placeholder={placeholder}
                         required={required}
+                        variant={'standard'}
+                        InputProps={{disableUnderline: true}}
                         type={'date'}
                         style={{cursor: 'text', fontSize: '16px'}}
 
@@ -123,6 +165,55 @@ export const MantisDateField = (props) => {
         </>
     )
 }
+
+export const MantisDateField2 = (props) => {
+    const {
+        name,
+        control,
+        onChange,
+        onBlur,
+        defaultValue,
+        col,
+        startAdornment,
+        endAdornment,
+        placeholder,
+        required,
+        ...rest
+    } = props
+    const [value, setValue] = useState()
+    return (
+        <>
+            <Controller
+                render={({field}) => <div
+                    className={`p-1 px-2 m-1 col-${col} form-field d-flex align-items-center justify-content-between`}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                            {...rest}
+                            label="Basic example"
+                            value={value}
+                            onChange={(newValue) => {
+                                setValue(newValue);
+                            }}
+                            renderInput={(params) =>
+                                <TextField
+                                    {...field}
+                                    {...rest}
+                                    className={'col text-field mx-0 p-0 ps-2'}
+                                    placeholder={placeholder}
+                                    required={required}
+                                    variant={'standard'}
+                                    InputProps={{disableUnderline: true}}
+                                    style={{cursor: 'text', fontSize: '16px'}}
+                                />}/>
+                    </LocalizationProvider></div>}
+                name={name}
+                control={control}
+                defaultValue={defaultValue}/>
+        </>
+    )
+}
+
+
 export const MantisUploadField = (props) => {
     const {
         name,
@@ -131,7 +222,8 @@ export const MantisUploadField = (props) => {
         col,
         placeholder,
         required,
-        accept
+        accept,
+        ...rest
     } = props
     const [fileName, setFilename] = useState('No File Chosen')
     const [upload, setUpload] = useState(true)
@@ -139,13 +231,14 @@ export const MantisUploadField = (props) => {
         <>
             <Controller
                 render={({field}) => <div
-                    className={`p-1 m-1 col-${col} upload-field d-flex align-items-center justify-content-center`}>
+                    className={`p-1 px-2 m-1 col-${col} upload-field d-flex align-items-center justify-content-center`}>
                     <div className={'d-flex flex-column align-items-center justify-content-center m-2'}>
                         {upload ? <MantisUploadIcon height={'100px'} fill={'white'} className={'m-1 p-1'}/> :
                             <MantisUploadImageSuccessIcon height={'100px'} fill={'white'} className={'m-1 p-1'}/>}
                         <span>{fileName}</span>
                         <input
                             {...field}
+                            {...rest}
                             type={'file'}
                             className={'col-12 text-field mx-0 p-0 ps-2'}
                             onChange={(e) => {
@@ -161,6 +254,7 @@ export const MantisUploadField = (props) => {
                         {upload && <label htmlFor="actual-btn" className={'upload-button m-1'}>UPLOAD IMAGE</label>}
                     </div>
                 </div>}
+                required={required}
                 name={name}
                 control={control}
                 defaultValue={defaultValue}
@@ -177,21 +271,43 @@ export const MantisSelect = (props) => {
         children,
         required,
         onChange,
+        placeholder,
+        ...rest
     } = props
+    const classes = useStyles();
 
     return (
         <>
             <Controller
                 render={({field}) => <div
-                    className={`p-1 m-1 col-${col} form-field d-flex align-items-center justify-content-center`}
+                    className={`p-1 px-2 m-1 col-${col} form-field d-flex align-items-center justify-content-center`}
                     style={{cursor: 'pointer'}}>
-                    <select
+                    <TextField
                         {...field}
+                        {...rest}
+                        placeholder={placeholder}
+                        required={required}
+                        variant={'standard'}
+                        InputProps={{disableUnderline: true}}
+                        SelectProps={{
+                            MenuProps: {
+                                PaperProps: {
+                                    className: classes.dropdownStyle
+                                }
+                            }
+                        }}
+                        classes={{
+                            root: classes.root,
+                            iconStandard: classes.icon,
+                            listStandar: classes.root,
+                            paper: classes.selectOptions
+                        }}
                         className={'col-12 text-field m-0 p-0'}
                         style={{fontSize: '16px', cursor: 'pointer'}}
+                        select
                     >
                         {children}
-                    </select>
+                    </TextField>
                 </div>}
                 required={required}
                 name={name}
@@ -200,5 +316,20 @@ export const MantisSelect = (props) => {
                 defaultValue={defaultValue}
             />
         </>
+    )
+}
+export const MantisMenuItem = (props) => {
+    const {value, key, children, ...rest} = props
+    const classes = useStyles();
+    return (
+        <MenuItem
+            {...rest}
+            value={value}
+            key={key}
+            classes={{
+                root: classes.list
+            }}>
+            {children}
+        </MenuItem>
     )
 }
