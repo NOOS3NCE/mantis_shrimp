@@ -3,7 +3,7 @@ import {Button, InputAdornment, MenuItem, OutlinedInput, TextField} from "@mui/m
 import UnderlineFilter from "../Filters/UnderlineFilter";
 import {useForm, Controller} from "react-hook-form";
 import {Search} from "@mui/icons-material";
-import {MantisSearchField, MantisSelect, MantisTextField} from "../../Form Components/FormComponents";
+import {MantisMenuItem, MantisSearchField, MantisSelect, MantisTextField} from "../../Form Components/FormComponents";
 
 const FilterListHeader = ({
                               setUnderlineFilter,
@@ -52,9 +52,9 @@ const FilterListHeader = ({
                     name={"list_type"}
                     defaultValue={'kits'}
                     col={3}>
-                    <option key={0} value={'kits'}>KITS</option>
-                    <option key={1} value={'lenses'}>LENSES</option>
-                    <option key={2} value={'cameras'}>CAMERAS</option>
+                    <MantisMenuItem key={0} value={'kits'}>KITS</MantisMenuItem>
+                    <MantisMenuItem key={1} value={'lenses'}>LENSES</MantisMenuItem>
+                    <MantisMenuItem key={2} value={'cameras'}>CAMERAS</MantisMenuItem>
                 </MantisSelect>}
                 <MantisSearchField
                     size={'small'}
@@ -70,9 +70,9 @@ const FilterListHeader = ({
                     name={"list_city"}
                     defaultValue={''}
                     col={3}>
-                    <option key={0} value={''}>ALL CITIES</option>
-                    {cities && cities.map((city, index) => <option key={index + 1}
-                                                                   value={city?.city_code}>{city?.city_name.toUpperCase()}</option>)}
+                    <MantisMenuItem key={0} value={''}>ALL CITIES</MantisMenuItem>
+                    {cities && cities.map((city, index) => <MantisMenuItem key={index + 1}
+                                                                           value={city?.city_code}>{city?.city_name.toUpperCase()}</MantisMenuItem>)}
                 </MantisSelect>
                 {/*<TextField*/}
                 {/*    {...register(`list_city`)}*/}
