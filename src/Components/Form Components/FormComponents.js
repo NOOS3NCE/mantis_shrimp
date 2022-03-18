@@ -12,6 +12,8 @@ const useStyles = makeStyles(theme =>
     createStyles({
         root: {},
         dropdownStyle: {
+            maxHeight: '300px',
+            overflow: 'auto',
             backgroundColor: "#47667701",
             padding: '4px',
             // border: '1px solid #FFFFFF55',
