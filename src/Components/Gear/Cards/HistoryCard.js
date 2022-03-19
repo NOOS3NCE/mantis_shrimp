@@ -7,7 +7,7 @@ const HistoryCard = (props) => {
         <>
             <div
                 className={'zoom col-12 main-list p-2 m-1 d-flex align-items-center justify-content-between'}
-                style={{maxWidth: '510px'}}>
+                style={{maxWidth: '550px'}}>
                 <div className={'col-12 d-flex flex-column align-items-center justify-content-start'}>
                     <div className={'col-12 d-flex flex-row justify-content-between align-items-center'}>
                         <div className={'col-6'}>

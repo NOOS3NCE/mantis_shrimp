@@ -11,7 +11,7 @@ const InfoCard = (props) => {
         <>
             <div className={'col-12'} style={{minHeight: '400px'}}>
                 {header}
-                <div className={'col-12 d-flex flex-row'}>
+                <div className={'col-12 d-flex flex-row justify-content-around'}>
                     {kit?.kit_img ? <div
                         className={'col-4 m-2 rounded bg-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
                         style={{height: '150px', width: '150px'}}>
@@ -19,7 +19,7 @@ const InfoCard = (props) => {
                     </div> : <div
                         className={'col-4 m-2 rounded border-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
                         style={{height: '150px', width: '150px'}}>
-                        <img src={kit?.kit_case_style === 'backpack' ? backback : hardcase} alt={'kit image'}
+                        <img src={kit?.kit_case_style === 'Backpack' ? backback : hardcase} alt={'kit image'}
                              className={'rounded'} style={{maxHeight: '125px'}}/>
                     </div>
                     }
@@ -64,7 +64,7 @@ const InfoCard = (props) => {
                     {todos && todos.map(todo => (
                         <div
                             className={`col-12 p-1 px-2 my-1 rounded shadow-sm zoom d-flex flex-row justify-content-between align-items-center priority-${todo.priority}`}
-                            style={{maxHeight: '40px', maxWidth: '510px', color: 'white'}}>
+                            style={{maxHeight: '40px', maxWidth: '550px', color: 'white'}}>
                             <p className={'m-0'}>{todo.content}</p>
                             <p className={'m-0'}>{dayjs(todo.due?.datetime).format("MM/DD/YYYY")}</p>
                         </div>

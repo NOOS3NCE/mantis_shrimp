@@ -30,7 +30,7 @@ const GearItemCard = (props) => {
             <Link className={'text-decoration-none text-white py-1'} to={`/gear`}>
                 <div
                     className={'main-list zoom p-0 px-2 m-0 d-flex align-items-center justify-content-between'}
-                    style={{width: '510px'}}>
+                    style={{width: '550px'}}>
                     <div className={'col-12 d-flex flex-row align-items-center justify-content-start'}>
                         <div className={'col-2'} style={{minWidth: '55px', maxHeight: '55px'}}>
                             <div

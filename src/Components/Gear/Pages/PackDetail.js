@@ -108,7 +108,7 @@ const PackDetail = () => {
                                 OUT</Button>}
                         </div>
                         <div className={'row flex-wrap'}>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card details-card'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <InfoCard header={<SectionHeader title={'INFO'}/>}
                                           kit={kit} todos={todos}/>
                             </div>
@@ -116,8 +116,6 @@ const PackDetail = () => {
                                 <StatusCard header={<SectionHeader className={'m-1'} title={'HISTORY'}/>}
                                             data={history}/>
                             </div>
-                        </div>
-                        <div className={'row flex-wrap'}>
                             <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <GearListCard
                                     items={kit.cameras}

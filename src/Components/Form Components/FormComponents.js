@@ -61,7 +61,7 @@ export const MantisSearchField = (props) => {
                         {...field}
                         {...rest}
                         variant={'standard'}
-                        InputProps={{disableUnderline: true}}
+                        InputProps={{disableUnderline: true, shrink: false}}
                         sx={{input: {color: 'white'}}}
                         className={'col-9 text-field mx-0 p-0 ps-2'}
                         onChange={onChange}
@@ -104,7 +104,7 @@ export const MantisTextField = (props) => {
                         {...field}
                         {...rest}
                         variant={'standard'}
-                        InputProps={{disableUnderline: true}}
+                        InputProps={{disableUnderline: true, shrink: false}}
                         sx={{input: {color: 'white'}}}
                         className={'col text-field mx-0 p-0 ps-2'}
                         placeholder={placeholder}
@@ -151,7 +151,7 @@ export const MantisDateField = (props) => {
                         placeholder={placeholder}
                         required={required}
                         variant={'standard'}
-                        InputProps={{disableUnderline: true}}
+                        InputProps={{disableUnderline: true, shrink: false}}
                         type={'date'}
                         style={{cursor: 'text', fontSize: '16px'}}
 
@@ -204,7 +204,7 @@ export const MantisDateField2 = (props) => {
                                     placeholder={placeholder}
                                     required={required}
                                     variant={'standard'}
-                                    InputProps={{disableUnderline: true}}
+                                    InputProps={{disableUnderline: true, shrink: false}}
                                     style={{cursor: 'text', fontSize: '16px'}}
                                 />}/>
                     </LocalizationProvider></div>}
@@ -291,7 +291,7 @@ export const MantisSelect = (props) => {
                         placeholder={placeholder}
                         required={required}
                         variant={'standard'}
-                        InputProps={{disableUnderline: true, shrink: false}}
+                        InputProps={{disableUnderline: true, shrink: false, iconStandard: {color: 'white'}}}
                         SelectProps={{
                             MenuProps: {
                                 PaperProps: {
