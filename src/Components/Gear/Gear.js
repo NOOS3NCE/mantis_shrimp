@@ -89,7 +89,7 @@ const Gear = () => {
                 <div className={`page-container col rounded`}>
                     <FilterListHeader setUnderlineFilter={setUnderlineFilter}
                                       underlineFilter={underlineFilter}
-                                      data={searchedData?.filter(item => listStateType !== '' ? item?.city_code === listStateType : true)}
+                                      data={searchedData?.filter(item => listStateType !== 'all' ? item?.city_code === listStateType : true)}
                                       setOpen={() => setOpen}
                                       open={open}
                                       setListType={setListType}
@@ -100,7 +100,7 @@ const Gear = () => {
                     <ListHeader headers={headers[listType]}/>
                     <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
                          style={{maxHeight: '73vh'}}>
-                        {searchedData?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).filter(item => listStateType !== '' ? item?.city_code === listStateType : true).map((kit, index) =>
+                        {searchedData?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).filter(item => listStateType !== 'all' ? item?.city_code === listStateType : true).map((kit, index) =>
                             <MantisCard
                                 data={kit} id={kit[`${listType}_id`]} key={index} image={kit[`${listType}_img`]}
                                 columns={columns[listType]}/>)}

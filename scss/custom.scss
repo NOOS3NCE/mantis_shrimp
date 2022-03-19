@@ -17,6 +17,10 @@ $midnight: #1d1d22;
   background: $pureWhite;
 }
 
+.border-pureWhite {
+  border: 1px solid $white;
+}
+
 .form-field {
   border: 1px solid $offWhite;
   color: $white;
@@ -128,6 +132,10 @@ h6 {
   margin: 10px 10px;
   max-width: 1200px;
   box-shadow: -1px 10px 15px -6px rgba(0, 0, 0, 0.37);
+}
+
+.details-card {
+  min-width: 550px;
 }
 
 ::-webkit-scrollbar {

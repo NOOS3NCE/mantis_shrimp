@@ -91,10 +91,10 @@ const PackDetail = () => {
                                 kitRefresh={kitRefresh}
                                 kitRerender={kitRerender} kit={kit}/>
                 </div>}
-                <div className={'d-flex justify-content-center'}>
+                <div className={'d-flex justify-content-center col'}>
                     <div
-                        className={`page-container row d-flex flex-wrap flex-row justify-content-around rounded`}>
-                        <div className={'row d-flex justify-content-end p-3 pb-1'}>
+                        className={`page-container d-flex flex-wrap flex-row justify-content-around rounded`}>
+                        <div className={'col-12 d-flex justify-content-end p-3 pb-1'}>
                             {kit?.user_id !== null &&
                             < Button style={{maxHeight: '50px'}} variant={'contained'} size={'large'}
                                      className={'zoom bg-secondary col-4 m-2'}
@@ -108,17 +108,17 @@ const PackDetail = () => {
                                 OUT</Button>}
                         </div>
                         <div className={'row flex-wrap'}>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card details-card'}>
                                 <InfoCard header={<SectionHeader title={'INFO'}/>}
                                           kit={kit} todos={todos}/>
                             </div>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <StatusCard header={<SectionHeader className={'m-1'} title={'HISTORY'}/>}
                                             data={history}/>
                             </div>
                         </div>
                         <div className={'row flex-wrap'}>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <GearListCard
                                     items={kit.cameras}
                                     header={<SectionHeader
@@ -129,7 +129,7 @@ const PackDetail = () => {
                                         }}/>}
                                 />
                             </div>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <GearListCard
                                     items={kit.lenses}
                                     header={<SectionHeader
@@ -140,7 +140,7 @@ const PackDetail = () => {
                                         }}/>}
                                 />
                             </div>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <GearListCard
                                     items={kit.lenses}
                                     header={<SectionHeader
@@ -151,7 +151,7 @@ const PackDetail = () => {
                                         }}/>}
                                 />
                             </div>
-                            <div className={'col-md-6 col-sm-12  m-0 p-2'}>
+                            <div className={'col-md-6 col-sm-12  m-0 p-2  details-card'}>
                                 <GearListCard
                                     items={kit.lenses}
                                     header={<SectionHeader

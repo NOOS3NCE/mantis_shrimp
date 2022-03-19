@@ -4,11 +4,12 @@ import {Close} from "@mui/icons-material";
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import {base_url} from "../../../env_variables";
+import {MantisMenuItem, MantisSelect} from "../../Form Components/FormComponents";
 
 const LoadOutForm = (props) => {
     const {kit, defaultOpen, setUserOpen, kitRefresh, kitRerender} = props
     const [users, setUsers] = useState([])
-    const {handleSubmit, register} = useForm()
+    const {handleSubmit, control} = useForm()
 
     useEffect(() => {
         axios.get(`${base_url}mantis_api/user`)
@@ -50,20 +51,22 @@ const LoadOutForm = (props) => {
                     <div className={'row m-1 mt-2 d-flex flex-wrap justify-content-start'}>
                         <div className={'col-12 my-2 d-flex align-items-start flex-column'}>
                             <h4 className={'list-title'}>SHOOTER</h4>
-                            <TextField
-                                {...register(`user_id`)}
-                                label={'SHOOTER'}
+                            <MantisSelect
+                                name={`user_id`}
+                                shrink={false}
                                 size={'small'}
+                                control={control}
                                 className={'m-1 mx-0 px-0 bg-white rounded col-12'}
                                 required
+                                col={12}
                                 style={{'min-width': '230px'}}
                                 select>
                                 {users?.map(user => (
-                                    <MenuItem
+                                    <MantisMenuItem
                                         key={user?.user_id}
-                                        value={user?.user_id}>{`${user.user_firstname} ${user.user_lastname}`}</MenuItem>
+                                        value={user?.user_id}>{`${user.user_firstname} ${user.user_lastname}`}</MantisMenuItem>
                                 ))}
-                            </TextField>
+                            </MantisSelect>
                         </div>
                     </div>
                     <div className={'row d-flex align-content-center justify-content-center m-1'}>

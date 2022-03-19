@@ -1,6 +1,8 @@
 import React from "react";
 import {ButtonBase} from "@mui/material";
 import dayjs from "dayjs";
+import hardcase from "../../../HardCase.svg"
+import backback from "../../../Backpack.svg"
 
 const InfoCard = (props) => {
     const {kit, setOpen, open, header, todos} = props;
@@ -10,11 +12,17 @@ const InfoCard = (props) => {
             <div className={'col-12'} style={{minHeight: '400px'}}>
                 {header}
                 <div className={'col-12 d-flex flex-row'}>
-                    <div
+                    {kit?.kit_img ? <div
                         className={'col-4 m-2 rounded bg-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
                         style={{height: '150px', width: '150px'}}>
                         <img src={kit?.kit_img} alt={'kit image'} className={'rounded'} style={{maxHeight: '125px'}}/>
+                    </div> : <div
+                        className={'col-4 m-2 rounded border-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
+                        style={{height: '150px', width: '150px'}}>
+                        <img src={kit?.kit_case_style === 'backpack' ? backback : hardcase} alt={'kit image'}
+                             className={'rounded'} style={{maxHeight: '125px'}}/>
                     </div>
+                    }
                     <div className={'col-8 m-2'}>
                         <div className={'row d-flex justify-content-between'}>
                             <div className={'col-6'}>

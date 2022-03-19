@@ -14,6 +14,8 @@ const UserList = () => {
     const [open, setOpen] = useState(false)
     const [kitsRerender, kitsRefresh] = useState()
     const columns = ['user_firstname', 'user_lastname', 'city_code', 'user_email']
+    const [searchQuery, setSearchQuery] = useState()
+    let searchedData = []
 
     useEffect(() => {
         Promise.all([
@@ -26,6 +28,11 @@ const UserList = () => {
             })
             .catch(err => console.log(err))
     }, [])
+
+    if (users) {
+        searchedData = users?.filter(pack => JSON.stringify(Object.values(pack)?.filter(item => item !== null)).toLowerCase().includes(searchQuery?.target?.value.toLowerCase() || ''))
+    }
+
     return (
         <>
             <div style={{height: '40px'}} className={'d-flex flex-row justify-content-center'}>
@@ -39,11 +46,12 @@ const UserList = () => {
                 <div className={`page-container col-${open ? '6' : '10'} rounded`}>
                     <FilterListHeader
                         setCity={setListStateType}
-                        cities={cities}/>
+                        cities={cities}
+                        searchQuery={setSearchQuery}/>
                     <ListHeader headers={["First Name", "Last Name", "City", "Email"]}/>
                     <div className={`row d-flex justify-content-evenly col-12 text-white m-auto overflow-auto`}
                          style={{maxHeight: '73vh'}}>
-                        {users?.filter(item => listStateType !== '' ? item?.city_code === listStateType : true).map((user, index) =>
+                        {searchedData?.filter(item => listStateType !== 'all' ? item?.city_code === listStateType : true).map((user, index) =>
                             <MantisCard
                                 data={user} id={user?.user_id} key={index}
                                 image={user?.user_img !== null ? user?.user_img : 'https://i.imgur.com/9LDfN2H.png'}

@@ -17,7 +17,7 @@ const FilterListHeader = ({
                               searchQuery,
                               callback
                           }) => {
-    const {watch, register, control} = useForm()
+    const {watch, control} = useForm()
     const type = watch(["list_type", "list_city"])
 
     useEffect(() => {
@@ -32,7 +32,6 @@ const FilterListHeader = ({
         }
         setCity(type[1])
     }, [type])
-    console.log("CONTROL", control)
     return (
         <>
             <div className={'col-12 d-flex flex-row justify-content-between align-items-center mb-3'}>
@@ -68,25 +67,12 @@ const FilterListHeader = ({
                     size={'small'}
                     control={control}
                     name={"list_city"}
-                    defaultValue={''}
+                    defaultValue={'all'}
                     col={3}>
-                    <MantisMenuItem key={0} value={''}>ALL CITIES</MantisMenuItem>
+                    <MantisMenuItem key={0} value={'all'}>ALL CITIES</MantisMenuItem>
                     {cities && cities.map((city, index) => <MantisMenuItem key={index + 1}
                                                                            value={city?.city_code}>{city?.city_name.toUpperCase()}</MantisMenuItem>)}
                 </MantisSelect>
-                {/*<TextField*/}
-                {/*    {...register(`list_city`)}*/}
-                {/*    label={'City'}*/}
-                {/*    size={'small'}*/}
-                {/*    defaultValue={''}*/}
-                {/*    className={'m-1 mx-0 px-0 bg-white rounded col-3'}*/}
-                {/*    required*/}
-                {/*    style={{'minWidth': '150px'}}*/}
-                {/*    select>*/}
-                {/*    <MenuItem key={0} value={''}>ALL</MenuItem>*/}
-                {/*    {cities && cities.map((city, index) => <MenuItem key={index + 1}*/}
-                {/*                                                     value={city?.city_code}>{city?.city_name}</MenuItem>)}*/}
-                {/*</TextField>*/}
             </div>
         </>
     )

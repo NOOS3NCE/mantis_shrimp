@@ -253,7 +253,8 @@ export const MantisUploadField = (props) => {
                             id="actual-btn"
                             hidden
                         />
-                        {upload && <label htmlFor="actual-btn" className={'upload-button m-1'}>UPLOAD IMAGE</label>}
+                        {upload &&
+                        <label htmlFor="actual-btn" className={'upload-button m-1 zoom'}>UPLOAD IMAGE</label>}
                     </div>
                 </div>}
                 required={required}
@@ -290,7 +291,7 @@ export const MantisSelect = (props) => {
                         placeholder={placeholder}
                         required={required}
                         variant={'standard'}
-                        InputProps={{disableUnderline: true}}
+                        InputProps={{disableUnderline: true, shrink: false}}
                         SelectProps={{
                             MenuProps: {
                                 PaperProps: {
