@@ -1,55 +1,72 @@
 import React from "react";
-import {ButtonBase} from "@mui/material";
 import dayjs from "dayjs";
-import hardcase from "../../../HardCase.svg"
-import backback from "../../../Backpack.svg"
 
 const InfoCard = (props) => {
-    const {kit, setOpen, open, header, todos} = props;
-    console.log("TODOS IN INFO CARD:", todos)
+    const {kit, header, todos, type = 'kit'} = props;
+    let suffix = ''
+    if (type === 'lens') suffix = 'mm'
+
     return (
         <>
             <div className={'col-12'} style={{minHeight: '400px'}}>
                 {header}
                 <div className={'col-12 d-flex flex-row justify-content-around'}>
-                    {kit?.kit_img ? <div
+                    <div
                         className={'col-4 m-2 rounded bg-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
                         style={{height: '150px', width: '150px'}}>
-                        <img src={kit?.kit_img} alt={'kit image'} className={'rounded'} style={{maxHeight: '125px'}}/>
-                    </div> : <div
-                        className={'col-4 m-2 rounded border-pureWhite d-flex flex-row justify-content-center align-items-center p-2'}
-                        style={{height: '150px', width: '150px'}}>
-                        <img src={kit?.kit_case_style === 'Backpack' ? backback : hardcase} alt={'kit image'}
-                             className={'rounded'} style={{maxHeight: '125px'}}/>
+                        <img src={kit[`${type}_img`]} alt={'kit image'} className={'rounded'}
+                             style={{maxWidth: '125px'}}/>
                     </div>
-                    }
                     <div className={'col-8 m-2'}>
                         <div className={'row d-flex justify-content-between'}>
                             <div className={'col-6'}>
                                 <h4 className={'list-title'}>LOCATION</h4>
                             </div>
                             <div className={'col-6'}>
-                                <ButtonBase children={<p className={'m-0'}>{kit?.city_code}</p>}/>
-
+                                <p className={'m-0'}>{kit?.city_code}</p>
                             </div>
                         </div>
-                        <div className={'row d-flex justify-content-between'}>
+                        {type === 'kit' && <div className={'row d-flex justify-content-between'}>
                             <div className={'col-6'}>
                                 <h4 className={'list-title'}>TYPE</h4>
                             </div>
                             <div className={'col-6'}>
                                 <p className={'m-0'}>{kit?.kit_type}</p>
                             </div>
-                        </div>
+                        </div>}
+                        {type !== 'kit' && <div className={'row d-flex justify-content-between'}>
+                            <div className={'col-6'}>
+                                <h4 className={'list-title'}>BRAND</h4>
+                            </div>
+                            <div className={'col-6'}>
+                                <p className={'m-0'}>{kit[`${type}_brand`]}</p>
+                            </div>
+                        </div>}
+                        {type !== 'kit' && <div className={'row d-flex justify-content-between'}>
+                            <div className={'col-6'}>
+                                <h4 className={'list-title'}>MODEL</h4>
+                            </div>
+                            <div className={'col-6'}>
+                                <p className={'m-0'}>{`${kit[`${type}_model`]}${suffix}`}</p>
+                            </div>
+                        </div>}
+                        {type !== 'kit' && <div className={'row d-flex justify-content-between'}>
+                            <div className={'col-6'}>
+                                <h4 className={'list-title'}>SERIAL</h4>
+                            </div>
+                            <div className={'col-6'}>
+                                <p className={'m-0'}>{kit[`${type}_serial`]}</p>
+                            </div>
+                        </div>}
                         <div className={'row d-flex justify-content-between'}>
                             <div className={'col-6'}>
                                 <h4 className={'list-title'}>STATUS</h4>
                             </div>
                             <div className={'col-6'}>
-                                <p className={'m-0'}>{kit?.kit_status}</p>
+                                <p className={'m-0'}>{kit[`${type}_status`]}</p>
                             </div>
                         </div>
-                        {kit?.kit_status === 'Loaded Out' &&
+                        {(type === 'kit' && kit?.kit_status === 'Loaded Out') &&
                         <div className={'row d-flex justify-content-between'}>
                             <div className={'col-6'}>
                                 <h4 className={'list-title'}>SHOOTER</h4>

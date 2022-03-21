@@ -12,6 +12,7 @@ import Login from "./Components/Users/Login/Login";
 import UserProfile from "./Components/Users/Login/UserProfile";
 import UserDetails from "./Components/Users/UserDetails";
 import UserList from "./Components/Users/UserList";
+import GearItemDetail from "./Components/Gear/Pages/GearItemDetail";
 
 function App() {
     const darkTheme = createTheme({
@@ -55,11 +56,16 @@ function App() {
                         <div className={`col p-0 m-0`}>
                             <Routes>
                                 <Route path={"/"} element={<Home/>}/>
+                                {/*GEAR*/}
                                 <Route path={"/gear"} element={<Gear/>}/>
                                 <Route path={"/gear/pack/:id"} element={<PackDetail/>}/>
+                                <Route path={"/gear/:type/:id"} element={<GearItemDetail/>}/>
+                                {/*SCHEDULE*/}
                                 <Route path={"/schedule"} element={<Schedule/>}/>
+                                {/*SALES*/}
                                 <Route path={"/sales"} element={<Sales/>}/>
                                 <Route path={"/sales/event/new"} element={<NewEvent/>}/>
+                                {/*USER*/}
                                 <Route path={"/login"} element={<Login/>}/>
                                 <Route path={"/user"} element={<UserList/>}/>
                                 <Route path={"/user/me"} element={<UserProfile/>}/>
