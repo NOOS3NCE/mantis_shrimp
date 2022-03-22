@@ -103,7 +103,7 @@ const Gear = () => {
                         {searchedData?.filter(data => underlineFilter !== '' ? data[`${listType}_status`] === underlineFilter : data).filter(item => listStateType !== 'all' ? item?.city_code === listStateType : true).map((kit, index) =>
                             <MantisCard
                                 data={kit} id={kit[`${listType}_id`]} key={index} image={kit[`${listType}_img`]}
-                                columns={columns[listType]}/>)}
+                                columns={columns[listType]} link={`/gear/${listType}/`}/>)}
                     </div>
                 </div>
             </div>

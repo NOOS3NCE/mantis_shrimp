@@ -66,7 +66,7 @@ const Schedule = () => {
                             {events?.map((event, index) =>
                                 <MantisCard
                                     data={event} id={event?.event_id} key={index}
-                                    columns={columns} link={'/sales/client/'}/>)}
+                                    columns={columns} link={'/sales/event/'}/>)}
                         </div>
                     </div>
                 </div>
