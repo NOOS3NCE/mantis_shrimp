@@ -2,7 +2,7 @@ import React from "react";
 import dayjs from "dayjs";
 
 const EventInfoCard = (props) => {
-    const {data, header} = props;
+    const {data, header, weather} = props;
 
     return (
         <>
@@ -20,6 +20,7 @@ const EventInfoCard = (props) => {
                         </div>
                     </div>
                 </div>
+                {weather ? weather : null}
             </div>
         </>
     )
