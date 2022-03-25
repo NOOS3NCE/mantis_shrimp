@@ -58,6 +58,28 @@ const ClientInfoCard = (props) => {
                                 <p className={'m-0'}>{`${data.secondary_contact?.client_email}`}</p>
                             </div>
                         </div>
+                        <br/>
+                        <div className={'row d-flex justify-content-between'}>
+                            <div className={'col-6'}>
+                                <h4 className={'list-title'}>SHIPPING ADDRESS</h4>
+                            </div>
+                            <div className={'col-6'}>
+                                <p className={'m-0'}>{`${data.secondary_contact?.client_address1}`}</p>
+                                <p className={'m-0'}>{`${data.secondary_contact?.client_address2}`}</p>
+                                <p className={'m-0'}>{`${data.secondary_contact?.client_city}, ${data.secondary_contact?.client_state} ${data.secondary_contact?.client_zip} `}</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <div className={'row d-flex justify-content-between'}>
+                            <div className={'col-6'}>
+                                <h4 className={'list-title'}>BILLING ADDRESS</h4>
+                            </div>
+                            <div className={'col-6'}>
+                                <p className={'m-0'}>{`${data.secondary_contact?.client_address1}`}</p>
+                                <p className={'m-0'}>{`${data.secondary_contact?.client_address2}`}</p>
+                                <p className={'m-0'}>{`${data.secondary_contact?.client_city}, ${data.secondary_contact?.client_state} ${data.secondary_contact?.client_zip} `}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

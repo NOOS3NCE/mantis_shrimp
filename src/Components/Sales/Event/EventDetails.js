@@ -11,6 +11,7 @@ import StatusCard from "../../Gear/Cards/StatusCard";
 import EventInfoCard from "./EventInfoCard";
 import ClientInfoCard from "./ClientInfoCard";
 import WeatherInfoCard from "./WeatherInfoCard";
+import PackageDetailsCard from "./PackageDetailsCard";
 
 const EventDetails = (props) => {
     const {data} = props
@@ -40,6 +41,9 @@ const EventDetails = (props) => {
                             <EventInfoCard data={event} header={<SectionHeader title={'EVENT INFO'}/>}
                                            weather={<WeatherInfoCard data={event} header={<SectionHeader
                                                title={'WEATHER INFO'}/>}/>}/>
+                        </div>
+                        <div className={'col-xl-6 col-lg-12 m-0 p-2  details-card'}>
+                            <PackageDetailsCard header={<SectionHeader title={'PACKAGE INFO'}/>}/>
                         </div>
                     </div>
                 </div>

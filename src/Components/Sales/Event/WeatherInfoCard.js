@@ -7,6 +7,8 @@ import Drizzle from '../../../Weather Icons/Drizzle.svg'
 import Snow from '../../../Weather Icons/Snow.svg'
 import axios from "axios";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 
 const WeatherInfoCard = (props) => {
@@ -22,6 +24,10 @@ const WeatherInfoCard = (props) => {
         Drizzle: Drizzle,
         Snow: Snow
     }
+    let utc = require('dayjs/plugin/utc')
+    let timezone = require('dayjs/plugin/timezone') // dependent on utc plugin
+    dayjs.extend(utc)
+    dayjs.extend(timezone)
     // sunset time https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&date=2022-03-17
 // kelvin to F conversion (Kelvin − 273.15) × 9/5 + 32
     useEffect(() => {
@@ -35,9 +41,9 @@ const WeatherInfoCard = (props) => {
             }),
             axios.get(`https://api.sunrise-sunset.org/json?`, {
                 params: {
-                    date: data.date,
                     lat: data?.venue?.latitude,
-                    lng: data?.venue?.longitude
+                    lng: data?.venue?.longitude,
+                    formatted: 0,
                 }
             }),
         ]).then(res => {
@@ -86,7 +92,7 @@ const WeatherInfoCard = (props) => {
                                     <h4 className={'list-title'}>SUNSET TIME</h4>
                                 </div>
                                 <div className={'col-6'}>
-                                    <p className={'m-0'}>{sunset?.sunset}</p>
+                                    <p className={'m-0'}>{dayjs(sunset?.sunset).tz("America/Chicago").format("h:mm A")}</p>
                                 </div>
                             </div>
                         </div>
